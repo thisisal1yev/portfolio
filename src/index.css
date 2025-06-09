@@ -1,1 +1,19 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-montserrat: 'Montserrat', sans-serif;
+
+  --color-dark-primary: #191820;
+  --color-light-primary: #bbbcc4;
+  --color-dark-secondary: #2d2d2d;
+  --color-gray: #414142;
+  --color-purple: #ae8bf8;
+  --color-white: #ececec;
+}
+
+@layer base {
+  html {
+    @apply bg-light-primary text-dark-secondary font-montserrat dark:bg-dark-primary scroll-smooth leading-normal font-normal dark:text-white;
+  }
+}
