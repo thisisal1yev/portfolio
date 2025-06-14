@@ -1,9 +1,44 @@
+import { User } from 'lucide-react'
+
+import { HorizontalLine } from '../shared/components/HorizontalLine'
 import { Link } from '../shared/components/Link'
 
 export function Home() {
   return (
     <main className='relative container flex h-min min-h-screen min-w-full flex-none flex-nowrap overflow-hidden px-15 py-5 antialiased'>
-      <div className='flex-3/5'>Right side</div>
+      <section
+        id='about'
+        className='flex-3/5 space-y-10'
+      >
+        <h2 className='mb-8'>
+          <p className='mb-0.5 flex items-center gap-2 text-2xl leading-7 font-semibold'>
+            <User size={42} />
+
+            <span>О себе как личность</span>
+          </p>
+
+          <HorizontalLine className='w-44' />
+        </h2>
+
+        <div className='space-y-8'>
+          <p className='text-xl'>
+            Доброго времени суток! Меня зовут&nbsp;
+            <span className='dark:text-purple font-medium text-purple-800'>
+              Алиев Ахмадилло.
+            </span>
+          </p>
+
+          <p className='text-lg'>
+            Я&nbsp;
+            <span className='dark:text-purple font-medium text-purple-800'>
+              фронтенд разработчик
+            </span>
+            &nbsp;родом из солнечного Узбекистана. Я самого детства увлекался
+            информатикой, у меня сильно был развит интерес к программированию, и
+            в такой обстановке, я первые познакомился с HTML, CSS и Python-ом.
+          </p>
+        </div>
+      </section>
 
       <div className='flex-2/5'>
         <div className='fixed top-0 right-15 z-10 flex min-h-screen w-1/3 flex-col py-5'>
