@@ -1,13 +1,15 @@
 import { User } from 'lucide-react'
+import Marquee from 'react-fast-marquee'
 
 import { HorizontalLine } from '../shared/components/HorizontalLine'
 import { Link } from '../shared/components/Link'
+import { SkillBlock } from '../shared/components/SkillBlock'
 import { StatsBlock } from '../shared/components/StatsBlock'
 
 export function Home() {
   return (
     <main className='relative container flex h-min min-h-screen min-w-full flex-none flex-nowrap overflow-hidden px-15 py-5 antialiased'>
-      <div className='flex-3/5 space-y-10'>
+      <div className='w-3/5 flex-3/5 space-y-10'>
         <section id='about'>
           <h2 className='mb-8'>
             <p className='mb-0.5 flex items-center gap-2 text-2xl leading-7 font-semibold'>
@@ -58,6 +60,199 @@ export function Home() {
             title='Заработанные звезды'
             text='26'
           />
+        </section>
+
+        <section className='dark:bg-gray bg-dark-primary relative flex h-160 justify-between overflow-hidden rounded-xl py-8 pl-6'>
+          <div className='flex flex-col items-start justify-between'>
+            <h2 className='text-purple text-5xl font-bold'>
+              Технические
+              <br /> навыки
+            </h2>
+
+            <p className='text-lg font-medium'>
+              В моем арсенале все современные
+              <br /> стеки технологии:
+            </p>
+          </div>
+
+          <Marquee
+            direction='down'
+            autoFill={true}
+            loop={0}
+            speed={50}
+            className='!absolute top-0 -right-50 !m-0 w-96 !overflow-visible !p-0 transition-transform duration-300 hover:scale-105'
+          >
+            <SkillBlock skill='PostgreSQL'>
+              <img
+                width={100}
+                height={100}
+                src={'/images/logos/postgresql.svg'}
+                alt='postgresql'
+              />
+            </SkillBlock>
+
+            <SkillBlock skill='Prisma'>
+              <img
+                width={100}
+                height={100}
+                src={'/images/logos/prisma.svg'}
+                alt='prisma'
+              />
+            </SkillBlock>
+
+            <SkillBlock skill='Nest.js'>
+              <img
+                width={100}
+                height={100}
+                src={'/images/logos/nestjs.svg'}
+                alt='nestjs'
+              />
+            </SkillBlock>
+
+            <SkillBlock skill='Node.js'>
+              <img
+                width={100}
+                height={100}
+                src={'/images/logos/nodejs.svg'}
+                alt='nodejs'
+              />
+            </SkillBlock>
+
+            <SkillBlock skill='Next.js'>
+              <img
+                width={100}
+                height={100}
+                src={'/images/logos/nextjs.svg'}
+                alt='nextjs'
+              />
+            </SkillBlock>
+
+            <SkillBlock skill='Redux toolkit'>
+              <img
+                width={100}
+                height={100}
+                src={'/images/logos/redux_toolkit.svg'}
+                alt='redux_toolkit'
+              />
+            </SkillBlock>
+
+            <SkillBlock skill='React Router'>
+              <img
+                width={100}
+                height={100}
+                src={'/images/logos/react_router.svg'}
+                alt='react_router'
+              />
+            </SkillBlock>
+
+            <SkillBlock skill='React'>
+              <img
+                width={100}
+                height={100}
+                src={'/images/logos/react.svg'}
+                alt='react'
+              />
+            </SkillBlock>
+
+            <SkillBlock skill='Nuxt'>
+              <img
+                width={100}
+                height={100}
+                src={'/images/logos/nuxt.svg'}
+                alt='nextjs'
+              />
+            </SkillBlock>
+
+            <SkillBlock skill='Pinia'>
+              <img
+                width={100}
+                height={100}
+                src={'/images/logos/pinia.svg'}
+                alt='pinia'
+              />
+            </SkillBlock>
+
+            <SkillBlock skill='Vue'>
+              <img
+                width={100}
+                height={100}
+                src={'/images/logos/vue.svg'}
+                alt='vue'
+              />
+            </SkillBlock>
+
+            <SkillBlock skill='TypeScript'>
+              <img
+                width={100}
+                height={100}
+                src={'/images/logos/typescript.svg'}
+                alt='typescript'
+              />
+            </SkillBlock>
+
+            <SkillBlock skill='Vite'>
+              <img
+                width={100}
+                height={100}
+                src={'/images/logos/vite.svg'}
+                alt='vite'
+              />
+            </SkillBlock>
+
+            <SkillBlock skill='Prettier'>
+              <img
+                width={100}
+                height={100}
+                src={'/images/logos/prettier.svg'}
+                alt='prettier'
+              />
+            </SkillBlock>
+
+            <SkillBlock skill='JavaScript'>
+              <img
+                width={100}
+                height={100}
+                src={'/images/logos/javascript.svg'}
+                alt='javascript'
+              />
+            </SkillBlock>
+
+            <SkillBlock skill='Tailwind CSS'>
+              <img
+                width={100}
+                height={100}
+                src={'/images/logos/tailwind.svg'}
+                alt='tailwind'
+              />
+            </SkillBlock>
+
+            <SkillBlock skill='Sass'>
+              <img
+                width={100}
+                height={100}
+                src={'/images/logos/sass.svg'}
+                alt='sass'
+              />
+            </SkillBlock>
+
+            <SkillBlock skill='CSS'>
+              <img
+                width={100}
+                height={100}
+                src={'/images/logos/css.svg'}
+                alt='css'
+              />
+            </SkillBlock>
+
+            <SkillBlock skill='HTML'>
+              <img
+                width={100}
+                height={100}
+                src={'/images/logos/html.svg'}
+                alt='html'
+              />
+            </SkillBlock>
+          </Marquee>
         </section>
       </div>
 
