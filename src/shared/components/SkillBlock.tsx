@@ -10,7 +10,7 @@ export function SkillBlock({
   children: React.ReactNode
 }>) {
   return (
-    <li
+    <div
       className={cn(
         'dark:bg-dark-secondary bg-gray hover:border-purple group flex h-52 w-80 flex-col items-center justify-center space-y-2.5 rounded-xl border-2 border-transparent p-1 text-lg font-medium text-white transition-colors duration-300',
         className,
@@ -20,6 +20,6 @@ export function SkillBlock({
         {children}
       </div>
       <span>{skill}</span>
-    </li>
+    </div>
   )
 }

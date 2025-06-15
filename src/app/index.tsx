@@ -5,6 +5,7 @@ import { HorizontalLine } from '../shared/components/HorizontalLine'
 import { Link } from '../shared/components/Link'
 import { SkillBlock } from '../shared/components/SkillBlock'
 import { StatsBlock } from '../shared/components/StatsBlock'
+import { SKILLS } from '../skills.data'
 
 export function Home() {
   return (
@@ -80,178 +81,21 @@ export function Home() {
             autoFill={true}
             loop={0}
             speed={50}
-            className='!absolute top-0 -right-50 !m-0 w-96 !overflow-visible !p-0 transition-transform duration-300 hover:scale-105'
+            className='marquee-line !m-0 h-96 !w-96 !overflow-visible !p-0 transition-transform duration-300 hover:scale-105'
           >
-            <SkillBlock skill='PostgreSQL'>
-              <img
-                width={100}
-                height={100}
-                src={'/images/logos/postgresql.svg'}
-                alt='postgresql'
-              />
-            </SkillBlock>
-
-            <SkillBlock skill='Prisma'>
-              <img
-                width={100}
-                height={100}
-                src={'/images/logos/prisma.svg'}
-                alt='prisma'
-              />
-            </SkillBlock>
-
-            <SkillBlock skill='Nest.js'>
-              <img
-                width={100}
-                height={100}
-                src={'/images/logos/nestjs.svg'}
-                alt='nestjs'
-              />
-            </SkillBlock>
-
-            <SkillBlock skill='Node.js'>
-              <img
-                width={100}
-                height={100}
-                src={'/images/logos/nodejs.svg'}
-                alt='nodejs'
-              />
-            </SkillBlock>
-
-            <SkillBlock skill='Next.js'>
-              <img
-                width={100}
-                height={100}
-                src={'/images/logos/nextjs.svg'}
-                alt='nextjs'
-              />
-            </SkillBlock>
-
-            <SkillBlock skill='Redux toolkit'>
-              <img
-                width={100}
-                height={100}
-                src={'/images/logos/redux_toolkit.svg'}
-                alt='redux_toolkit'
-              />
-            </SkillBlock>
-
-            <SkillBlock skill='React Router'>
-              <img
-                width={100}
-                height={100}
-                src={'/images/logos/react_router.svg'}
-                alt='react_router'
-              />
-            </SkillBlock>
-
-            <SkillBlock skill='React'>
-              <img
-                width={100}
-                height={100}
-                src={'/images/logos/react.svg'}
-                alt='react'
-              />
-            </SkillBlock>
-
-            <SkillBlock skill='Nuxt'>
-              <img
-                width={100}
-                height={100}
-                src={'/images/logos/nuxt.svg'}
-                alt='nextjs'
-              />
-            </SkillBlock>
-
-            <SkillBlock skill='Pinia'>
-              <img
-                width={100}
-                height={100}
-                src={'/images/logos/pinia.svg'}
-                alt='pinia'
-              />
-            </SkillBlock>
-
-            <SkillBlock skill='Vue'>
-              <img
-                width={100}
-                height={100}
-                src={'/images/logos/vue.svg'}
-                alt='vue'
-              />
-            </SkillBlock>
-
-            <SkillBlock skill='TypeScript'>
-              <img
-                width={100}
-                height={100}
-                src={'/images/logos/typescript.svg'}
-                alt='typescript'
-              />
-            </SkillBlock>
-
-            <SkillBlock skill='Vite'>
-              <img
-                width={100}
-                height={100}
-                src={'/images/logos/vite.svg'}
-                alt='vite'
-              />
-            </SkillBlock>
-
-            <SkillBlock skill='Prettier'>
-              <img
-                width={100}
-                height={100}
-                src={'/images/logos/prettier.svg'}
-                alt='prettier'
-              />
-            </SkillBlock>
-
-            <SkillBlock skill='JavaScript'>
-              <img
-                width={100}
-                height={100}
-                src={'/images/logos/javascript.svg'}
-                alt='javascript'
-              />
-            </SkillBlock>
-
-            <SkillBlock skill='Tailwind CSS'>
-              <img
-                width={100}
-                height={100}
-                src={'/images/logos/tailwind.svg'}
-                alt='tailwind'
-              />
-            </SkillBlock>
-
-            <SkillBlock skill='Sass'>
-              <img
-                width={100}
-                height={100}
-                src={'/images/logos/sass.svg'}
-                alt='sass'
-              />
-            </SkillBlock>
-
-            <SkillBlock skill='CSS'>
-              <img
-                width={100}
-                height={100}
-                src={'/images/logos/css.svg'}
-                alt='css'
-              />
-            </SkillBlock>
-
-            <SkillBlock skill='HTML'>
-              <img
-                width={100}
-                height={100}
-                src={'/images/logos/html.svg'}
-                alt='html'
-              />
-            </SkillBlock>
+            {SKILLS.map((skill) => (
+              <SkillBlock
+                skill={skill.skillName}
+                key={skill.skillAlias}
+              >
+                <img
+                  width={100}
+                  height={100}
+                  src={skill.imgURL}
+                  alt={skill.skillAlias}
+                />
+              </SkillBlock>
+            ))}
           </Marquee>
         </section>
       </div>
