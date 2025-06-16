@@ -1,4 +1,4 @@
-import { User } from 'lucide-react'
+import { ArrowUpRight, User } from 'lucide-react'
 import Marquee from 'react-fast-marquee'
 
 import { HorizontalLine } from '../shared/components/HorizontalLine'
@@ -76,27 +76,99 @@ export function Home() {
             </p>
           </div>
 
-          <Marquee
-            direction='down'
-            autoFill={true}
-            loop={0}
-            speed={50}
-            className='marquee-line !m-0 h-96 !w-96 !overflow-visible !p-0 transition-transform duration-300 hover:scale-105'
-          >
-            {SKILLS.map((skill) => (
-              <SkillBlock
-                skill={skill.skillName}
-                key={skill.skillAlias}
-              >
-                <img
-                  width={100}
-                  height={100}
-                  src={skill.imgURL}
-                  alt={skill.skillAlias}
-                />
-              </SkillBlock>
-            ))}
-          </Marquee>
+          <div className='mr-5 flex h-full w-96 items-center justify-center'>
+            <Marquee
+              direction='down'
+              loop={0}
+              autoFill={true}
+              speed={50}
+              className='!m-0 h-96 !w-96 !overflow-visible !p-0 transition-transform duration-300 hover:scale-105'
+            >
+              {SKILLS.map((skill) => (
+                <SkillBlock
+                  skill={skill.skillName}
+                  key={skill.skillAlias}
+                >
+                  <img
+                    width={100}
+                    height={100}
+                    src={skill.imgURL}
+                    alt={skill.skillAlias}
+                  />
+                </SkillBlock>
+              ))}
+            </Marquee>
+          </div>
+        </section>
+
+        <section className='dark:bg-dark-secondary space-y-5 rounded-xl bg-white p-5'>
+          <h2 className='border-gray border-b-2 pb-5 text-3xl font-semibold'>
+            Избранные проекты
+          </h2>
+
+          <div className='space-y-5 pt-2'>
+            <div className='border-gray hover:border-purple group flex justify-between gap-x-5 pb-5 transition-all duration-300 not-last:border-b-2'>
+              <div className='flex w-auto flex-col items-start justify-between'>
+                <h4 className='text-3xl font-medium'>Title</h4>
+
+                <button className='inline-flex items-center gap-x-5 text-lg'>
+                  <ArrowUpRight
+                    size={24}
+                    className='transition-transform duration-300 group-hover:rotate-45'
+                  />
+
+                  <span>Link</span>
+                </button>
+              </div>
+
+              <p className='mt-auto w-72 text-sm leading-6'>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Aspernatur, magni repudiandae beatae necessitatibus
+              </p>
+
+              <img
+                sizes='calc(calc((100vw - 40px) * 0.5833) * 0.3193)'
+                decoding='async'
+                loading='lazy'
+                width='270'
+                height='200'
+                src='https://framerusercontent.com/images/wQo7RdwFi65CZtFq2ttWIRPfRoA.jpg'
+                alt='img'
+                className='h-52 w-72 rounded-lg object-cover transition-transform duration-300 group-hover:scale-95'
+              />
+            </div>
+
+            <div className='border-gray hover:border-purple group flex justify-between gap-x-5 pb-5 transition-all duration-300 not-last:border-b-2'>
+              <div className='flex w-auto flex-col items-start justify-between'>
+                <h4 className='text-3xl font-medium'>Title</h4>
+
+                <button className='inline-flex items-center gap-x-5 text-lg'>
+                  <ArrowUpRight
+                    size={24}
+                    className='transition-transform duration-300 group-hover:rotate-45'
+                  />
+
+                  <span>Link</span>
+                </button>
+              </div>
+
+              <p className='mt-auto w-72 text-sm leading-6'>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Aspernatur, magni repudiandae beatae necessitatibus
+              </p>
+
+              <img
+                sizes='calc(calc((100vw - 40px) * 0.5833) * 0.3193)'
+                decoding='async'
+                loading='lazy'
+                width='270'
+                height='200'
+                src='https://framerusercontent.com/images/wQo7RdwFi65CZtFq2ttWIRPfRoA.jpg'
+                alt='img'
+                className='h-52 w-72 rounded-lg object-cover transition-transform duration-300 group-hover:scale-95'
+              />
+            </div>
+          </div>
         </section>
       </div>
 
