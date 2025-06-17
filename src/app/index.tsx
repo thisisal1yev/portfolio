@@ -1,10 +1,10 @@
 import { ArrowUpRight, User } from 'lucide-react'
 import Marquee from 'react-fast-marquee'
 
-import { HorizontalLine } from '../shared/components/HorizontalLine'
-import { Link } from '../shared/components/Link'
-import { SkillBlock } from '../shared/components/SkillBlock'
-import { StatsBlock } from '../shared/components/StatsBlock'
+import { HorizontalLine } from '../shared/components/ui/HorizontalLine'
+import { Link } from '../shared/components/ui/Link'
+import { SkillBlock } from '../shared/components/ui/SkillBlock'
+import { StatsBlock } from '../shared/components/ui/StatsBlock'
 import { SKILLS } from '../skills.data'
 
 export function Home() {
