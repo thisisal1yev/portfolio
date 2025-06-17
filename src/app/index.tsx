@@ -1,6 +1,7 @@
 import { ArrowUpRight, User } from 'lucide-react'
 import Marquee from 'react-fast-marquee'
 
+import { Button } from '../shared/components/ui/Button'
 import { HorizontalLine } from '../shared/components/ui/HorizontalLine'
 import { Link } from '../shared/components/ui/Link'
 import { SkillBlock } from '../shared/components/ui/SkillBlock'
@@ -111,16 +112,12 @@ export function Home() {
               <div className='flex w-auto flex-col items-start justify-between'>
                 <h4 className='text-3xl font-medium'>Title</h4>
 
-                <button className='inline-flex items-center gap-x-1 text-lg'>
+                <Button label='Link'>
                   <ArrowUpRight
                     size={40}
                     className='bg-dark-primary rounded-full p-2 transition-all duration-300 group-hover:translate-x-4 group-hover:rounded-e-none'
                   />
-
-                  <span className='bg-dark-primary inline-block h-10 rounded-full px-4 py-1 transition-all duration-300 group-hover:rounded-s-none'>
-                    Link
-                  </span>
-                </button>
+                </Button>
               </div>
 
               <p className='mt-auto w-72 text-sm leading-6'>
@@ -144,16 +141,12 @@ export function Home() {
               <div className='flex w-auto flex-col items-start justify-between'>
                 <h4 className='text-3xl font-medium'>Title</h4>
 
-                <button className='inline-flex items-center gap-x-1 text-lg'>
+                <Button label='Link'>
                   <ArrowUpRight
                     size={40}
                     className='bg-dark-primary rounded-full p-2 transition-all duration-300 group-hover:translate-x-4 group-hover:rounded-e-none'
                   />
-
-                  <span className='bg-dark-primary inline-block h-10 rounded-full px-4 py-1 transition-all duration-300 group-hover:rounded-s-none'>
-                    Link
-                  </span>
-                </button>
+                </Button>
               </div>
 
               <p className='mt-auto w-72 text-sm leading-6'>

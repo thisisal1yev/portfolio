@@ -1,0 +1,24 @@
+import type { PropsWithChildren } from 'react'
+import { cn } from '../../lib/utils'
+
+interface Props extends PropsWithChildren {
+  label: string
+  className?: string
+}
+
+export function Button({ className, children, label }: Props) {
+  return (
+    <button
+      className={cn(
+        'inline-flex items-center gap-x-1 text-lg transition duration-300 active:scale-105',
+        className,
+      )}
+    >
+      {children}
+
+      <span className='bg-dark-primary inline-block h-10 rounded-full px-4 py-1 transition-all duration-300 group-hover:rounded-s-none'>
+        {label}
+      </span>
+    </button>
+  )
+}
