@@ -111,13 +111,15 @@ export function Home() {
               <div className='flex w-auto flex-col items-start justify-between'>
                 <h4 className='text-3xl font-medium'>Title</h4>
 
-                <button className='inline-flex items-center gap-x-5 text-lg'>
+                <button className='inline-flex items-center gap-x-1 text-lg'>
                   <ArrowUpRight
-                    size={24}
-                    className='transition-transform duration-300 group-hover:rotate-45'
+                    size={40}
+                    className='bg-dark-primary rounded-full p-2 transition-all duration-300 group-hover:translate-x-4 group-hover:rounded-e-none'
                   />
 
-                  <span>Link</span>
+                  <span className='bg-dark-primary inline-block h-10 rounded-full px-4 py-1 transition-all duration-300 group-hover:rounded-s-none'>
+                    Link
+                  </span>
                 </button>
               </div>
 
@@ -142,13 +144,15 @@ export function Home() {
               <div className='flex w-auto flex-col items-start justify-between'>
                 <h4 className='text-3xl font-medium'>Title</h4>
 
-                <button className='inline-flex items-center gap-x-5 text-lg'>
+                <button className='inline-flex items-center gap-x-1 text-lg'>
                   <ArrowUpRight
-                    size={24}
-                    className='transition-transform duration-300 group-hover:rotate-45'
+                    size={40}
+                    className='bg-dark-primary rounded-full p-2 transition-all duration-300 group-hover:translate-x-4 group-hover:rounded-e-none'
                   />
 
-                  <span>Link</span>
+                  <span className='bg-dark-primary inline-block h-10 rounded-full px-4 py-1 transition-all duration-300 group-hover:rounded-s-none'>
+                    Link
+                  </span>
                 </button>
               </div>
 
