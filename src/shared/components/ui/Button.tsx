@@ -3,12 +3,14 @@ import { cn } from '../../lib/utils'
 
 interface Props extends PropsWithChildren {
   label: string
+  link: string
   className?: string
 }
 
-export function Button({ className, children, label }: Props) {
+export function Button({ className, children, label, link }: Props) {
   return (
-    <button
+    <a
+      href={link}
       className={cn(
         'inline-flex items-center gap-x-1 text-lg transition duration-300 active:scale-105',
         className,
@@ -19,6 +21,6 @@ export function Button({ className, children, label }: Props) {
       <span className='bg-dark-primary inline-block h-10 rounded-full px-4 py-1 transition-all duration-300 group-hover:rounded-s-none'>
         {label}
       </span>
-    </button>
+    </a>
   )
 }

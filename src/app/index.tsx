@@ -1,12 +1,12 @@
-import { ArrowUpRight, User } from 'lucide-react'
+import { User } from 'lucide-react'
 import Marquee from 'react-fast-marquee'
 
-import { Button } from '../shared/components/ui/Button'
 import { HorizontalLine } from '../shared/components/ui/HorizontalLine'
 import { Link } from '../shared/components/ui/Link'
 import { SkillBlock } from '../shared/components/ui/SkillBlock'
 import { StatsBlock } from '../shared/components/ui/StatsBlock'
 import { SKILLS } from '../skills.data'
+import { ProjectsList } from '../widgets/ProjectsList/ui/ProjectsList'
 
 export function Home() {
   return (
@@ -107,65 +107,7 @@ export function Home() {
             Избранные проекты
           </h2>
 
-          <div className='space-y-5 pt-2'>
-            <div className='border-gray hover:border-purple group flex justify-between gap-x-5 pb-5 transition-all duration-300 not-last:border-b-2'>
-              <div className='flex w-auto flex-col items-start justify-between'>
-                <h4 className='text-3xl font-medium'>Title</h4>
-
-                <Button label='Link'>
-                  <ArrowUpRight
-                    size={40}
-                    className='bg-dark-primary rounded-full p-2 transition-all duration-300 group-hover:translate-x-4 group-hover:rounded-e-none'
-                  />
-                </Button>
-              </div>
-
-              <p className='mt-auto w-72 text-sm leading-6'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Aspernatur, magni repudiandae beatae necessitatibus
-              </p>
-
-              <img
-                sizes='calc(calc((100vw - 40px) * 0.5833) * 0.3193)'
-                decoding='async'
-                loading='lazy'
-                width='270'
-                height='200'
-                src='https://framerusercontent.com/images/wQo7RdwFi65CZtFq2ttWIRPfRoA.jpg'
-                alt='img'
-                className='h-52 w-72 rounded-lg object-cover transition-transform duration-300 group-hover:scale-95'
-              />
-            </div>
-
-            <div className='border-gray hover:border-purple group flex justify-between gap-x-5 pb-5 transition-all duration-300 not-last:border-b-2'>
-              <div className='flex w-auto flex-col items-start justify-between'>
-                <h4 className='text-3xl font-medium'>Title</h4>
-
-                <Button label='Link'>
-                  <ArrowUpRight
-                    size={40}
-                    className='bg-dark-primary rounded-full p-2 transition-all duration-300 group-hover:translate-x-4 group-hover:rounded-e-none'
-                  />
-                </Button>
-              </div>
-
-              <p className='mt-auto w-72 text-sm leading-6'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Aspernatur, magni repudiandae beatae necessitatibus
-              </p>
-
-              <img
-                sizes='calc(calc((100vw - 40px) * 0.5833) * 0.3193)'
-                decoding='async'
-                loading='lazy'
-                width='270'
-                height='200'
-                src='https://framerusercontent.com/images/wQo7RdwFi65CZtFq2ttWIRPfRoA.jpg'
-                alt='img'
-                className='h-52 w-72 rounded-lg object-cover transition-transform duration-300 group-hover:scale-95'
-              />
-            </div>
-          </div>
+          <ProjectsList />
         </section>
       </div>
 
