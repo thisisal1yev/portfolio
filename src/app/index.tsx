@@ -85,6 +85,84 @@ export function Home() {
 
           <ProjectsList />
         </section>
+
+        <section
+          id='contacts'
+          className='dark:bg-dark-secondary flex h-[550px] w-full items-start justify-between gap-x-10 rounded-xl bg-white p-5'
+        >
+          <div className='flex h-full w-full flex-col'>
+            <h2 className='h-auto grow text-4xl font-semibold'>Контакты</h2>
+
+            <div className='space-y-5'>
+              <p className='flex items-start justify-between'>
+                <span>адрес</span>
+
+                <span className='w-40'>Москва, Болотная набережная 3с3</span>
+              </p>
+
+              <div>
+                <p className='flex items-center justify-between'>
+                  <span>тел.</span>
+
+                  <Link
+                    label=''
+                    href='tel:+998950490473'
+                  >
+                    +998 (95) 049 04 73
+                  </Link>
+                </p>
+
+                <p className='flex items-center justify-between'>
+                  <span>email</span>
+
+                  <Link
+                    label=''
+                    href='mailto:aaalievvv1@gmail.com'
+                  >
+                    aaalievvv1@gmail.com
+                  </Link>
+                </p>
+              </div>
+
+              <div className='mb-10 flex items-start justify-between'>
+                <p>cоцсети</p>
+
+                <div className='w-40'>
+                  <Link
+                    label=''
+                    href='https://t.me/thisisaliyev_channel'
+                  >
+                    телеграм-канал
+                  </Link>
+
+                  <Link
+                    label=''
+                    href='https://www.instagram.com/thisisal1ev'
+                  >
+                    инстаграм
+                  </Link>
+
+                  <Link
+                    label=''
+                    href='https://t.me/thisisaliyev_blog'
+                  >
+                    личный блог
+                  </Link>
+                </div>
+              </div>
+
+              <button className='bg-dark-primary w-full rounded-xl px-5 py-2'>
+                Написать мне
+              </button>
+            </div>
+          </div>
+
+          <div className='h-full w-full'>
+            <div className='h-full w-full rounded-xl border border-dashed p-5'>
+              <h3 className='text-5xl font-bold'>Здесь должно быть карта</h3>
+            </div>
+          </div>
+        </section>
       </div>
 
       <div className='flex-2/5'>
@@ -101,7 +179,7 @@ export function Home() {
           </div>
 
           <div className='flex h-auto grow flex-col items-start justify-center space-y-10'>
-            <div className='h-86 -rotate-4 rounded-2xl border-2 border-dashed p-5 py-5 transition-all duration-300 not-hover:-translate-x-0 not-hover:-rotate-0 hover:-translate-x-5 hover:-rotate-6'>
+            <div className='h-86 -rotate-4 rounded-2xl border-2 border-dashed p-5 py-5 transition-all duration-300 hover:-translate-x-5 hover:-rotate-6'>
               <p className='text-7xl font-semibold'>
                 Здесь могла быть моя фотография
               </p>
