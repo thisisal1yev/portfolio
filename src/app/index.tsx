@@ -101,7 +101,7 @@ export function Home() {
           </div>
 
           <div className='flex h-auto grow flex-col items-start justify-center space-y-10'>
-            <div className='h-86 -rotate-4 rounded-2xl border-2 border-dashed p-5 py-5'>
+            <div className='h-86 -rotate-4 rounded-2xl border-2 border-dashed p-5 py-5 transition-all duration-300 not-hover:-translate-x-0 not-hover:-rotate-0 hover:-translate-x-5 hover:-rotate-6'>
               <p className='text-7xl font-semibold'>
                 Здесь могла быть моя фотография
               </p>
