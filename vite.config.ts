@@ -6,8 +6,11 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
+    // it's not working
     alias: {
-      '@': '/src',
+      '@shared': './src/shared',
+      '@widgets': './src/widgets',
+      '@': './src',
     },
   },
 })
