@@ -1,7 +1,7 @@
 import { User } from 'lucide-react'
 
 import { HorizontalLine, Link, StatsBlock } from '@shared/components'
-import { Footer, MarqueeBlock, ProjectsList } from '@widgets'
+import { MarqueeBlock, ProjectsList } from '@widgets'
 
 export function Home() {
   return (
@@ -82,7 +82,7 @@ export function Home() {
           id='projects'
           className='dark:bg-dark-secondary space-y-5 rounded-xl bg-white p-5'
         >
-          <h2 className='border-gray border-b-2 pb-5 text-3xl font-semibold'>
+          <h2 className='dark:border-gray border-light-primary border-b-2 pb-5 text-3xl font-semibold'>
             Избранные проекты
           </h2>
 
@@ -166,8 +166,6 @@ export function Home() {
             </div>
           </div>
         </section>
-
-        <Footer />
       </div>
 
       <div className='flex-2/5'>
