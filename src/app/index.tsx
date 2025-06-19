@@ -1,7 +1,7 @@
 import { User } from 'lucide-react'
 
 import { HorizontalLine, Link, StatsBlock } from '@shared/components'
-import { MarqueeBlock, ProjectsList } from '@widgets'
+import { DesktopNavbar, MarqueeBlock, ProjectsList } from '@widgets'
 
 export function Home() {
   return (
@@ -87,6 +87,8 @@ export function Home() {
           </h2>
 
           <ProjectsList />
+
+          <DesktopNavbar />
         </section>
 
         <section
