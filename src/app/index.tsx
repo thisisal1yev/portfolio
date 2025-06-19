@@ -3,10 +3,13 @@ import { User } from 'lucide-react'
 import { HorizontalLine } from '../shared/components/ui/HorizontalLine'
 import { Link } from '../shared/components/ui/Link'
 import { StatsBlock } from '../shared/components/ui/StatsBlock'
+import { useTheme } from '../shared/hooks/useTheme'
 import { MarqueeBlock } from '../widgets/MarqueeBlock/ui/MarqueeBlock'
 import { ProjectsList } from '../widgets/ProjectsList/ui/ProjectsList'
 
 export function Home() {
+  const { theme, toggleTheme } = useTheme()
+
   return (
     <main className='relative container flex h-min min-h-screen min-w-full flex-none flex-nowrap overflow-hidden px-15 py-5 antialiased'>
       <div className='w-3/5 flex-3/5 space-y-10'>
@@ -62,14 +65,17 @@ export function Home() {
           />
         </section>
 
-        <section className='dark:bg-gray bg-dark-primary relative flex h-160 justify-between overflow-hidden rounded-xl py-8 pl-6'>
+        <section
+          className='dark:bg-gray bg-dark-secondary relative flex h-160 justify-between overflow-hidden rounded-xl py-8 pl-6'
+          id='skills'
+        >
           <div className='flex flex-col items-start justify-between'>
             <h2 className='text-purple text-5xl font-bold'>
               Технические
               <br /> навыки
             </h2>
 
-            <p className='text-lg font-medium'>
+            <p className='text-lg font-medium text-white'>
               В моем арсенале все современные
               <br /> стеки технологии:
             </p>
@@ -78,7 +84,10 @@ export function Home() {
           <MarqueeBlock />
         </section>
 
-        <section className='dark:bg-dark-secondary space-y-5 rounded-xl bg-white p-5'>
+        <section
+          id='projects'
+          className='dark:bg-dark-secondary space-y-5 rounded-xl bg-white p-5'
+        >
           <h2 className='border-gray border-b-2 pb-5 text-3xl font-semibold'>
             Избранные проекты
           </h2>
@@ -97,7 +106,7 @@ export function Home() {
               <p className='flex items-start justify-between'>
                 <span>адрес</span>
 
-                <span className='w-40'>Москва, Болотная набережная 3с3</span>
+                <span className='w-40'>Рес. Узбекистан, Андижанская обл.</span>
               </p>
 
               <div>
@@ -151,7 +160,7 @@ export function Home() {
                 </div>
               </div>
 
-              <button className='bg-dark-primary w-full rounded-xl px-5 py-2'>
+              <button className='bg-dark-primary w-full rounded-xl px-5 py-2 text-white'>
                 Написать мне
               </button>
             </div>
@@ -162,6 +171,15 @@ export function Home() {
               <h3 className='text-5xl font-bold'>Здесь должно быть карта</h3>
             </div>
           </div>
+        </section>
+
+        <section
+          id='footer'
+          className='dark:bg-dark-secondary rounded-xl bg-white p-5'
+        >
+          <button onClick={toggleTheme}>
+            {theme === 'dark' ? 'dark' : 'light'}
+          </button>
         </section>
       </div>
 

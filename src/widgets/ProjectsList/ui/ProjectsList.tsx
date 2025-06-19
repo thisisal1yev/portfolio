@@ -9,7 +9,7 @@ export function ProjectsList() {
       {PROJECTS.map((project) => (
         <li
           key={project.title}
-          className='border-gray hover:border-purple group flex justify-between gap-x-5 pb-5 transition-all duration-300 not-last:border-b-2'
+          className='border-gray/50 dark:border-gray hover:border-dark-primary hover:dark:border-purple group flex justify-between gap-x-5 pb-5 transition-all duration-300 not-last:border-b-2'
         >
           <div className='flex w-auto flex-col items-start justify-between'>
             <h4 className='text-2xl font-semibold whitespace-nowrap transition-transform duration-300 group-hover:translate-x-4'>
@@ -22,7 +22,7 @@ export function ProjectsList() {
             >
               <ArrowUpRight
                 size={40}
-                className='bg-dark-primary rounded-full p-2 transition-all duration-300 group-hover:translate-x-4 group-hover:rounded-e-none'
+                className='bg-dark-primary rounded-full p-2 text-white transition-all duration-300 group-hover:translate-x-4 group-hover:rounded-e-none'
               />
             </Button>
           </div>

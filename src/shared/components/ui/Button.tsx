@@ -12,7 +12,7 @@ export function Button({ className, children, label, link }: Props) {
     <a
       href={link}
       className={cn(
-        'inline-flex items-center gap-x-1 text-lg transition duration-300 active:scale-105',
+        'inline-flex items-center gap-x-1 text-lg text-white transition duration-300 active:scale-105',
         className,
       )}
     >
