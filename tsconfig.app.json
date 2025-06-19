@@ -21,7 +21,18 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    /* Paths */
+    "baseUrl": ".",
+    "paths": {
+      "@shared": ["src/shared"],
+      "@shared/*": ["src/shared/*"],
+      "@widgets": ["src/widgets"],
+      "@widgets/*": ["src/widgets/*"],
+      "@app": ["src/app"],
+      "@app/*": ["src/app/*"]
+    }
   },
   "include": ["src"]
 }

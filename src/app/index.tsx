@@ -1,15 +1,9 @@
 import { User } from 'lucide-react'
 
-import { HorizontalLine } from '../shared/components/ui/HorizontalLine'
-import { Link } from '../shared/components/ui/Link'
-import { StatsBlock } from '../shared/components/ui/StatsBlock'
-import { useTheme } from '../shared/hooks/useTheme'
-import { MarqueeBlock } from '../widgets/MarqueeBlock/ui/MarqueeBlock'
-import { ProjectsList } from '../widgets/ProjectsList/ui/ProjectsList'
+import { HorizontalLine, Link, StatsBlock } from '@shared/components'
+import { Footer, MarqueeBlock, ProjectsList } from '@widgets'
 
 export function Home() {
-  const { theme, toggleTheme } = useTheme()
-
   return (
     <main className='relative container flex h-min min-h-screen min-w-full flex-none flex-nowrap overflow-hidden px-15 py-5 antialiased'>
       <div className='w-3/5 flex-3/5 space-y-10'>
@@ -173,14 +167,7 @@ export function Home() {
           </div>
         </section>
 
-        <section
-          id='footer'
-          className='dark:bg-dark-secondary rounded-xl bg-white p-5'
-        >
-          <button onClick={toggleTheme}>
-            {theme === 'dark' ? 'dark' : 'light'}
-          </button>
-        </section>
+        <Footer />
       </div>
 
       <div className='flex-2/5'>

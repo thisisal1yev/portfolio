@@ -1,5 +1,5 @@
+import { ThemeContext } from '@shared/contexts'
 import { useEffect, useState, type PropsWithChildren } from 'react'
-import { ThemeContext } from '../contexts/theme.context'
 
 interface Props extends PropsWithChildren {}
 

@@ -1,5 +1,5 @@
+import { cn } from '@shared/lib'
 import type { PropsWithChildren } from 'react'
-import { cn } from '../../lib/utils'
 
 interface Props extends PropsWithChildren {
   label: string

@@ -1,6 +1,6 @@
 import Marquee from 'react-fast-marquee'
 
-import { SkillBlock } from '../../../shared/components/ui/SkillBlock'
+import { SkillBlock } from '@shared/components/ui/SkillBlock'
 import { SKILLS } from '../skills.data'
 
 export function MarqueeBlock() {
