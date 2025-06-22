@@ -1,15 +1,8 @@
-import {
-  CircleAlert,
-  CodeXml,
-  GalleryVerticalEnd,
-  Moon,
-  Sun,
-  Voicemail,
-} from 'lucide-react'
 import { createPortal } from 'react-dom'
 
-import { useTheme } from '@shared/hooks'
-import { cn } from '@shared/lib'
+import { DesktopMenuItem } from '@shared/components/ui/DesktopMenuItem'
+import { renderMenuItemIcon } from '../lib/renderMenuItemIcon'
+import { menu } from '../menu.data'
 
 type Props = {
   aboutVisible: boolean
@@ -24,67 +17,42 @@ export function DesktopNavbar({
   projectsVisible,
   contactsVisible,
 }: Props) {
-  const { theme, toggleTheme } = useTheme()
+  const isElementInViewport = (
+    id: 'about' | 'skills' | 'projects' | 'contacts',
+  ): boolean => {
+    switch (id) {
+      case 'about':
+        return aboutVisible
+      case 'skills':
+        return skillsVisible
+      case 'projects':
+        return projectsVisible
+      case 'contacts':
+        return contactsVisible
+      default:
+        return false
+    }
+  }
 
   return createPortal(
     <nav className='pointer-events-none fixed bottom-10 left-0 z-10 hidden w-full pt-12 lg:block'>
       <div className='container flex justify-center'>
         <div className='bg-light-primary/90 ring-dark-primary/[20%] max-w-full rounded-3xl dark:bg-zinc-950/90'>
           <div className='scrollbar-none pointer-events-auto overflow-x-auto scroll-smooth p-1.5'>
-            <div className='isolate grid grid-cols-[repeat(6,5.6875em)]'>
-              <a
-                className={cn(
-                  'hover:dark:text-purple hover:dark:focus-visible:ring-purple focus-visible:ring-dark-primary transition-color flex flex-col items-center gap-1.5 rounded-2xl px-2 pt-2.5 pb-1.5 text-xs font-medium whitespace-nowrap duration-300 outline-none hover:text-purple-800 focus-visible:ring-2 focus-visible:ring-inset hover:focus-visible:ring-purple-800 focus-visible:dark:ring-white',
-                  aboutVisible && 'dark:text-purple text-purple-800',
-                )}
-                href='/#about'
-                data-framework='react'
-              >
-                <CircleAlert size={24} />
-                About me
-              </a>
+            <div className='isolate grid grid-cols-5 gap-x-0.5'>
+              {menu.map((item) => (
+                <DesktopMenuItem
+                  key={item.title}
+                  href={item.href}
+                  isActive={isElementInViewport(item.id)}
+                >
+                  {renderMenuItemIcon(item.id)}
+                  {item.title.charAt(0).toUpperCase() + item.title.slice(1)}
+                </DesktopMenuItem>
+              ))}
 
               <a
-                className={cn(
-                  'hover:dark:text-purple hover:dark:focus-visible:ring-purple focus-visible:ring-dark-primary transition-color flex flex-col items-center gap-1.5 rounded-2xl px-2 pt-2.5 pb-1.5 text-xs font-medium whitespace-nowrap duration-300 outline-none hover:text-purple-800 focus-visible:ring-2 focus-visible:ring-inset hover:focus-visible:ring-purple-800 focus-visible:dark:ring-white',
-                  skillsVisible && 'dark:text-purple text-purple-800',
-                )}
-                href='/#skills'
-                data-framework='react'
-              >
-                <CodeXml size={24} />
-                Hard skills
-              </a>
-
-              <a
-                className={cn(
-                  'hover:dark:text-purple hover:dark:focus-visible:ring-purple focus-visible:ring-dark-primary transition-color flex flex-col items-center gap-1.5 rounded-2xl px-2 pt-2.5 pb-1.5 text-xs font-medium whitespace-nowrap duration-300 outline-none hover:text-purple-800 focus-visible:ring-2 focus-visible:ring-inset hover:focus-visible:ring-purple-800 focus-visible:dark:ring-white',
-                  projectsVisible && 'dark:text-purple text-purple-800',
-                )}
-                href='/#projects'
-                data-framework='react'
-              >
-                <GalleryVerticalEnd
-                  className='-scale-y-100'
-                  size={24}
-                />
-                Projects
-              </a>
-
-              <a
-                className={cn(
-                  'hover:dark:text-purple hover:dark:focus-visible:ring-purple focus-visible:ring-dark-primary transition-color flex flex-col items-center gap-1.5 rounded-2xl px-2 pt-2.5 pb-1.5 text-xs font-medium whitespace-nowrap duration-300 outline-none hover:text-purple-800 focus-visible:ring-2 focus-visible:ring-inset hover:focus-visible:ring-purple-800 focus-visible:dark:ring-white',
-                  contactsVisible && 'dark:text-purple text-purple-800',
-                )}
-                href='/#contacts'
-                data-framework='react'
-              >
-                <Voicemail size={24} />
-                Contacts
-              </a>
-
-              <a
-                className='hover:dark:text-purple hover:dark:focus-visible:ring-purple focus-visible:ring-dark-primary transition-color flex flex-col items-center gap-1.5 rounded-2xl px-2 pt-2.5 pb-1.5 text-xs font-medium whitespace-nowrap duration-300 outline-none hover:text-purple-800 focus-visible:ring-2 focus-visible:ring-inset hover:focus-visible:ring-purple-800 focus-visible:dark:ring-white'
+                className='navbar_link'
                 href='https://github.com/thisisal1yev'
                 target='_blank'
                 aria-label='GitHub'
@@ -98,15 +66,6 @@ export function DesktopNavbar({
                 </svg>
                 GitHub
               </a>
-
-              <button
-                className='hover:dark:text-purple hover:dark:focus-visible:ring-purple focus-visible:ring-dark-primary transition-color flex flex-col items-center gap-1.5 rounded-2xl px-2 pt-2.5 pb-1.5 text-xs font-medium whitespace-nowrap duration-300 outline-none hover:text-purple-800 focus-visible:ring-2 focus-visible:ring-inset hover:focus-visible:ring-purple-800 focus-visible:dark:ring-white'
-                onClick={toggleTheme}
-              >
-                {theme === 'dark' ? <Sun size={24} /> : <Moon size={24} />}
-
-                {theme === 'dark' ? 'Light' : 'Dark'}
-              </button>
             </div>
           </div>
         </div>
