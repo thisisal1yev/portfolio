@@ -1,26 +1,43 @@
-import { useTheme } from '@shared/hooks'
 import {
   CircleAlert,
   CodeXml,
   GalleryVerticalEnd,
-  Languages,
   Moon,
   Sun,
+  Voicemail,
 } from 'lucide-react'
 import { createPortal } from 'react-dom'
 
-export function DesktopNavbar() {
+import { useTheme } from '@shared/hooks'
+import { cn } from '@shared/lib'
+
+type Props = {
+  aboutVisible: boolean
+  skillsVisible: boolean
+  projectsVisible: boolean
+  contactsVisible: boolean
+}
+
+export function DesktopNavbar({
+  aboutVisible,
+  skillsVisible,
+  projectsVisible,
+  contactsVisible,
+}: Props) {
   const { theme, toggleTheme } = useTheme()
 
   return createPortal(
-    <nav className='pointer-events-none fixed bottom-7 left-0 z-10 w-full pt-12'>
+    <nav className='pointer-events-none fixed bottom-10 left-0 z-10 hidden w-full pt-12 lg:block'>
       <div className='container flex justify-center'>
         <div className='bg-light-primary/90 ring-dark-primary/[20%] max-w-full rounded-3xl dark:bg-zinc-950/90'>
           <div className='scrollbar-none pointer-events-auto overflow-x-auto scroll-smooth p-1.5'>
             <div className='isolate grid grid-cols-[repeat(6,5.6875em)]'>
               <a
-                className='hover:dark:text-purple hover:dark:focus-visible:ring-purple focus-visible:ring-dark-primary transition-color flex flex-col items-center gap-1.5 rounded-2xl px-2 pt-2.5 pb-1.5 text-xs font-medium whitespace-nowrap duration-300 outline-none hover:text-purple-800 focus-visible:ring-2 focus-visible:ring-inset hover:focus-visible:ring-purple-800 focus-visible:dark:ring-white'
-                href='/'
+                className={cn(
+                  'hover:dark:text-purple hover:dark:focus-visible:ring-purple focus-visible:ring-dark-primary transition-color flex flex-col items-center gap-1.5 rounded-2xl px-2 pt-2.5 pb-1.5 text-xs font-medium whitespace-nowrap duration-300 outline-none hover:text-purple-800 focus-visible:ring-2 focus-visible:ring-inset hover:focus-visible:ring-purple-800 focus-visible:dark:ring-white',
+                  aboutVisible && 'dark:text-purple text-purple-800',
+                )}
+                href='/#about'
                 data-framework='react'
               >
                 <CircleAlert size={24} />
@@ -28,8 +45,11 @@ export function DesktopNavbar() {
               </a>
 
               <a
-                className='hover:dark:text-purple hover:dark:focus-visible:ring-purple focus-visible:ring-dark-primary transition-color flex flex-col items-center gap-1.5 rounded-2xl px-2 pt-2.5 pb-1.5 text-xs font-medium whitespace-nowrap duration-300 outline-none hover:text-purple-800 focus-visible:ring-2 focus-visible:ring-inset hover:focus-visible:ring-purple-800 focus-visible:dark:ring-white'
-                href='/'
+                className={cn(
+                  'hover:dark:text-purple hover:dark:focus-visible:ring-purple focus-visible:ring-dark-primary transition-color flex flex-col items-center gap-1.5 rounded-2xl px-2 pt-2.5 pb-1.5 text-xs font-medium whitespace-nowrap duration-300 outline-none hover:text-purple-800 focus-visible:ring-2 focus-visible:ring-inset hover:focus-visible:ring-purple-800 focus-visible:dark:ring-white',
+                  skillsVisible && 'dark:text-purple text-purple-800',
+                )}
+                href='/#skills'
                 data-framework='react'
               >
                 <CodeXml size={24} />
@@ -37,8 +57,11 @@ export function DesktopNavbar() {
               </a>
 
               <a
-                className='hover:dark:text-purple hover:dark:focus-visible:ring-purple focus-visible:ring-dark-primary transition-color flex flex-col items-center gap-1.5 rounded-2xl px-2 pt-2.5 pb-1.5 text-xs font-medium whitespace-nowrap duration-300 outline-none hover:text-purple-800 focus-visible:ring-2 focus-visible:ring-inset hover:focus-visible:ring-purple-800 focus-visible:dark:ring-white'
-                href='/'
+                className={cn(
+                  'hover:dark:text-purple hover:dark:focus-visible:ring-purple focus-visible:ring-dark-primary transition-color flex flex-col items-center gap-1.5 rounded-2xl px-2 pt-2.5 pb-1.5 text-xs font-medium whitespace-nowrap duration-300 outline-none hover:text-purple-800 focus-visible:ring-2 focus-visible:ring-inset hover:focus-visible:ring-purple-800 focus-visible:dark:ring-white',
+                  projectsVisible && 'dark:text-purple text-purple-800',
+                )}
+                href='/#projects'
                 data-framework='react'
               >
                 <GalleryVerticalEnd
@@ -46,6 +69,18 @@ export function DesktopNavbar() {
                   size={24}
                 />
                 Projects
+              </a>
+
+              <a
+                className={cn(
+                  'hover:dark:text-purple hover:dark:focus-visible:ring-purple focus-visible:ring-dark-primary transition-color flex flex-col items-center gap-1.5 rounded-2xl px-2 pt-2.5 pb-1.5 text-xs font-medium whitespace-nowrap duration-300 outline-none hover:text-purple-800 focus-visible:ring-2 focus-visible:ring-inset hover:focus-visible:ring-purple-800 focus-visible:dark:ring-white',
+                  contactsVisible && 'dark:text-purple text-purple-800',
+                )}
+                href='/#contacts'
+                data-framework='react'
+              >
+                <Voicemail size={24} />
+                Contacts
               </a>
 
               <a
@@ -63,11 +98,6 @@ export function DesktopNavbar() {
                 </svg>
                 GitHub
               </a>
-
-              <button className='hover:dark:text-purple hover:dark:focus-visible:ring-purple focus-visible:ring-dark-primary transition-color flex flex-col items-center gap-1.5 rounded-2xl px-2 pt-2.5 pb-1.5 text-xs font-medium whitespace-nowrap duration-300 outline-none hover:text-purple-800 focus-visible:ring-2 focus-visible:ring-inset hover:focus-visible:ring-purple-800 focus-visible:dark:ring-white'>
-                <Languages size={24} />
-                Languages
-              </button>
 
               <button
                 className='hover:dark:text-purple hover:dark:focus-visible:ring-purple focus-visible:ring-dark-primary transition-color flex flex-col items-center gap-1.5 rounded-2xl px-2 pt-2.5 pb-1.5 text-xs font-medium whitespace-nowrap duration-300 outline-none hover:text-purple-800 focus-visible:ring-2 focus-visible:ring-inset hover:focus-visible:ring-purple-800 focus-visible:dark:ring-white'

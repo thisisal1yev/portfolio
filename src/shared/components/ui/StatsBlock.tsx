@@ -12,7 +12,7 @@ export function StatsBlock({
   return (
     <div
       className={cn(
-        'text-dark-secondary dark:bg-dark-secondary flex w-full items-center justify-center rounded-2xl bg-white p-5 text-center font-bold dark:text-white',
+        'text-dark-secondary dark:bg-dark-primary flex w-full items-center justify-center rounded-2xl bg-neutral-300 p-5 text-center font-bold dark:text-white',
         className,
       )}
     >

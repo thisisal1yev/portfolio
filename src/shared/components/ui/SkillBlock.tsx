@@ -16,7 +16,7 @@ export function SkillBlock({
         className,
       )}
     >
-      <div className='aspect-square h-24 w-24 grayscale transition-all duration-300 group-hover:grayscale-0'>
+      <div className='aspect-square h-24 w-24 grayscale transition-colors duration-300 group-hover:grayscale-0'>
         {children}
       </div>
       <span>{skill}</span>

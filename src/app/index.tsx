@@ -1,13 +1,23 @@
 import { User } from 'lucide-react'
 
 import { HorizontalLine, Link, StatsBlock } from '@shared/components'
+import { useIntersectionObserver } from '@shared/hooks'
 import { DesktopNavbar, MarqueeBlock, ProjectsList } from '@widgets'
 
 export function Home() {
+  const [aboutRef, aboutVisible] = useIntersectionObserver()
+  const [skillsRef, skillsVisible] = useIntersectionObserver()
+  const [projectsRef, projectsVisible] = useIntersectionObserver()
+  const [contactsRef, contactsVisible] = useIntersectionObserver()
+
   return (
-    <main className='relative container flex h-min min-h-screen min-w-full flex-none flex-nowrap overflow-hidden px-15 py-5 antialiased'>
-      <div className='w-3/5 flex-3/5 space-y-10'>
-        <section id='about'>
+    <main className='relative container flex h-min min-h-screen min-w-full flex-none flex-col-reverse flex-nowrap overflow-hidden px-15 py-5 antialiased lg:flex-row'>
+      <div className='space-y-5 lg:w-3/5 lg:flex-3/5'>
+        <section
+          ref={aboutRef}
+          id='about'
+          className='dark:bg-dark-secondary space-y-8 rounded-xl bg-white p-5'
+        >
           <h2 className='mb-8'>
             <p className='mb-0.5 flex items-center gap-2 text-2xl leading-7 font-semibold'>
               <User size={42} />
@@ -18,7 +28,7 @@ export function Home() {
             <HorizontalLine className='w-44' />
           </h2>
 
-          <div className='space-y-8'>
+          <div className='space-y-8 text-lg'>
             <p className='text-xl'>
               Доброго времени суток! Меня зовут&nbsp;
               <span className='dark:text-purple font-medium text-purple-800'>
@@ -26,7 +36,7 @@ export function Home() {
               </span>
             </p>
 
-            <p className='text-lg'>
+            <p>
               Я&nbsp;
               <span className='dark:text-purple font-medium text-purple-800'>
                 фронтенд разработчик
@@ -36,30 +46,38 @@ export function Home() {
               и в такой обстановке, я первые познакомился с HTML, CSS и
               Python-ом.
             </p>
+
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque
+              distinctio, amet qui rem non debitis illum recusandae ipsam velit
+              nesciunt eos unde numquam, facere architecto animi sit ut odit
+              minima!
+            </p>
+          </div>
+
+          <div
+            id='github_stats'
+            className='flex w-full items-center justify-between gap-5'
+          >
+            <StatsBlock
+              title='Число репозиторий'
+              text='22'
+            />
+
+            <StatsBlock
+              title='Подписчики в GitHub'
+              text='2'
+            />
+
+            <StatsBlock
+              title='Заработанные звезды'
+              text='26'
+            />
           </div>
         </section>
 
         <section
-          id='github_stats'
-          className='flex w-full items-center justify-between gap-x-5'
-        >
-          <StatsBlock
-            title='Число репозиторий'
-            text='22'
-          />
-
-          <StatsBlock
-            title='Подписчики в GitHub'
-            text='2'
-          />
-
-          <StatsBlock
-            title='Заработанные звезды'
-            text='26'
-          />
-        </section>
-
-        <section
+          ref={skillsRef}
           className='dark:bg-gray bg-dark-secondary relative flex h-160 justify-between overflow-hidden rounded-xl py-8 pl-6'
           id='skills'
         >
@@ -79,6 +97,7 @@ export function Home() {
         </section>
 
         <section
+          ref={projectsRef}
           id='projects'
           className='dark:bg-dark-secondary space-y-5 rounded-xl bg-white p-5'
         >
@@ -87,11 +106,10 @@ export function Home() {
           </h2>
 
           <ProjectsList />
-
-          <DesktopNavbar />
         </section>
 
         <section
+          ref={contactsRef}
           id='contacts'
           className='dark:bg-dark-secondary flex h-[550px] w-full items-start justify-between gap-x-10 rounded-xl bg-white p-5'
         >
@@ -106,7 +124,7 @@ export function Home() {
               </p>
 
               <div>
-                <p className='flex items-center justify-between'>
+                <div className='flex items-center justify-between'>
                   <span>тел.</span>
 
                   <Link
@@ -115,9 +133,9 @@ export function Home() {
                   >
                     +998 (95) 049 04 73
                   </Link>
-                </p>
+                </div>
 
-                <p className='flex items-center justify-between'>
+                <div className='flex items-center justify-between'>
                   <span>email</span>
 
                   <Link
@@ -126,7 +144,7 @@ export function Home() {
                   >
                     aaalievvv1@gmail.com
                   </Link>
-                </p>
+                </div>
               </div>
 
               <div className='mb-10 flex items-start justify-between'>
@@ -170,8 +188,8 @@ export function Home() {
         </section>
       </div>
 
-      <div className='flex-2/5'>
-        <div className='fixed top-0 right-15 z-10 flex min-h-screen w-1/3 flex-col py-5'>
+      <div className='lg:flex-2/5'>
+        <div className='top-0 right-15 z-10 flex min-h-screen flex-col py-5 lg:fixed lg:w-1/3'>
           <div className='flex items-center justify-between'>
             <span>thisisaliyev®, v0.1</span>
 
@@ -184,7 +202,7 @@ export function Home() {
           </div>
 
           <div className='flex h-auto grow flex-col items-start justify-center space-y-10'>
-            <div className='h-86 -rotate-4 rounded-2xl border-2 border-dashed p-5 py-5 transition-all duration-300 hover:-translate-x-5 hover:-rotate-6'>
+            <div className='h-86 -rotate-4 rounded-2xl border-2 border-dashed p-5 py-5 transition-transform duration-300 hover:-translate-x-5 hover:-rotate-6'>
               <p className='text-7xl font-semibold'>
                 Здесь могла быть моя фотография
               </p>
@@ -214,6 +232,13 @@ export function Home() {
           </div>
         </div>
       </div>
+
+      <DesktopNavbar
+        aboutVisible={aboutVisible}
+        skillsVisible={skillsVisible}
+        projectsVisible={projectsVisible}
+        contactsVisible={contactsVisible}
+      />
     </main>
   )
 }
