@@ -1,17 +1,18 @@
-import { User } from 'lucide-react'
+import { BriefcaseBusiness, User } from 'lucide-react'
 
-import { HorizontalLine, Link, StatsBlock } from '@shared/components'
+import { Button, HorizontalLine, Link, StatsBlock } from '@shared/components'
 import { useIntersectionObserver } from '@shared/hooks'
 import { DesktopNavbar, MarqueeBlock, ProjectsList } from '@widgets'
 
 export function Home() {
   const [aboutRef, aboutVisible] = useIntersectionObserver()
   const [skillsRef, skillsVisible] = useIntersectionObserver()
+  const [experienceRef, experienceVisible] = useIntersectionObserver()
   const [projectsRef, projectsVisible] = useIntersectionObserver()
   const [contactsRef, contactsVisible] = useIntersectionObserver()
 
   return (
-    <main className='relative container flex h-min min-h-screen min-w-full flex-none flex-col-reverse flex-nowrap overflow-hidden px-15 py-5 antialiased lg:flex-row'>
+    <main className='relative container flex h-min min-h-screen min-w-full flex-none flex-col-reverse flex-nowrap overflow-hidden px-5 py-5 antialiased lg:flex-row'>
       <div className='space-y-5 lg:w-3/5 lg:flex-3/5'>
         <section
           ref={aboutRef}
@@ -43,15 +44,16 @@ export function Home() {
               </span>
               &nbsp;родом из солнечного Узбекистана. Я самого детства увлекался
               информатикой, у меня сильно был развит интерес к программированию,
-              и в такой обстановке, я первые познакомился с HTML, CSS и
+              и в такой обстановке, я впервые познакомился с HTML, CSS и
               Python-ом.
             </p>
 
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque
-              distinctio, amet qui rem non debitis illum recusandae ipsam velit
-              nesciunt eos unde numquam, facere architecto animi sit ut odit
-              minima!
+              После окончания курса по фронтенду в WebKing LC я начал
+              самостоятельно углублять свои знания, изучая современные
+              технологии и лучшие практики разработки. Самостоятельная работа
+              позволила мне освоить такие инструменты, как Vue, TypeScript и
+              современные подходы к созданию UI/UX.
             </p>
           </div>
 
@@ -94,6 +96,170 @@ export function Home() {
           </div>
 
           <MarqueeBlock />
+        </section>
+
+        <section
+          id='experience'
+          ref={experienceRef}
+        >
+          <h2 className='mb-8'>
+            <p className='mb-0.5 flex items-center gap-2 text-2xl leading-7 font-semibold'>
+              <BriefcaseBusiness size={42} />
+
+              <span>Опыт работы</span>
+            </p>
+
+            <HorizontalLine className='w-44' />
+          </h2>
+
+          <div className='grid grid-cols-2 gap-2'>
+            <div className='dark:bg-dark-secondary group flex w-full flex-col rounded-xl bg-white p-5'>
+              <Button
+                link=''
+                label='Kwork'
+                className='mb-10 flex h-auto grow gap-x-0 font-semibold'
+              >
+                <p className='bg-dark-primary rounded-full px-4 py-1.5 text-white transition-transform duration-300 group-hover:rounded-e-none'>
+                  1.
+                </p>
+              </Button>
+              <div className='space-y-5'>
+                <h4 className='font-semibold'>
+                  Frontend разработчик - Май 2023 - настоящее время
+                </h4>
+
+                <p className='text-sm font-medium text-neutral-500 dark:text-neutral-300'>
+                  Активно участвовал в создании адаптивных и интуитивно понятных
+                  интерфейсов на фриланс-платформе. Разрабатывал современные
+                  решения в соответствии с требованиями клиентов.
+                </p>
+
+                <div className='overflow-hidden rounded-2xl'>
+                  <a
+                    href='https://kwork.ru/user/thisisaliyev'
+                    target='_blank'
+                  >
+                    <img
+                      className='object-cover transition-transform duration-300 group-hover:scale-110'
+                      src='/images/xp/kwork.png'
+                      alt='Kwork profile'
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className='dark:bg-dark-secondary group flex w-full flex-col rounded-xl bg-white p-5'>
+              <Button
+                link=''
+                label='BuildUp'
+                className='mb-10 flex h-auto grow gap-x-0 font-semibold'
+              >
+                <p className='bg-dark-primary rounded-full px-4 py-1.5 text-white transition-transform duration-300 group-hover:rounded-e-none'>
+                  2.
+                </p>
+              </Button>
+              <div className='space-y-5'>
+                <h4 className='font-semibold'>
+                  Frontend разработчик - Декабрь 2023 - Август 2024
+                </h4>
+
+                <p className='text-sm font-medium text-neutral-500 dark:text-neutral-300'>
+                  В стартап-проекте участвовал в разработке архитектуры,
+                  бизнес-логики и SEO. Посещаемость выросла на 40%, конверсия —
+                  на 15%, UX значительно улучшился благодаря оптимизированному
+                  интерфейсу.
+                </p>
+
+                <div className='overflow-hidden rounded-2xl'>
+                  <a
+                    href='https://kwork.ru/user/thisisaliyev'
+                    target='_blank'
+                  >
+                    <img
+                      className='object-cover transition-transform duration-300 group-hover:scale-110'
+                      src='/images/xp/kwork.png'
+                      alt='Kwork profile'
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className='dark:bg-dark-secondary group flex w-full flex-col rounded-xl bg-white p-5'>
+              <Button
+                link=''
+                label='OnlineShop'
+                className='mb-10 flex h-auto grow gap-x-0 font-semibold'
+              >
+                <p className='bg-dark-primary rounded-full px-4 py-1.5 text-white transition-transform duration-300 group-hover:rounded-e-none'>
+                  3.
+                </p>
+              </Button>
+              <div className='space-y-5'>
+                <h4 className='font-semibold'>
+                  Frontend разработчик - Апрель 2023 - Ноябрь 2024
+                </h4>
+
+                <p className='text-sm font-medium text-neutral-500 dark:text-neutral-300'>
+                  Участвовал в проекте по созданию админ-панели и
+                  пользовательского интерфейса. На основе макета от
+                  UI/UX-дизайнера был разработан адаптивный и pixel-perfect
+                  интерфейс. Админ-панель ускорила обработку заказов и
+                  управление данными на 30%, что повысило поток пользователей.
+                </p>
+
+                <div className='overflow-hidden rounded-2xl'>
+                  <a
+                    href='https://kwork.ru/user/thisisaliyev'
+                    target='_blank'
+                  >
+                    <img
+                      className='object-cover transition-transform duration-300 group-hover:scale-110'
+                      src='/images/xp/kwork.png'
+                      alt='Kwork profile'
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className='dark:bg-dark-secondary group flex w-full flex-col rounded-xl bg-white p-5'>
+              <Button
+                link=''
+                label='Kwork'
+                className='mb-10 flex h-auto grow gap-x-0 font-semibold'
+              >
+                <p className='bg-dark-primary rounded-full px-4 py-1.5 text-white transition-transform duration-300 group-hover:rounded-e-none'>
+                  1.
+                </p>
+              </Button>
+              <div className='space-y-5'>
+                <h4 className='font-semibold'>
+                  Frontend разработчик - Май 2023 - настоящее время
+                </h4>
+
+                <p className='text-sm font-medium text-neutral-500 dark:text-neutral-300'>
+                  Активно участвовал в создании адаптивных и интуитивно понятных
+                  интерфейсов на фриланс-платформе. Разрабатывал современные
+                  решения в соответствии с требованиями клиентов.
+                </p>
+
+                <div className='overflow-hidden rounded-2xl'>
+                  <a
+                    href='https://kwork.ru/user/thisisaliyev'
+                    target='_blank'
+                  >
+                    <img
+                      className='object-cover transition-transform duration-300 group-hover:scale-110'
+                      src='/images/xp/kwork.png'
+                      alt='Kwork profile'
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         <section
@@ -188,7 +354,7 @@ export function Home() {
         </section>
       </div>
 
-      <div className='lg:flex-2/5'>
+      <div className='lg:w-1/3 lg:flex-2/5'>
         <div className='top-0 right-15 z-10 flex min-h-screen flex-col py-5 lg:fixed lg:w-1/3'>
           <div className='flex items-center justify-between'>
             <span>thisisaliyev®, v0.1</span>
@@ -236,6 +402,7 @@ export function Home() {
       <DesktopNavbar
         aboutVisible={aboutVisible}
         skillsVisible={skillsVisible}
+        experienceVisible={experienceVisible}
         projectsVisible={projectsVisible}
         contactsVisible={contactsVisible}
       />

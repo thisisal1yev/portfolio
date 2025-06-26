@@ -1,4 +1,5 @@
 import {
+  BriefcaseBusiness,
   CircleAlert,
   CodeXml,
   GalleryVerticalEnd,
@@ -6,7 +7,7 @@ import {
 } from 'lucide-react'
 
 export function renderMenuItemIcon(
-  whoseOwn: 'about' | 'skills' | 'projects' | 'contacts',
+  whoseOwn: 'about' | 'skills' | 'projects' | 'contacts' | 'experience',
 ) {
   switch (whoseOwn) {
     case 'about':
@@ -17,6 +18,8 @@ export function renderMenuItemIcon(
       return <GalleryVerticalEnd size={24} />
     case 'contacts':
       return <Voicemail size={24} />
+    case 'experience':
+      return <BriefcaseBusiness size={24} />
     default:
       return null
   }
