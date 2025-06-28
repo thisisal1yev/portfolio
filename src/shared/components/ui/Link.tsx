@@ -17,6 +17,8 @@ export function Link({
 
       <a
         href={href}
+        target='_blank'
+        rel='noopener noreferrer'
         className='underline-offset-4 hover:underline'
       >
         {children}

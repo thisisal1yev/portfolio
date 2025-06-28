@@ -1,7 +1,7 @@
-import { BriefcaseBusiness, User } from 'lucide-react'
+import { Languages, Moon, Sun, User } from 'lucide-react'
 
 import { Button, HorizontalLine, Link, StatsBlock } from '@shared/components'
-import { useIntersectionObserver } from '@shared/hooks'
+import { useIntersectionObserver, useTheme } from '@shared/hooks'
 import { DesktopNavbar, MarqueeBlock, ProjectsList } from '@widgets'
 
 export function Home() {
@@ -10,6 +10,8 @@ export function Home() {
   const [experienceRef, experienceVisible] = useIntersectionObserver()
   const [projectsRef, projectsVisible] = useIntersectionObserver()
   const [contactsRef, contactsVisible] = useIntersectionObserver()
+
+  const { theme, toggleTheme } = useTheme()
 
   return (
     <main className='relative container flex h-min min-h-screen min-w-full flex-none flex-col-reverse flex-nowrap overflow-hidden px-5 py-5 antialiased lg:flex-row'>
@@ -102,17 +104,7 @@ export function Home() {
           id='experience'
           ref={experienceRef}
         >
-          <h2 className='mb-8'>
-            <p className='mb-0.5 flex items-center gap-2 text-2xl leading-7 font-semibold'>
-              <BriefcaseBusiness size={42} />
-
-              <span>Опыт работы</span>
-            </p>
-
-            <HorizontalLine className='w-44' />
-          </h2>
-
-          <div className='grid grid-cols-2 gap-2'>
+          <div className='grid grid-cols-1 gap-3 lg:grid-cols-2'>
             <div className='dark:bg-dark-secondary group flex w-full flex-col rounded-xl bg-white p-5'>
               <Button
                 link=''
@@ -138,6 +130,7 @@ export function Home() {
                   <a
                     href='https://kwork.ru/user/thisisaliyev'
                     target='_blank'
+                    rel='noopener noreferrer'
                   >
                     <img
                       className='object-cover transition-transform duration-300 group-hover:scale-110'
@@ -159,6 +152,7 @@ export function Home() {
                   2.
                 </p>
               </Button>
+
               <div className='space-y-5'>
                 <h4 className='font-semibold'>
                   Frontend разработчик - Декабрь 2023 - Август 2024
@@ -175,6 +169,7 @@ export function Home() {
                   <a
                     href='https://kwork.ru/user/thisisaliyev'
                     target='_blank'
+                    rel='noopener noreferrer'
                   >
                     <img
                       className='object-cover transition-transform duration-300 group-hover:scale-110'
@@ -213,6 +208,7 @@ export function Home() {
                   <a
                     href='https://kwork.ru/user/thisisaliyev'
                     target='_blank'
+                    rel='noopener noreferrer'
                   >
                     <img
                       className='object-cover transition-transform duration-300 group-hover:scale-110'
@@ -249,6 +245,7 @@ export function Home() {
                   <a
                     href='https://kwork.ru/user/thisisaliyev'
                     target='_blank'
+                    rel='noopener noreferrer'
                   >
                     <img
                       className='object-cover transition-transform duration-300 group-hover:scale-110'
@@ -382,18 +379,21 @@ export function Home() {
           <div>
             <div className='flex items-center justify-between'>
               <Link
-                label='т.'
-                href='tel:+998950490473'
+                label='GitHub:'
+                href='https://github.com/thisisal1yev'
               >
-                +998 (95) 049 04 73
+                thisisal1yev
               </Link>
 
-              <Link
-                label='e.'
-                href='mailto:aaalievvv1@gmail.com'
-              >
-                aaalievvv1@gmail.com
-              </Link>
+              <div className='flex items-center gap-3'>
+                <button>
+                  <Languages size={24} />
+                </button>
+
+                <button onClick={toggleTheme}>
+                  {theme === 'dark' ? <Moon size={24} /> : <Sun size={24} />}
+                </button>
+              </div>
             </div>
           </div>
         </div>
