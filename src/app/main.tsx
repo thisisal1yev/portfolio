@@ -1,9 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
-import '@app/index.css'
-import { Home } from '@app/index.tsx'
+import { Home } from '@pages'
 import { ThemeProvider } from '@shared/providers'
+import './index.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

@@ -1,3 +1,4 @@
-export { MarqueeBlock } from './MarqueeBlock/ui/MarqueeBlock'
-export { DesktopNavbar } from './Navbar/ui/DesktopNavbar'
-export { ProjectsList } from './ProjectsList/ui/ProjectsList'
+export { ExperienceCard } from './Experience'
+export { MarqueeBlock } from './MarqueeBlock'
+export { DesktopNavbar } from './Navbar'
+export { ProjectsList } from './ProjectsList'

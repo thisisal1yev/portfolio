@@ -31,7 +31,9 @@
       "@widgets": ["src/widgets"],
       "@widgets/*": ["src/widgets/*"],
       "@app": ["src/app"],
-      "@app/*": ["src/app/*"]
+      "@app/*": ["src/app/*"],
+      "@pages": ["src/pages"],
+      "@pages/*": ["src/pages/*"]
     }
   },
   "include": ["src"]
