@@ -1,13 +1,19 @@
 import { Languages, Moon, Sun, User } from 'lucide-react'
 
-import { Button, HorizontalLine, Link, StatsBlock } from '@shared/components'
+import { HorizontalLine, Link, StatsBlock } from '@shared/components'
 import { useIntersectionObserver, useTheme } from '@shared/hooks'
-import { DesktopNavbar, MarqueeBlock, ProjectsList } from '@widgets'
+import {
+  DesktopNavbar,
+  ExperienceSection,
+  MarqueeBlock,
+  ProjectsList,
+} from '@widgets'
 
 export function Home() {
   const [aboutRef, aboutVisible] = useIntersectionObserver()
   const [skillsRef, skillsVisible] = useIntersectionObserver()
-  const [experienceRef, experienceVisible] = useIntersectionObserver()
+  const [experienceRef, experienceVisible] =
+    useIntersectionObserver<HTMLDivElement>()
   const [projectsRef, projectsVisible] = useIntersectionObserver()
   const [contactsRef, contactsVisible] = useIntersectionObserver()
 
@@ -100,127 +106,7 @@ export function Home() {
           <MarqueeBlock />
         </section>
 
-        <section
-          id='experience'
-          ref={experienceRef}
-        >
-          <div className='grid grid-cols-1 gap-3 lg:grid-cols-2'>
-            <div className='dark:bg-dark-secondary group flex w-full flex-col rounded-xl bg-white p-5'>
-              <Button
-                link=''
-                label='BuildUp'
-                className='mb-10 flex h-auto grow gap-x-0 font-semibold'
-              >
-                <p className='bg-dark-primary rounded-full px-4 py-1.5 text-white transition-transform duration-300 group-hover:rounded-e-none'>
-                  2.
-                </p>
-              </Button>
-
-              <div className='space-y-5'>
-                <h4 className='font-semibold'>
-                  Frontend разработчик - Декабрь 2023 - Август 2024
-                </h4>
-
-                <p className='text-sm font-medium text-neutral-500 dark:text-neutral-300'>
-                  В стартап-проекте участвовал в разработке архитектуры,
-                  бизнес-логики и SEO. Посещаемость выросла на 40%, конверсия —
-                  на 15%, UX значительно улучшился благодаря оптимизированному
-                  интерфейсу.
-                </p>
-
-                <div className='overflow-hidden rounded-2xl'>
-                  <a
-                    href='https://kwork.ru/user/thisisaliyev'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                  >
-                    <img
-                      className='object-cover transition-transform duration-300 group-hover:scale-110'
-                      src='/images/xp/kwork.png'
-                      alt='Kwork profile'
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className='dark:bg-dark-secondary group flex w-full flex-col rounded-xl bg-white p-5'>
-              <Button
-                link=''
-                label='OnlineShop'
-                className='mb-10 flex h-auto grow gap-x-0 font-semibold'
-              >
-                <p className='bg-dark-primary rounded-full px-4 py-1.5 text-white transition-transform duration-300 group-hover:rounded-e-none'>
-                  3.
-                </p>
-              </Button>
-              <div className='space-y-5'>
-                <h4 className='font-semibold'>
-                  Frontend разработчик - Апрель 2023 - Ноябрь 2024
-                </h4>
-
-                <p className='text-sm font-medium text-neutral-500 dark:text-neutral-300'>
-                  Участвовал в проекте по созданию админ-панели и
-                  пользовательского интерфейса. На основе макета от
-                  UI/UX-дизайнера был разработан адаптивный и pixel-perfect
-                  интерфейс. Админ-панель ускорила обработку заказов и
-                  управление данными на 30%, что повысило поток пользователей.
-                </p>
-
-                <div className='overflow-hidden rounded-2xl'>
-                  <a
-                    href='https://kwork.ru/user/thisisaliyev'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                  >
-                    <img
-                      className='object-cover transition-transform duration-300 group-hover:scale-110'
-                      src='/images/xp/kwork.png'
-                      alt='Kwork profile'
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className='dark:bg-dark-secondary group flex w-full flex-col rounded-xl bg-white p-5'>
-              <Button
-                link=''
-                label='Kwork'
-                className='mb-10 flex h-auto grow gap-x-0 font-semibold'
-              >
-                <p className='bg-dark-primary rounded-full px-4 py-1.5 text-white transition-transform duration-300 group-hover:rounded-e-none'>
-                  1.
-                </p>
-              </Button>
-              <div className='space-y-5'>
-                <h4 className='font-semibold'>
-                  Frontend разработчик - Май 2023 - настоящее время
-                </h4>
-
-                <p className='text-sm font-medium text-neutral-500 dark:text-neutral-300'>
-                  Активно участвовал в создании адаптивных и интуитивно понятных
-                  интерфейсов на фриланс-платформе. Разрабатывал современные
-                  решения в соответствии с требованиями клиентов.
-                </p>
-
-                <div className='overflow-hidden rounded-2xl'>
-                  <a
-                    href='https://kwork.ru/user/thisisaliyev'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                  >
-                    <img
-                      className='object-cover transition-transform duration-300 group-hover:scale-110'
-                      src='/images/xp/kwork.png'
-                      alt='Kwork profile'
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <ExperienceSection experienceRef={experienceRef} />
 
         <section
           ref={projectsRef}
@@ -314,8 +200,8 @@ export function Home() {
         </section>
       </div>
 
-      <div className='lg:w-1/3 lg:flex-2/5'>
-        <div className='top-0 right-15 z-10 flex min-h-screen flex-col py-5 lg:fixed lg:w-1/3'>
+      <div className='lg:w-2/5 lg:flex-2/5'>
+        <div className='top-0 right-10 z-10 flex min-h-screen flex-col py-5 lg:fixed lg:w-1/3'>
           <div className='flex items-center justify-between'>
             <span>thisisaliyev®, v0.1</span>
 
