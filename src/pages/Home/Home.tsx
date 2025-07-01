@@ -20,25 +20,25 @@ export function Home() {
   const { theme, toggleTheme } = useTheme()
 
   return (
-    <main className='relative container flex h-min min-h-screen min-w-full flex-none flex-col-reverse flex-nowrap overflow-hidden px-5 py-5 antialiased lg:flex-row'>
-      <div className='space-y-5 lg:w-3/5 lg:flex-3/5'>
+    <main className='relative container flex h-min min-h-screen min-w-full flex-none flex-nowrap items-center overflow-hidden px-5 py-5 antialiased md:flex-col-reverse 2xl:flex-row'>
+      <div className='space-y-5 md:w-full 2xl:w-3/5 2xl:flex-3/5'>
         <section
           ref={aboutRef}
           id='about'
           className='dark:bg-dark-secondary space-y-8 rounded-xl bg-white p-5'
         >
           <h2 className='mb-8'>
-            <p className='mb-0.5 flex items-center gap-2 text-2xl leading-7 font-semibold'>
+            <p className='mb-0.5 flex items-center gap-2 text-2xl leading-7 font-semibold sm:text-lg'>
               <User size={42} />
 
               <span>О себе как личность</span>
             </p>
 
-            <HorizontalLine className='w-44' />
+            <HorizontalLine className='w-44 sm:w-32' />
           </h2>
 
-          <div className='space-y-8 text-lg'>
-            <p className='text-xl'>
+          <div className='space-y-8 text-lg sm:text-base'>
+            <p className='text-xl sm:text-lg'>
               Доброго времени суток! Меня зовут&nbsp;
               <span className='dark:text-purple font-medium text-purple-800'>
                 Алиев Ахмадилло.
@@ -67,7 +67,7 @@ export function Home() {
 
           <div
             id='github_stats'
-            className='flex w-full items-center justify-between gap-5'
+            className='flex w-full items-center justify-between gap-5 sm:flex-col'
           >
             <StatsBlock
               title='Число репозиторий'
@@ -92,7 +92,7 @@ export function Home() {
           id='skills'
         >
           <div className='flex flex-col items-start justify-between'>
-            <h2 className='text-purple text-5xl font-bold'>
+            <h2 className='text-purple text-5xl font-bold sm:text-3xl md:text-4xl'>
               Технические
               <br /> навыки
             </h2>
@@ -123,7 +123,7 @@ export function Home() {
         <section
           ref={contactsRef}
           id='contacts'
-          className='dark:bg-dark-secondary flex h-[550px] w-full items-start justify-between gap-x-10 rounded-xl bg-white p-5'
+          className='dark:bg-dark-secondary flex h-[550px] w-full items-start justify-between gap-10 rounded-xl bg-white p-5 md:h-auto md:flex-col'
         >
           <div className='flex h-full w-full flex-col'>
             <h2 className='h-auto grow text-4xl font-semibold'>Контакты</h2>
@@ -200,10 +200,10 @@ export function Home() {
         </section>
       </div>
 
-      <div className='lg:w-2/5 lg:flex-2/5'>
-        <div className='top-0 right-10 z-10 flex min-h-screen flex-col py-5 lg:fixed lg:w-1/3'>
+      <div className='w-2/5 flex-2/5 md:w-full'>
+        <div className='fixed top-0 right-10 z-10 mx-auto flex min-h-screen w-1/3 flex-col py-5 md:relative md:right-0 md:w-full'>
           <div className='flex items-center justify-between'>
-            <span>thisisaliyev®, v0.1</span>
+            <span className='sm:text-sm'>thisisaliyev®, v0.1</span>
 
             <Link
               label='тг.'
@@ -215,12 +215,12 @@ export function Home() {
 
           <div className='flex h-auto grow flex-col items-start justify-center space-y-10'>
             <div className='h-86 -rotate-4 rounded-2xl border-2 border-dashed p-5 py-5 transition-transform duration-300 hover:-translate-x-5 hover:-rotate-6'>
-              <p className='text-7xl font-semibold'>
+              <p className='text-7xl font-semibold sm:text-4xl'>
                 Здесь могла быть моя фотография
               </p>
             </div>
 
-            <h1 className='dark:text-purple ml-10 text-2xl leading-7 font-medium text-purple-800'>
+            <h1 className='dark:text-purple ml-10 text-2xl leading-7 font-medium text-purple-800 sm:ml-0 sm:text-xl'>
               Фронтенд разработчик
             </h1>
           </div>

@@ -27,7 +27,7 @@ export function ExperienceCard({
       <Button
         link=''
         label={company}
-        className='mb-10 flex h-auto grow gap-x-0 font-semibold'
+        className='xs:text-sm mb-10 flex h-auto grow gap-x-0 font-semibold sm:text-base'
       >
         <p className='bg-dark-primary rounded-full px-4 py-1.5 text-white transition-transform duration-300 group-hover:rounded-e-none'>
           {id}.
@@ -35,15 +35,15 @@ export function ExperienceCard({
       </Button>
 
       <div className='space-y-5'>
-        <h4 className='font-semibold'>
+        <h4 className='xs:text-sm font-semibold'>
           {position} - {duration}
         </h4>
 
-        <p className='text-sm font-medium text-neutral-500 dark:text-neutral-300'>
+        <p className='xs:text-xs text-sm font-medium text-neutral-500 dark:text-neutral-300'>
           {description}
         </p>
 
-        <div className='overflow-hidden rounded-2xl'>
+        <div className='overflow-hidden rounded-2xl md:rounded-xl'>
           <a
             href={link}
             target='_blank'

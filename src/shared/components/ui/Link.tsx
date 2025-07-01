@@ -12,7 +12,7 @@ export function Link({
   className?: string
 }>) {
   return (
-    <p className={cn('flex items-center gap-2', className)}>
+    <p className={cn('flex items-center gap-2 sm:text-sm', className)}>
       <span>{label}&nbsp;</span>
 
       <a

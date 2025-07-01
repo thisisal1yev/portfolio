@@ -9,27 +9,30 @@ export function ProjectsList() {
       {PROJECTS.map((project) => (
         <li
           key={project.title}
-          className='border-light-primary dark:border-gray hover:dark:border-purple group flex justify-between gap-x-5 pb-5 transition-colors duration-300 not-last:border-b-2 hover:border-purple-800'
+          className='border-light-primary dark:border-gray hover:dark:border-purple group flex justify-between gap-x-5 pb-5 transition-colors duration-300 not-last:border-b-2 hover:border-purple-800 sm:flex-col-reverse sm:items-start sm:gap-y-5 sm:border-none sm:pb-0'
         >
-          <div className='flex w-auto flex-col items-start justify-between'>
-            <h4 className='text-2xl font-semibold whitespace-nowrap transition-transform duration-300 group-hover:translate-x-4'>
-              {project.title}
-            </h4>
+          <div className='flex sm:flex-col sm:gap-2'>
+            <div className='flex w-auto flex-col items-start justify-between'>
+              <h4 className='text-2xl font-semibold whitespace-nowrap transition-transform duration-300 not-hover:translate-x-0 group-hover:translate-x-4'>
+                {project.title}
+              </h4>
 
-            <Button
-              link={project.link}
-              label={'Link'}
-            >
-              <ArrowUpRight
-                size={40}
-                className='bg-dark-primary rounded-full p-2 text-white transition-transform duration-300 group-hover:translate-x-4 group-hover:rounded-e-none'
-              />
-            </Button>
+              <Button
+                link={project.link}
+                label={'Link'}
+                className='sm:hidden'
+              >
+                <ArrowUpRight
+                  size={40}
+                  className='bg-dark-primary rounded-full p-2 text-white transition-transform duration-300 group-hover:translate-x-4 group-hover:rounded-e-none'
+                />
+              </Button>
+            </div>
+
+            <p className='mt-auto w-72 text-sm leading-6'>
+              {project.description}
+            </p>
           </div>
-
-          <p className='mt-auto w-72 text-sm leading-6'>
-            {project.description}
-          </p>
 
           <img
             sizes='calc(calc((100vw - 40px) * 0.5833) * 0.3193)'
@@ -39,7 +42,7 @@ export function ProjectsList() {
             height='200'
             src={project.imgURL}
             alt={project.title}
-            className='h-52 w-72 rounded-lg object-cover transition-transform duration-300 group-hover:scale-95'
+            className='h-52 w-72 rounded-lg object-cover transition-transform duration-300 group-hover:scale-95 sm:h-auto sm:w-auto'
           />
         </li>
       ))}

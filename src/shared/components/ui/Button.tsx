@@ -18,7 +18,7 @@ export function Button({ className, children, label, link }: Props) {
     >
       {children}
 
-      <span className='bg-dark-primary inline-block h-10 rounded-full px-4 py-1 transition-colors duration-300 group-hover:rounded-s-none'>
+      <span className='bg-dark-primary inline-block h-10 rounded-full px-4 py-1 transition-colors duration-300 group-hover:rounded-s-none sm:h-auto sm:py-1.5'>
         {label}
       </span>
     </a>

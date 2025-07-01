@@ -39,7 +39,7 @@ export function DesktopNavbar({
   }
 
   return createPortal(
-    <nav className='pointer-events-none fixed bottom-10 left-0 z-10 hidden w-full items-center justify-center pt-12 lg:flex'>
+    <nav className='pointer-events-none fixed bottom-10 left-0 z-10 flex w-full items-center justify-center pt-12 md:hidden'>
       <div className='container flex justify-center'>
         <div className='bg-light-primary/90 ring-dark-primary/[20%] max-w-full rounded-3xl dark:bg-zinc-950/90'>
           <div className='scrollbar-none pointer-events-auto overflow-x-auto scroll-smooth p-1.5'>
