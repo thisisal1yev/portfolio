@@ -3,6 +3,14 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@custom-variant 2xl (@media (max-width: 1650px));
+@custom-variant xl (@media (max-width: 1399px));
+@custom-variant lg (@media (max-width: 1200px));
+@custom-variant md (@media (max-width: 992px));
+@custom-variant sm (@media (max-width: 768px));
+@custom-variant xs (@media (max-width: 480px));
+@custom-variant xxs (@media (max-width: 360px));
+
 @theme {
   --font-montserrat: 'Montserrat', sans-serif;
 
@@ -12,6 +20,8 @@
   --color-gray: #414142;
   --color-purple: #ae8bf8;
   --color-white: #ececec;
+
+  --breakpoint-*: initial;
 }
 
 @layer base {
