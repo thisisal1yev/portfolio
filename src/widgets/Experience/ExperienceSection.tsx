@@ -13,7 +13,7 @@ export function ExperienceSection({ experienceRef }: Props) {
     >
       <div className='grid grid-cols-2 gap-3 md:grid-cols-1'>
         {experienceData.map((item) => (
-          <ExperienceCard {...item} />
+          <ExperienceCard key={item.id} {...item} />
         ))}
       </div>
     </section>

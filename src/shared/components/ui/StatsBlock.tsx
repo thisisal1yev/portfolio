@@ -1,14 +1,12 @@
 import { cn } from '@shared/lib'
 
-export function StatsBlock({
-  className,
-  title,
-  text,
-}: Readonly<{
+interface Props {
+  title: string
   text: string
   className?: string
-  title: string
-}>) {
+}
+
+export function StatsBlock({ title, text, className }: Props) {
   return (
     <div
       className={cn(

@@ -249,11 +249,13 @@ export function Home() {
       </div>
 
       <DesktopNavbar
-        aboutVisible={aboutVisible}
-        skillsVisible={skillsVisible}
-        experienceVisible={experienceVisible}
-        projectsVisible={projectsVisible}
-        contactsVisible={contactsVisible}
+        visibility={{
+          about: aboutVisible,
+          skills: skillsVisible,
+          experience: experienceVisible,
+          projects: projectsVisible,
+          contacts: contactsVisible,
+        }}
       />
     </main>
   )

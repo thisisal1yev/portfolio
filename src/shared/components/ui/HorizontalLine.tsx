@@ -1,12 +1,11 @@
 import { cn } from '@shared/lib'
+import type { PropsWithChildren } from 'react'
 
-export function HorizontalLine({
-  className,
-  children,
-}: Readonly<{
-  children?: React.ReactNode
+interface Props extends PropsWithChildren {
   className?: string
-}>) {
+}
+
+export function HorizontalLine({ className, children }: Props) {
   return (
     <span
       className={cn(

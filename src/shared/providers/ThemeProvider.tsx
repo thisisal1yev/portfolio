@@ -1,9 +1,7 @@
 import { ThemeContext } from '@shared/contexts'
 import { useEffect, useState, type PropsWithChildren } from 'react'
 
-interface Props extends PropsWithChildren {}
-
-export function ThemeProvider({ children }: Props) {
+export function ThemeProvider({ children }: PropsWithChildren) {
   const [theme, setTheme] = useState<'dark' | 'light'>(() => {
     const stored = localStorage.getItem('theme')
 

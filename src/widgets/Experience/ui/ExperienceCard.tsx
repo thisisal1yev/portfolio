@@ -11,19 +11,16 @@ interface Props {
 }
 
 export function ExperienceCard({
-  company,
-  description,
-  duration,
   id,
+  company,
+  position,
+  duration,
+  description,
   image,
   link,
-  position,
 }: Props) {
   return (
-    <div
-      key={id}
-      className='dark:bg-dark-secondary group flex w-full flex-col rounded-xl bg-white p-5'
-    >
+    <div className='dark:bg-dark-secondary group flex w-full flex-col rounded-xl bg-white p-5'>
       <Button
         link=''
         label={company}
@@ -52,7 +49,7 @@ export function ExperienceCard({
             <img
               className='object-cover transition-transform duration-300 group-hover:scale-110'
               src={image}
-              alt='Kwork profile'
+              alt={company}
             />
           </a>
         </div>

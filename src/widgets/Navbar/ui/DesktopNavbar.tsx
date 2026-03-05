@@ -1,43 +1,13 @@
 import { createPortal } from 'react-dom'
 
-import { DesktopMenuItem } from '@shared/components/ui/DesktopMenuItem'
-import { renderMenuItemIcon } from '../lib/renderMenuItemIcon'
-import { MENU } from '../menu.data'
+import { DesktopMenuItem } from '@shared/components'
+import { MENU, type SectionId } from '../menu.data'
 
-type Props = {
-  aboutVisible: boolean
-  skillsVisible: boolean
-  experienceVisible: boolean
-  projectsVisible: boolean
-  contactsVisible: boolean
+interface Props {
+  visibility: Record<SectionId, boolean>
 }
 
-export function DesktopNavbar({
-  aboutVisible,
-  skillsVisible,
-  experienceVisible,
-  projectsVisible,
-  contactsVisible,
-}: Props) {
-  const isElementInViewport = (
-    id: 'about' | 'skills' | 'projects' | 'contacts' | 'experience',
-  ): boolean => {
-    switch (id) {
-      case 'about':
-        return aboutVisible
-      case 'skills':
-        return skillsVisible
-      case 'experience':
-        return experienceVisible
-      case 'projects':
-        return projectsVisible
-      case 'contacts':
-        return contactsVisible
-      default:
-        return false
-    }
-  }
-
+export function DesktopNavbar({ visibility }: Props) {
   return createPortal(
     <nav className='pointer-events-none fixed bottom-10 left-0 z-10 flex w-full items-center justify-center pt-12 md:hidden'>
       <div className='container flex justify-center'>
@@ -46,12 +16,12 @@ export function DesktopNavbar({
             <div className='isolate grid grid-cols-5 gap-x-0.5'>
               {MENU.map((item) => (
                 <DesktopMenuItem
-                  key={item.title}
+                  key={item.id}
                   href={item.href}
-                  isActive={isElementInViewport(item.id)}
+                  isActive={visibility[item.id]}
                 >
-                  {renderMenuItemIcon(item.id)}
-                  {item.title.charAt(0).toUpperCase() + item.title.slice(1)}
+                  {item.icon}
+                  {item.title}
                 </DesktopMenuItem>
               ))}
             </div>

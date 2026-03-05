@@ -1,14 +1,12 @@
 import { cn } from '@shared/lib'
+import type { PropsWithChildren } from 'react'
 
-export function SkillBlock({
-  className,
-  skill,
-  children,
-}: Readonly<{
-  className?: string
+interface Props extends PropsWithChildren {
   skill: string
-  children: React.ReactNode
-}>) {
+  className?: string
+}
+
+export function SkillBlock({ skill, className, children }: Props) {
   return (
     <div
       className={cn(

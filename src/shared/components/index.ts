@@ -1,4 +1,5 @@
 export { Button } from './ui/Button'
+export { DesktopMenuItem } from './ui/DesktopMenuItem'
 export { HorizontalLine } from './ui/HorizontalLine'
 export { Link } from './ui/Link'
 export { SkillBlock } from './ui/SkillBlock'

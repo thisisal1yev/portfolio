@@ -10,28 +10,28 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.8",
+    "@tailwindcss/vite": "^4.2.1",
     "lucide-react": "^0.515.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "react-fast-marquee": "^1.6.5",
-    "tailwindcss": "^4.1.8"
+    "tailwindcss": "^4.2.1"
   },
   "devDependencies": {
-    "@eslint/js": "^9.28.0",
-    "@types/react": "^19.1.6",
-    "@types/react-dom": "^19.1.6",
-    "@vitejs/plugin-react-swc": "^3.10.1",
+    "@eslint/js": "^9.39.3",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react-swc": "^3.11.0",
     "clsx": "^2.1.1",
-    "eslint": "^9.28.0",
+    "eslint": "^9.39.3",
     "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.20",
-    "globals": "^16.2.0",
-    "prettier": "^3.5.3",
-    "prettier-plugin-tailwindcss": "^0.6.12",
-    "tailwind-merge": "^3.3.1",
+    "eslint-plugin-react-refresh": "^0.4.26",
+    "globals": "^16.5.0",
+    "prettier": "^3.8.1",
+    "prettier-plugin-tailwindcss": "^0.6.14",
+    "tailwind-merge": "^3.5.0",
     "typescript": "~5.8.3",
-    "typescript-eslint": "^8.33.1",
-    "vite": "^6.3.5"
+    "typescript-eslint": "^8.56.1",
+    "vite": "^6.4.1"
   }
 }
