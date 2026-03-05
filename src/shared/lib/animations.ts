@@ -37,19 +37,3 @@ export const cardReveal: Variants = {
     transition: { duration: 0.6, ease: EASE },
   },
 }
-
-export const lineGrow: Variants = {
-  hidden: { scaleX: 0, originX: 0 },
-  visible: {
-    scaleX: 1,
-    transition: { duration: 0.8, ease: EASE },
-  },
-}
-
-export const scrollPulse: Variants = {
-  animate: {
-    y: [0, 8, 0],
-    opacity: [1, 0.4, 1],
-    transition: { duration: 1.8, repeat: Infinity, ease: 'easeInOut' },
-  },
-}

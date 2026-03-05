@@ -4,12 +4,12 @@
 @theme {
   --font-inter: 'Inter', sans-serif;
 
-  --color-dark-primary: #191820;
-  --color-dark-secondary: #2d2d2d;
-  --color-gray: #414142;
-  --color-purple: #ae8bf8;
-  --color-white: #ececec;
-  --color-muted: #6b6b72;
+  --color-bg: #b8bcc4;
+  --color-surface: #e3e3e8;
+  --color-surface-dark: #2d2d2d;
+  --color-text: #2d2d2d;
+  --color-text-muted: #6b6b72;
+  --color-white: #ffffff;
 
   --breakpoint-*: initial;
 }
@@ -24,6 +24,6 @@
 
 @layer base {
   html {
-    @apply bg-dark-primary text-white font-inter scroll-smooth leading-normal font-normal antialiased;
+    @apply bg-bg text-text font-inter scroll-smooth leading-normal font-normal antialiased;
   }
 }

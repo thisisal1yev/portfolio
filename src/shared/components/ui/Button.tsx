@@ -11,7 +11,7 @@ export function Button({ label, link, className }: Props) {
     <a
       href={link}
       className={cn(
-        'inline-flex items-center border border-gray px-6 py-3 text-sm tracking-widest uppercase text-white transition-colors duration-300 hover:border-purple hover:text-purple',
+        'inline-flex items-center rounded-full bg-surface-dark px-6 py-3 text-sm text-white transition-opacity duration-200 hover:opacity-80',
         className,
       )}
     >

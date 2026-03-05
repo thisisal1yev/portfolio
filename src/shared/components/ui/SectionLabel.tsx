@@ -9,11 +9,12 @@ interface Props {
 
 export function SectionLabel({ index, label }: Props) {
   return (
-    <motion.p
+    <motion.span
       variants={fadeIn}
-      className='mb-10 text-sm tracking-widest text-muted uppercase'
+      className='mb-6 inline-flex items-center gap-2 rounded-full bg-surface-dark px-4 py-1.5 text-sm text-white'
     >
-      {index} — {label}
-    </motion.p>
+      <span>{index}</span>
+      {label}
+    </motion.span>
   )
 }

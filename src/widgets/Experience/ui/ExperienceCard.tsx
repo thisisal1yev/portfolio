@@ -21,20 +21,18 @@ export function ExperienceCard({
   link,
 }: Props) {
   return (
-    <motion.li
+    <motion.div
       variants={cardReveal}
-      className='relative pb-16 pl-10'
+      className='group flex flex-col rounded-xl bg-bg p-6'
     >
-      <div className='absolute top-1.5 left-0 h-3 w-3 rounded-full bg-purple' />
-
       <div className='space-y-3'>
-        <p className='text-sm tracking-widest text-muted uppercase'>{duration}</p>
+        <p className='text-sm tracking-wide text-text-muted'>{duration}</p>
 
-        <h3 className='text-2xl font-bold text-white'>{company}</h3>
+        <h3 className='text-2xl font-bold text-text'>{company}</h3>
 
-        <p className='text-base text-muted'>{position}</p>
+        <p className='text-base text-text-muted'>{position}</p>
 
-        <p className='max-w-xl text-sm leading-relaxed text-white/60'>
+        <p className='text-sm leading-relaxed text-text-muted'>
           {description}
         </p>
 
@@ -47,11 +45,11 @@ export function ExperienceCard({
             <img
               src={image}
               alt={company}
-              className='aspect-video max-w-sm w-full rounded-xl object-cover transition-transform duration-500 hover:scale-105'
+              className='aspect-video w-full rounded-xl object-cover transition-transform duration-500 group-hover:scale-105'
             />
           </a>
         </div>
       </div>
-    </motion.li>
+    </motion.div>
   )
 }
