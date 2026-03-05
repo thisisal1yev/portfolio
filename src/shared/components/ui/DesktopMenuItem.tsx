@@ -9,9 +9,11 @@ interface Props extends PropsWithChildren {
 export function DesktopMenuItem({ href, isActive, children }: Props) {
   return (
     <a
-      className={cn('navbar_link', isActive && 'navbar_link_active')}
-      href={href || '#'}
-      data-framework='react'
+      href={href ?? '#'}
+      className={cn(
+        'text-sm tracking-widest uppercase text-muted transition-colors duration-200 hover:text-white',
+        isActive && 'text-purple',
+      )}
     >
       {children}
     </a>

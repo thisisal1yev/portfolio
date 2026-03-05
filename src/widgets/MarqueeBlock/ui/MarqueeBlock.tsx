@@ -1,32 +1,37 @@
+import { motion } from 'motion/react'
 import Marquee from 'react-fast-marquee'
 
-import { SkillBlock } from '@shared/components/ui/SkillBlock'
+import { SkillBlock } from '@shared/components'
+import { fadeIn } from '@shared/lib'
 import { SKILLS } from '../skills.data'
 
 export function MarqueeBlock() {
   return (
-    <div className='mr-5 flex h-full w-96 items-center justify-center'>
+    <motion.div
+      variants={fadeIn}
+      className='flex h-[500px] items-center justify-center overflow-hidden'
+    >
       <Marquee
         direction='down'
         loop={0}
-        autoFill={true}
-        speed={50}
-        className='!m-0 h-96 !w-96 !overflow-visible !p-0 transition-transform duration-300 hover:scale-105'
+        autoFill
+        speed={40}
+        className='!h-[500px] !w-72'
       >
         {SKILLS.map((skill) => (
           <SkillBlock
-            skill={skill.skillName}
             key={skill.skillAlias}
+            skill={skill.skillName}
           >
             <img
-              width={100}
-              height={100}
+              width={48}
+              height={48}
               src={skill.imgURL}
               alt={skill.skillAlias}
             />
           </SkillBlock>
         ))}
       </Marquee>
-    </div>
+    </motion.div>
   )
 }

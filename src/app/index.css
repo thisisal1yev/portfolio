@@ -1,20 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 @import 'tailwindcss';
 
 @theme {
-  --font-montserrat: 'Montserrat', sans-serif;
+  --font-inter: 'Inter', sans-serif;
 
   --color-dark-primary: #191820;
-  --color-light-primary: #bbbcc4;
   --color-dark-secondary: #2d2d2d;
   --color-gray: #414142;
   --color-purple: #ae8bf8;
   --color-white: #ececec;
+  --color-muted: #6b6b72;
 
   --breakpoint-*: initial;
 }
-
-@custom-variant dark (&:where(.dark, .dark *));
 
 @custom-variant 2xl (@media (max-width: 1650px));
 @custom-variant xl (@media (max-width: 1399px));
@@ -26,14 +24,6 @@
 
 @layer base {
   html {
-    @apply bg-light-primary text-dark-secondary font-montserrat dark:bg-dark-primary scroll-smooth leading-normal font-normal dark:text-white;
-  }
-
-  .navbar_link {
-    @apply hover:dark:text-purple hover:dark:focus-visible:ring-purple focus-visible:ring-dark-primary flex flex-col items-center gap-1.5 rounded-2xl px-3 pt-2.5 pb-1.5 text-xs font-medium whitespace-nowrap transition-colors duration-300 outline-none hover:text-purple-800 focus-visible:ring-2 focus-visible:ring-inset hover:focus-visible:ring-purple-800 focus-visible:dark:ring-white;
-  }
-
-  .navbar_link_active {
-    @apply dark:text-purple dark:bg-dark-secondary hover:dark:bg-dark-secondary/80 bg-white text-purple-800 hover:bg-white/50;
+    @apply bg-dark-primary text-white font-inter scroll-smooth leading-normal font-normal antialiased;
   }
 }

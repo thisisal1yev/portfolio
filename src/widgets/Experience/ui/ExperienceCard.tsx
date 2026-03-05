@@ -1,4 +1,6 @@
-import { Button } from '@shared/components'
+import { motion } from 'motion/react'
+
+import { cardReveal } from '@shared/lib'
 
 interface Props {
   id: number
@@ -11,7 +13,6 @@ interface Props {
 }
 
 export function ExperienceCard({
-  id,
   company,
   position,
   duration,
@@ -20,40 +21,37 @@ export function ExperienceCard({
   link,
 }: Props) {
   return (
-    <div className='dark:bg-dark-secondary group flex w-full flex-col rounded-xl bg-white p-5'>
-      <Button
-        link=''
-        label={company}
-        className='xs:text-sm mb-10 flex h-auto grow gap-x-0 font-semibold sm:text-base'
-      >
-        <p className='bg-dark-primary rounded-full px-4 py-1.5 text-white transition-transform duration-300 group-hover:rounded-e-none'>
-          {id}.
-        </p>
-      </Button>
+    <motion.li
+      variants={cardReveal}
+      className='relative pb-16 pl-10'
+    >
+      <div className='absolute top-1.5 left-0 h-3 w-3 rounded-full bg-purple' />
 
-      <div className='space-y-5'>
-        <h4 className='xs:text-sm font-semibold'>
-          {position} - {duration}
-        </h4>
+      <div className='space-y-3'>
+        <p className='text-sm tracking-widest text-muted uppercase'>{duration}</p>
 
-        <p className='xs:text-xs text-sm font-medium text-neutral-500 dark:text-neutral-300'>
+        <h3 className='text-2xl font-bold text-white'>{company}</h3>
+
+        <p className='text-base text-muted'>{position}</p>
+
+        <p className='max-w-xl text-sm leading-relaxed text-white/60'>
           {description}
         </p>
 
-        <div className='overflow-hidden rounded-2xl md:rounded-xl'>
+        <div className='overflow-hidden rounded-xl pt-2'>
           <a
             href={link}
             target='_blank'
             rel='noopener noreferrer'
           >
             <img
-              className='object-cover transition-transform duration-300 group-hover:scale-110'
               src={image}
               alt={company}
+              className='aspect-video max-w-sm w-full rounded-xl object-cover transition-transform duration-500 hover:scale-105'
             />
           </a>
         </div>
       </div>
-    </div>
+    </motion.li>
   )
 }

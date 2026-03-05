@@ -1,6 +1,8 @@
-import { createPortal } from 'react-dom'
+import { Github } from 'lucide-react'
+import { motion } from 'motion/react'
 
 import { DesktopMenuItem } from '@shared/components'
+import { EASE } from '@shared/lib'
 import { MENU, type SectionId } from '../menu.data'
 
 interface Props {
@@ -8,27 +10,40 @@ interface Props {
 }
 
 export function DesktopNavbar({ visibility }: Props) {
-  return createPortal(
-    <nav className='pointer-events-none fixed bottom-10 left-0 z-10 flex w-full items-center justify-center pt-12 md:hidden'>
-      <div className='container flex justify-center'>
-        <div className='bg-light-primary/90 ring-dark-primary/[20%] max-w-full rounded-3xl dark:bg-zinc-950/90'>
-          <div className='scrollbar-none pointer-events-auto overflow-x-auto scroll-smooth p-1.5'>
-            <div className='isolate grid grid-cols-5 gap-x-0.5'>
-              {MENU.map((item) => (
-                <DesktopMenuItem
-                  key={item.id}
-                  href={item.href}
-                  isActive={visibility[item.id]}
-                >
-                  {item.icon}
-                  {item.title}
-                </DesktopMenuItem>
-              ))}
-            </div>
-          </div>
-        </div>
+  return (
+    <motion.nav
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: EASE }}
+      className='fixed top-0 left-0 z-50 w-full border-b border-gray bg-dark-primary/95 backdrop-blur-sm'
+    >
+      <div className='mx-auto flex h-16 max-w-7xl items-center justify-between px-8 md:px-5'>
+        <span className='text-sm tracking-widest text-muted uppercase'>
+          thisisaliyev®
+        </span>
+
+        <ul className='flex items-center gap-8 md:hidden'>
+          {MENU.map((item) => (
+            <li key={item.id}>
+              <DesktopMenuItem
+                href={item.href}
+                isActive={visibility[item.id]}
+              >
+                {item.title}
+              </DesktopMenuItem>
+            </li>
+          ))}
+        </ul>
+
+        <a
+          href='https://github.com/thisisal1yev'
+          target='_blank'
+          rel='noopener noreferrer'
+          className='text-muted transition-colors duration-200 hover:text-white'
+        >
+          <Github size={20} />
+        </a>
       </div>
-    </nav>,
-    document.body,
+    </motion.nav>
   )
 }

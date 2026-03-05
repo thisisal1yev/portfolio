@@ -1,51 +1,61 @@
 import { ArrowUpRight } from 'lucide-react'
+import { motion } from 'motion/react'
 
-import { Button } from '@shared/components/ui/Button'
+import { cardReveal, staggerContainer } from '@shared/lib'
 import { PROJECTS } from '../projects.data'
 
 export function ProjectsList() {
   return (
-    <ul className='space-y-5 pt-2'>
-      {PROJECTS.map((project) => (
-        <li
+    <motion.ul
+      variants={staggerContainer}
+      initial='hidden'
+      whileInView='visible'
+      viewport={{ once: true, amount: 0.1 }}
+    >
+      {PROJECTS.map((project, index) => (
+        <motion.li
           key={project.title}
-          className='border-light-primary dark:border-gray hover:dark:border-purple group flex justify-between gap-x-5 pb-5 transition-colors duration-300 not-last:border-b-2 hover:border-purple-800 sm:flex-col-reverse sm:items-start sm:gap-y-5 sm:border-none sm:pb-0'
+          variants={cardReveal}
+          className='group grid grid-cols-[64px_1fr_260px] items-center gap-8 border-b border-gray py-8 sm:grid-cols-1 sm:gap-4'
         >
-          <div className='flex sm:flex-col sm:gap-2'>
-            <div className='flex w-auto flex-col items-start justify-between'>
-              <h4 className='text-2xl font-semibold whitespace-nowrap transition-transform duration-300 not-hover:translate-x-0 group-hover:translate-x-4'>
-                {project.title}
-              </h4>
+          <span className='text-5xl font-black text-muted/30 sm:text-3xl'>
+            {String(index + 1).padStart(2, '0')}
+          </span>
 
-              <Button
-                link={project.link}
-                label={'Link'}
-                className='sm:hidden'
-              >
-                <ArrowUpRight
-                  size={40}
-                  className='bg-dark-primary rounded-full p-2 text-white transition-transform duration-300 group-hover:translate-x-4 group-hover:rounded-e-none'
-                />
-              </Button>
-            </div>
-
-            <p className='mt-auto w-72 text-sm leading-6'>
+          <div className='space-y-2'>
+            <h4 className='text-2xl font-bold text-white transition-colors duration-300 group-hover:text-purple'>
+              {project.title}
+            </h4>
+            <p className='text-sm leading-relaxed text-muted'>
               {project.description}
             </p>
+            <a
+              href={project.link}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='inline-flex items-center gap-1 text-sm tracking-widest text-muted uppercase transition-colors duration-200 hover:text-white sm:flex'
+            >
+              GitHub <ArrowUpRight size={14} />
+            </a>
           </div>
 
-          <img
-            sizes='calc(calc((100vw - 40px) * 0.5833) * 0.3193)'
-            decoding='async'
-            loading='lazy'
-            width='270'
-            height='200'
-            src={project.imgURL}
-            alt={project.title}
-            className='h-52 w-72 rounded-lg object-cover transition-transform duration-300 group-hover:scale-95 sm:h-auto sm:w-auto'
-          />
-        </li>
+          <div className='relative overflow-hidden rounded-xl sm:hidden'>
+            <img
+              src={project.imgURL}
+              alt={project.title}
+              loading='lazy'
+              decoding='async'
+              className='aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-110'
+            />
+            <div className='absolute inset-0 flex items-center justify-center bg-dark-primary/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
+              <ArrowUpRight
+                size={32}
+                className='text-white'
+              />
+            </div>
+          </div>
+        </motion.li>
       ))}
-    </ul>
+    </motion.ul>
   )
 }

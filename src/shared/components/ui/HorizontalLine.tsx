@@ -1,19 +1,15 @@
-import { cn } from '@shared/lib'
-import type { PropsWithChildren } from 'react'
+import { motion } from 'motion/react'
 
-interface Props extends PropsWithChildren {
-  className?: string
-}
+import { lineGrow } from '@shared/lib'
 
-export function HorizontalLine({ className, children }: Props) {
+export function HorizontalLine() {
   return (
-    <span
-      className={cn(
-        'dark:bg-purple inline-block h-1.5 w-32 rounded-xl bg-purple-800',
-        className,
-      )}
-    >
-      {children}
-    </span>
+    <motion.div
+      variants={lineGrow}
+      initial='hidden'
+      whileInView='visible'
+      viewport={{ once: true }}
+      className='h-px w-full bg-gray origin-left'
+    />
   )
 }
