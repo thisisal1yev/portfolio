@@ -9,7 +9,7 @@ export function HeroSection() {
       initial='hidden'
       animate='visible'
       variants={fadeUp}
-      className='relative aspect-[16/10] overflow-hidden rounded-2xl bg-surface'
+      className='relative aspect-16/10 overflow-hidden rounded-2xl bg-surface'
     >
       <img
         src='https://framerusercontent.com/images/wQo7RdwFi65CZtFq2ttWIRPfRoA.jpg'
