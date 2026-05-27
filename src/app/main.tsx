@@ -1,17 +1,21 @@
 import { useState } from 'react'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { AnimatePresence, motion } from 'motion/react'
+import { AnimatePresence, motion, useAnimation } from 'motion/react'
 
 import { Home } from '@pages'
 import { IntroOverlay } from '@widgets'
 import { EASE } from '@shared/lib'
 import './index.css'
 
-const HOME_TRANSITION = { duration: 0.7, ease: EASE }
-
 function App() {
   const [introComplete, setIntroComplete] = useState(false)
+  const homeControls = useAnimation()
+
+  const handleIntroComplete = () => {
+    setIntroComplete(true)
+    homeControls.start({ opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } })
+  }
 
   return (
     <>
@@ -19,19 +23,16 @@ function App() {
         {!introComplete && (
           <IntroOverlay
             key='intro'
-            onComplete={() => setIntroComplete(true)}
+            onComplete={handleIntroComplete}
           />
         )}
       </AnimatePresence>
-      {introComplete && (
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={HOME_TRANSITION}
-        >
-          <Home />
-        </motion.div>
-      )}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={homeControls}
+      >
+        <Home />
+      </motion.div>
     </>
   )
 }
