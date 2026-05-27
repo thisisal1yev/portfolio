@@ -1,4 +1,4 @@
-import { Play } from 'lucide-react'
+import Play from 'lucide-react/dist/esm/icons/play'
 import { motion } from 'motion/react'
 
 import { cardReveal, staggerContainer } from '@shared/lib'

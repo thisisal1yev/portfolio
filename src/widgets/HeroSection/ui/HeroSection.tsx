@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Play } from 'lucide-react'
+import Play from 'lucide-react/dist/esm/icons/play'
 import { motion } from 'motion/react'
 
 import { useParallax } from '@shared/hooks'
