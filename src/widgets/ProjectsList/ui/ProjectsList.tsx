@@ -1,4 +1,4 @@
-import Play from 'lucide-react/dist/esm/icons/play'
+import { Play } from 'lucide-react'
 import { motion } from 'motion/react'
 
 import { cardReveal, staggerContainer } from '@shared/lib'
@@ -17,24 +17,24 @@ export function ProjectsList() {
         <motion.div
           key={project.title}
           variants={cardReveal}
-          className='group grid grid-cols-[1fr_1fr] gap-6 border-b border-text/10 py-8 first:pt-0 last:border-none last:pb-0 sm:grid-cols-1'
+          className='group border-text/10 grid grid-cols-[1fr_1fr] gap-6 border-b py-8 first:pt-0 last:border-none last:pb-0 sm:grid-cols-1'
         >
           {/* Left — info */}
           <div className='flex flex-col justify-between'>
-            <h4 className='text-2xl font-bold text-text'>{project.title}</h4>
+            <h4 className='text-text text-2xl font-bold'>{project.title}</h4>
 
             <div className='mt-auto space-y-4 pt-6'>
               <a
                 href={project.link}
                 target='_blank'
                 rel='noopener noreferrer'
-                className='inline-flex items-center gap-2 rounded-full bg-surface-dark px-4 py-2 text-sm text-white transition-opacity hover:opacity-80'
+                className='bg-surface-dark inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm text-white transition-opacity hover:opacity-80'
               >
                 <Play size={14} />
                 Кейс
               </a>
 
-              <p className='text-sm leading-relaxed text-text-muted'>
+              <p className='text-text-muted text-sm leading-relaxed'>
                 {project.description}
               </p>
             </div>

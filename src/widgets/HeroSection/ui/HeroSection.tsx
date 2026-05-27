@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import Play from 'lucide-react/dist/esm/icons/play'
+import { Play } from 'lucide-react'
 import { motion } from 'motion/react'
 
 import { useParallax } from '@shared/hooks'
@@ -18,7 +18,7 @@ export function HeroSection() {
       initial='hidden'
       animate='visible'
       variants={fadeUp}
-      className='relative aspect-16/10 overflow-hidden rounded-2xl bg-surface'
+      className='bg-surface relative aspect-16/10 overflow-hidden rounded-2xl'
     >
       <motion.img
         style={{ y }}
@@ -31,7 +31,7 @@ export function HeroSection() {
         href='https://github.com/thisisal1yev'
         target='_blank'
         rel='noopener noreferrer'
-        className='absolute top-5 left-5 flex items-center gap-2 rounded-full bg-surface-dark px-4 py-2 text-sm text-white transition-opacity hover:opacity-80'
+        className='bg-surface-dark absolute top-5 left-5 flex items-center gap-2 rounded-full px-4 py-2 text-sm text-white transition-opacity hover:opacity-80'
       >
         <Play size={14} />
         Портфолио
