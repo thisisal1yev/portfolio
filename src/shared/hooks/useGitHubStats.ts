@@ -19,15 +19,10 @@ export function useGitHubStats() {
   useEffect(() => {
     async function fetchStats() {
       try {
-        const userRes = await fetch(
-          `https://api.github.com/users/${GITHUB_USERNAME}`,
-        )
-        const user = await userRes.json()
-
-        const reposRes = await fetch(
-          `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100`,
-        )
-        const repos = await reposRes.json()
+        const [user, repos] = await Promise.all([
+          fetch(`https://api.github.com/users/${GITHUB_USERNAME}`).then(r => r.json()),
+          fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100`).then(r => r.json()),
+        ])
 
         const stars = Array.isArray(repos)
           ? repos.reduce(
