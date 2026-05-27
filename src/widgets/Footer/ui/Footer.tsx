@@ -14,7 +14,7 @@ export function Footer() {
       <span className='text-sm text-text-muted'>
         thisisaliyev® {new Date().getFullYear()}
       </span>
-      <span className='text-sm text-text-muted'>Фронтенд разработчик</span>
+      <span className='text-sm text-text-muted'>Software Developer</span>
     </motion.footer>
   )
 }
