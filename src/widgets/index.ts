@@ -1,6 +1,7 @@
 export { ExperienceSection } from './Experience'
 export { Footer } from './Footer'
 export { HeroSection } from './HeroSection'
+export { IntroOverlay } from './IntroOverlay'
 export { MarqueeBlock } from './MarqueeBlock'
 export { DesktopNavbar } from './Navbar'
 export { ProjectsList } from './ProjectsList'
