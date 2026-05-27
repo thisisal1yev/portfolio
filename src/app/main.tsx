@@ -8,11 +8,9 @@ import { IntroOverlay } from '@widgets'
 import { EASE } from '@shared/lib'
 import './index.css'
 
-const HOME_ENTER = {
-  initial: { opacity: 0, y: 60 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.7, ease: EASE, delay: 0.6 },
-}
+const HOME_INITIAL = { opacity: 0, y: 50 }
+const HOME_VISIBLE = { opacity: 1, y: 0 }
+const HOME_TRANSITION = { duration: 0.7, ease: EASE }
 
 function App() {
   const [introComplete, setIntroComplete] = useState(false)
@@ -28,9 +26,9 @@ function App() {
         )}
       </AnimatePresence>
       <motion.div
-        initial={HOME_ENTER.initial}
-        animate={HOME_ENTER.animate}
-        transition={HOME_ENTER.transition}
+        initial={HOME_INITIAL}
+        animate={introComplete ? HOME_VISIBLE : HOME_INITIAL}
+        transition={HOME_TRANSITION}
       >
         <Home />
       </motion.div>
