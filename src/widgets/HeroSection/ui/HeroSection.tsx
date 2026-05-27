@@ -1,17 +1,24 @@
+import { useRef } from 'react'
 import { Play } from 'lucide-react'
 import { motion } from 'motion/react'
 
+import { useParallax } from '@shared/hooks'
 import { fadeUp } from '@shared/lib'
 
 export function HeroSection() {
+  const ref = useRef<HTMLDivElement>(null)
+  const y = useParallax(ref, [0, 1], [0, -20])
+
   return (
     <motion.div
+      ref={ref}
       initial='hidden'
       animate='visible'
       variants={fadeUp}
       className='relative aspect-16/10 overflow-hidden rounded-2xl bg-surface'
     >
-      <img
+      <motion.img
+        style={{ y }}
         src='https://framerusercontent.com/images/wQo7RdwFi65CZtFq2ttWIRPfRoA.jpg'
         alt='Portfolio showcase'
         className='h-full w-full object-cover'
