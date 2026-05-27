@@ -5,6 +5,7 @@ import { useGitHubStats } from '@shared/hooks'
 import { EASE, fadeUp, staggerContainer } from '@shared/lib'
 import {
   ExperienceSection,
+  Footer,
   MarqueeBlock,
   ProjectsList,
 } from '@widgets'
@@ -321,6 +322,9 @@ export function Home() {
             />
           </motion.div>
         </motion.section>
+
+        {/* Footer */}
+        <Footer />
       </main>
 
       {/* Right — sticky sidebar with name */}
