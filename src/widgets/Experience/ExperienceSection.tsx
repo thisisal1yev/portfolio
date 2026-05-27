@@ -16,7 +16,7 @@ export function ExperienceSection() {
       className='rounded-2xl bg-surface p-8 sm:p-5'
     >
       <SectionLabel
-        index='3'
+        index='4'
         label='Опыт работы'
       />
 
