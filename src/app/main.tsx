@@ -8,8 +8,6 @@ import { IntroOverlay } from '@widgets'
 import { EASE } from '@shared/lib'
 import './index.css'
 
-const HOME_INITIAL = { opacity: 0, y: 50 }
-const HOME_VISIBLE = { opacity: 1, y: 0 }
 const HOME_TRANSITION = { duration: 0.7, ease: EASE }
 
 function App() {
@@ -25,13 +23,15 @@ function App() {
           />
         )}
       </AnimatePresence>
-      <motion.div
-        initial={HOME_INITIAL}
-        animate={introComplete ? HOME_VISIBLE : HOME_INITIAL}
-        transition={HOME_TRANSITION}
-      >
-        <Home />
-      </motion.div>
+      {introComplete && (
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={HOME_TRANSITION}
+        >
+          <Home />
+        </motion.div>
+      )}
     </>
   )
 }
