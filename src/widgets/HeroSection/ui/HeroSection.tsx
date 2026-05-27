@@ -5,9 +5,12 @@ import { motion } from 'motion/react'
 import { useParallax } from '@shared/hooks'
 import { fadeUp } from '@shared/lib'
 
+const PARALLAX_INPUT: [number, number] = [0, 1]
+const PARALLAX_OUTPUT: [number, number] = [0, -20]
+
 export function HeroSection() {
   const ref = useRef<HTMLDivElement>(null)
-  const y = useParallax(ref, [0, 1], [0, -20])
+  const y = useParallax(ref, PARALLAX_INPUT, PARALLAX_OUTPUT)
 
   return (
     <motion.div

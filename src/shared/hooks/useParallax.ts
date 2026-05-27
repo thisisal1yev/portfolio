@@ -1,6 +1,8 @@
 import type { RefObject } from 'react'
 import { type MotionValue, useScroll, useTransform } from 'motion/react'
 
+const SCROLL_OFFSET = ['start end', 'end start'] as const
+
 export function useParallax(
   ref: RefObject<HTMLElement | null>,
   inputRange: [number, number],
@@ -8,7 +10,7 @@ export function useParallax(
 ): MotionValue {
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start end', 'end start'],
+    offset: SCROLL_OFFSET,
   })
 
   return useTransform(scrollYProgress, inputRange, outputRange)
