@@ -1,5 +1,7 @@
+export { EducationSection } from './Education'
 export { ExperienceSection } from './Experience'
 export { Footer } from './Footer'
+export { HackathonsSection } from './Hackathons'
 export { HeroSection } from './HeroSection'
 export { IntroOverlay } from './IntroOverlay'
 export { MarqueeBlock } from './MarqueeBlock'
