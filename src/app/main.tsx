@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { AnimatePresence, motion, useAnimation } from 'motion/react'
@@ -12,10 +12,14 @@ function App() {
   const [introComplete, setIntroComplete] = useState(false)
   const homeControls = useAnimation()
 
-  const handleIntroComplete = () => {
+  const handleIntroComplete = useCallback(() => {
     setIntroComplete(true)
-    homeControls.start({ opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } })
-  }
+    homeControls.start({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: EASE },
+    })
+  }, [homeControls])
 
   return (
     <>

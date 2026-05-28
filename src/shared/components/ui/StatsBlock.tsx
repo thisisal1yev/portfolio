@@ -1,6 +1,8 @@
+import type { ReactNode } from 'react'
+
 interface Props {
   title: string
-  text: string
+  text: ReactNode
 }
 
 export function StatsBlock({ title, text }: Props) {

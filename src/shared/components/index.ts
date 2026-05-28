@@ -1,3 +1,4 @@
+export { AnimateNumber } from './ui/AnimateNumber'
 export { Button } from './ui/Button'
 export { Link } from './ui/Link'
 export { SkillBlock } from './ui/SkillBlock'

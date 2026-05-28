@@ -19,8 +19,7 @@ export function IntroOverlay({ onComplete }: Props) {
       document.body.style.overflow = ''
       clearTimeout(timer)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [onComplete])
 
   return (
     <motion.div

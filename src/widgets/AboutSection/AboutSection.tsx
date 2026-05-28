@@ -1,6 +1,6 @@
 import { motion } from 'motion/react'
 
-import { SectionLabel, StatsBlock } from '@shared/components'
+import { AnimateNumber, SectionLabel, StatsBlock } from '@shared/components'
 import { useGitHubStats } from '@shared/hooks'
 import { fadeUp, staggerContainer } from '@shared/lib'
 
@@ -45,9 +45,9 @@ export function AboutSection() {
             variants={fadeUp}
             className='text-text/80 text-lg leading-relaxed'
           >
-            После окончания курса по фронтенду в WebKing LC начал
-            самостоятельно углублять знания, изучая Vue, TypeScript, Node.js и
-            современные подходы к разработке.
+            После окончания курса по фронтенду в WebKing LC начал самостоятельно
+            углублять знания, изучая Vue, TypeScript, Node.js и современные
+            подходы к разработке.
           </motion.p>
         </div>
 
@@ -58,19 +58,19 @@ export function AboutSection() {
           <motion.div variants={fadeUp}>
             <StatsBlock
               title='Репозитории'
-              text={loading ? '—' : String(stats.repos)}
+              text={loading ? '—' : <AnimateNumber value={stats.repos} />}
             />
           </motion.div>
           <motion.div variants={fadeUp}>
             <StatsBlock
               title='Подписчики GitHub'
-              text={loading ? '—' : String(stats.followers)}
+              text={loading ? '—' : <AnimateNumber value={stats.followers} />}
             />
           </motion.div>
           <motion.div variants={fadeUp}>
             <StatsBlock
               title='Заработанные звёзды'
-              text={loading ? '—' : String(stats.stars)}
+              text={loading ? '—' : <AnimateNumber value={stats.stars} />}
             />
           </motion.div>
         </motion.div>

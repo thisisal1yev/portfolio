@@ -22,7 +22,7 @@ export function useActiveSection(ids: string[]): string {
     })
 
     return () => observers.forEach((o) => o.disconnect())
-  }, [ids])
+  }, [ids.join(',')])
 
   return activeId
 }
