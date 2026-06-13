@@ -22,6 +22,10 @@ const NUM_STATS = [
 
 // terminal-palette accents for the language bar
 const LANG_PALETTE = ['#34d399', '#22d3ee', '#a78bfa', '#fbbf24', '#f472b6']
+const OTHER_COLOR = '#52525b'
+
+const langColor = (name: string, i: number) =>
+  name === 'Others' ? OTHER_COLOR : LANG_PALETTE[i % LANG_PALETTE.length]
 
 export function StatsSection() {
   const { stats, loading } = useGitHubStats()
@@ -122,9 +126,7 @@ export function StatsSection() {
               <m.div
                 key={lang.name}
                 className='h-full shrink-0'
-                style={{
-                  backgroundColor: LANG_PALETTE[i % LANG_PALETTE.length],
-                }}
+                style={{ backgroundColor: langColor(lang.name, i) }}
                 initial={{ width: 0 }}
                 whileInView={{ width: `${lang.pct}%` }}
                 viewport={{ once: true }}
@@ -145,9 +147,7 @@ export function StatsSection() {
               >
                 <span
                   className='h-2.5 w-2.5 rounded-sm'
-                  style={{
-                    backgroundColor: LANG_PALETTE[i % LANG_PALETTE.length],
-                  }}
+                  style={{ backgroundColor: langColor(lang.name, i) }}
                 />
                 <span className='text-text-muted'>{lang.name}</span>
                 <span className='text-text-dim'>{lang.pct}%</span>

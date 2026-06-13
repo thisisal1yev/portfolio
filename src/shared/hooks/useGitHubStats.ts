@@ -59,7 +59,10 @@ export function useGitHubStats() {
 
         const list: Repo[] = Array.isArray(repos) ? repos : []
 
-        const stars = list.reduce((sum, r) => sum + (r.stargazers_count ?? 0), 0)
+        const stars = list.reduce(
+          (sum, r) => sum + (r.stargazers_count ?? 0),
+          0,
+        )
         const forks = list.reduce((sum, r) => sum + (r.forks_count ?? 0), 0)
 
         // language distribution across repos
@@ -70,14 +73,26 @@ export function useGitHubStats() {
           }
         }
         const langTotal = [...langCount.values()].reduce((a, b) => a + b, 0)
-        const languages = [...langCount.entries()]
+        const ranked = [...langCount.entries()]
           .map(([name, count]) => ({
             name,
             count,
             pct: langTotal ? Math.round((count / langTotal) * 100) : 0,
           }))
           .sort((a, b) => b.count - a.count)
-          .slice(0, 5)
+        const languages = ranked.slice(0, 5)
+        // fill the remaining bar with an "other" bucket for langs beyond top 5
+        if (ranked.length > 5) {
+          const topPct = languages.reduce((sum, l) => sum + l.pct, 0)
+          const otherCount = ranked
+            .slice(5)
+            .reduce((sum, l) => sum + l.count, 0)
+          languages.push({
+            name: 'Others',
+            count: otherCount,
+            pct: Math.max(0, 100 - topPct),
+          })
+        }
 
         // most recent push across all repos
         const lastPush = list.reduce<string | null>((latest, r) => {
@@ -86,7 +101,9 @@ export function useGitHubStats() {
         }, null)
 
         // account age in full years
-        const created = user.created_at ? new Date(user.created_at).getTime() : 0
+        const created = user.created_at
+          ? new Date(user.created_at).getTime()
+          : 0
         const years = created
           ? Math.max(0, Math.floor((Date.now() - created) / YEAR_MS))
           : 0
