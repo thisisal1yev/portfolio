@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# AI crawlers welcome (citations in ChatGPT/Perplexity/Gemini)
+# remove or Disallow per-bot if you change your mind
+
+Sitemap: https://aliyevs-portfolio.vercel.app/sitemap.xml
