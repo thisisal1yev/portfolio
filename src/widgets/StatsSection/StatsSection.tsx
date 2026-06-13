@@ -1,38 +1,59 @@
+import { type ReactNode } from 'react'
 import { m } from 'motion/react'
 
 import { AnimateNumber, Prompt } from '@shared/components'
 import { useGitHubStats } from '@shared/hooks'
-import { EASE, fadeUp, staggerContainer } from '@shared/lib'
+import { EASE, fadeUp, formatRelative, staggerContainer } from '@shared/lib'
 
-const STAT_LABELS = [
-  { key: 'repos' as const, cmd: 'public_repos', label: 'публичных репозиториев' },
-  { key: 'followers' as const, cmd: 'followers', label: 'подписчиков на GitHub' },
+const NUM_STATS = [
+  {
+    key: 'repos' as const,
+    cmd: 'public_repos',
+    label: 'публичных репозиториев',
+  },
+  {
+    key: 'followers' as const,
+    cmd: 'followers',
+    label: 'подписчиков на GitHub',
+  },
   { key: 'stars' as const, cmd: 'stars_earned', label: 'заработанных звёзд' },
+  { key: 'forks' as const, cmd: 'forks_earned', label: 'форков проектов' },
 ]
+
+// terminal-palette accents for the language bar
+const LANG_PALETTE = ['#34d399', '#22d3ee', '#a78bfa', '#fbbf24', '#f472b6']
 
 export function StatsSection() {
   const { stats, loading } = useGitHubStats()
 
   return (
-    <section id='stats' className='scroll-mt-24'>
-      <Prompt cmd='gh api /users/aliyev' comment='статистика' index='02' />
+    <section
+      id='stats'
+      className='scroll-mt-24'
+    >
+      <Prompt
+        cmd='gh api /users/aliyev'
+        comment='статистика'
+        index='02'
+      />
 
+      {/* numeric stats */}
       <m.div
         variants={staggerContainer}
         initial='hidden'
         whileInView='visible'
         viewport={{ once: true, amount: 0.2 }}
-        className='mt-5 grid grid-cols-3 gap-4 sm:grid-cols-1'
+        className='mt-5 grid grid-cols-4 gap-4 sm:grid-cols-1 md:grid-cols-2'
       >
-        {STAT_LABELS.map(({ key, cmd, label }) => (
+        {NUM_STATS.map(({ key, cmd, label }) => (
           <m.div
             key={key}
             variants={fadeUp}
-            className='panel bracket flex flex-col gap-6 p-7 sm:p-5'
+            className='panel bracket hover:border-acc-dim flex flex-col gap-6 p-7 sm:p-5'
           >
             <p className='text-acc text-xs'>{`> ${cmd}`}</p>
 
-            <span className='font-display text-[clamp(56px,5.5vw,88px)] font-bold leading-none tracking-tight text-text text-glow'>
+            <span className='font-display text-text text-glow text-[clamp(44px,4.5vw,72px)] leading-none font-bold tracking-tight'>
               {loading ? (
                 <span className='text-text-dim'>--</span>
               ) : (
@@ -41,9 +62,9 @@ export function StatsSection() {
             </span>
 
             {/* decorative load bar */}
-            <div className='h-px w-full bg-border'>
+            <div className='bg-border h-px w-full'>
               <m.div
-                className='h-px bg-acc'
+                className='bg-acc h-px'
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
@@ -52,10 +73,112 @@ export function StatsSection() {
               />
             </div>
 
-            <p className='text-sm text-text-muted'>{label}</p>
+            <p className='text-text-muted text-sm'>{label}</p>
           </m.div>
         ))}
       </m.div>
+
+      {/* meta: account age / top language / last push */}
+      <m.div
+        variants={staggerContainer}
+        initial='hidden'
+        whileInView='visible'
+        viewport={{ once: true, amount: 0.2 }}
+        className='mt-4 grid grid-cols-3 gap-4 sm:grid-cols-1'
+      >
+        <MetaCard
+          cmd='account_age'
+          label='лет на GitHub'
+        >
+          {loading ? '--' : <AnimateNumber value={stats.years} />}
+        </MetaCard>
+        <MetaCard
+          cmd='top_language'
+          label='основной язык'
+        >
+          {loading ? '--' : stats.topLanguage}
+        </MetaCard>
+        <MetaCard
+          cmd='last_push'
+          label='последняя активность'
+        >
+          {loading ? '--' : formatRelative(stats.lastPush)}
+        </MetaCard>
+      </m.div>
+
+      {/* language breakdown bar */}
+      {!loading && stats.languages.length > 0 && (
+        <m.div
+          variants={fadeUp}
+          initial='hidden'
+          whileInView='visible'
+          viewport={{ once: true, amount: 0.3 }}
+          className='panel bracket hover:border-acc-dim mt-4 flex flex-col gap-4 p-7 sm:p-5'
+        >
+          <p className='text-acc text-xs'>{'> languages --top 5'}</p>
+
+          <div className='bg-border flex h-2.5 w-full overflow-hidden rounded-full'>
+            {stats.languages.map((lang, i) => (
+              <m.div
+                key={lang.name}
+                className='h-full shrink-0'
+                style={{
+                  backgroundColor: LANG_PALETTE[i % LANG_PALETTE.length],
+                }}
+                initial={{ width: 0 }}
+                whileInView={{ width: `${lang.pct}%` }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.9,
+                  ease: EASE,
+                  delay: 0.1 + i * 0.08,
+                }}
+              />
+            ))}
+          </div>
+
+          <div className='flex flex-wrap gap-x-5 gap-y-2'>
+            {stats.languages.map((lang, i) => (
+              <span
+                key={lang.name}
+                className='flex items-center gap-2 text-sm'
+              >
+                <span
+                  className='h-2.5 w-2.5 rounded-sm'
+                  style={{
+                    backgroundColor: LANG_PALETTE[i % LANG_PALETTE.length],
+                  }}
+                />
+                <span className='text-text-muted'>{lang.name}</span>
+                <span className='text-text-dim'>{lang.pct}%</span>
+              </span>
+            ))}
+          </div>
+        </m.div>
+      )}
     </section>
+  )
+}
+
+function MetaCard({
+  cmd,
+  label,
+  children,
+}: {
+  cmd: string
+  label: string
+  children: ReactNode
+}) {
+  return (
+    <m.div
+      variants={fadeUp}
+      className='panel bracket hover:border-acc-dim flex flex-col gap-3 p-6 sm:p-5'
+    >
+      <p className='text-acc text-xs'>{`> ${cmd}`}</p>
+      <span className='font-display text-text text-glow text-3xl leading-none font-bold tracking-tight sm:text-2xl'>
+        {children}
+      </span>
+      <p className='text-text-muted text-sm'>{label}</p>
+    </m.div>
   )
 }

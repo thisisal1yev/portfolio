@@ -1,2 +1,2 @@
-export { cn } from './utils'
+export { cn, formatRelative } from './utils'
 export * from './animations'
