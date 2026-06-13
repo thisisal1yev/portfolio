@@ -79,6 +79,7 @@ export function HackathonCard({
                 <GithubMark size={14} />
               </a>
             )}
+
             {links.demo && (
               <a
                 href={links.demo}
