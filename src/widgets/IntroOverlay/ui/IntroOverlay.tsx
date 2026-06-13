@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useEffectEvent, useState } from 'react'
 import { m } from 'motion/react'
 
 import { EASE } from '@shared/lib'
@@ -34,6 +34,9 @@ export function IntroOverlay({ onComplete }: Props) {
     onComplete()
   }, [onComplete])
 
+  const onDone = useEffectEvent(() => onComplete())
+  const onSkip = useEffectEvent(() => finish())
+
   useEffect(() => {
     document.body.style.overflow = 'hidden'
 
@@ -43,12 +46,12 @@ export function IntroOverlay({ onComplete }: Props) {
       setVisible(i)
       if (i >= LINES.length) {
         clearInterval(id)
-        setTimeout(onComplete, 520)
+        setTimeout(onDone, 520)
       }
     }, STEP_MS)
 
     const skip = (e: KeyboardEvent) => {
-      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') finish()
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') onSkip()
     }
     window.addEventListener('keydown', skip)
 
@@ -57,7 +60,7 @@ export function IntroOverlay({ onComplete }: Props) {
       clearInterval(id)
       window.removeEventListener('keydown', skip)
     }
-  }, [onComplete, finish])
+  }, [])
 
   return (
     <m.div
@@ -79,7 +82,7 @@ export function IntroOverlay({ onComplete }: Props) {
         <div className='space-y-1.5 text-sm sm:text-xs'>
           {LINES.slice(0, visible).map((line, i) => (
             <m.div
-              key={i}
+              key={line.text}
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.25, ease: EASE }}

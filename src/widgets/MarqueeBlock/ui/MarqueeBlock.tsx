@@ -1,4 +1,11 @@
-import Marquee from 'react-fast-marquee'
+import MarqueeImport from 'react-fast-marquee'
+
+// react-fast-marquee is pure CJS (no `exports`/`module` field); under Vite 8
+// (Rolldown) the default import can resolve to the module namespace object
+// instead of the component. Unwrap `.default` when that happens.
+const Marquee = (
+  (MarqueeImport as { default?: typeof MarqueeImport }).default ?? MarqueeImport
+) as typeof MarqueeImport
 
 import { SKILLS } from '../skills.data'
 

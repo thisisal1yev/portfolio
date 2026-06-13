@@ -3,10 +3,12 @@ import { useEffect, useState } from 'react'
 export function useActiveSection(ids: string[]): string {
   const [activeId, setActiveId] = useState<string>(ids[0] ?? '')
 
+  const idsKey = ids.join(',')
+
   useEffect(() => {
     const observers: IntersectionObserver[] = []
 
-    ids.forEach((id) => {
+    idsKey.split(',').forEach((id) => {
       const el = document.getElementById(id)
       if (!el) return
 
@@ -22,7 +24,7 @@ export function useActiveSection(ids: string[]): string {
     })
 
     return () => observers.forEach((o) => o.disconnect())
-  }, [ids.join(',')])
+  }, [idsKey])
 
   return activeId
 }

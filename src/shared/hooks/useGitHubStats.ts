@@ -17,11 +17,17 @@ export function useGitHubStats() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    const controller = new AbortController()
+
     async function fetchStats() {
       try {
         const [user, repos] = await Promise.all([
-          fetch(`https://api.github.com/users/${GITHUB_USERNAME}`).then(r => r.json()),
-          fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100`).then(r => r.json()),
+          fetch(`https://api.github.com/users/${GITHUB_USERNAME}`, {
+            signal: controller.signal,
+          }).then(r => r.json()),
+          fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100`, {
+            signal: controller.signal,
+          }).then(r => r.json()),
         ])
 
         const stars = Array.isArray(repos)
@@ -38,13 +44,14 @@ export function useGitHubStats() {
           stars,
         })
       } catch {
-        // keep defaults on error
+        // keep defaults on error (incl. AbortError when unmounted mid-flight)
       } finally {
-        setLoading(false)
+        if (!controller.signal.aborted) setLoading(false)
       }
     }
 
     fetchStats()
+    return () => controller.abort()
   }, [])
 
   return { stats, loading }

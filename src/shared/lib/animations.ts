@@ -2,8 +2,6 @@ import type { Variants } from 'motion/react'
 
 /** snappy terminal ease */
 export const EASE = [0.22, 1, 0.36, 1] as const
-/** punchy, slightly mechanical */
-export const EASE_STEP = [0.65, 0, 0.35, 1] as const
 
 export const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
@@ -49,15 +47,5 @@ export const cardReveal: Variants = {
     y: 0,
     filter: 'blur(0px)',
     transition: { duration: 0.55, ease: EASE },
-  },
-}
-
-/** clip-path wipe reveal, left → right */
-export const wipeIn: Variants = {
-  hidden: { clipPath: 'inset(0 100% 0 0)', opacity: 0.4 },
-  visible: {
-    clipPath: 'inset(0 0% 0 0)',
-    opacity: 1,
-    transition: { duration: 0.7, ease: EASE_STEP },
   },
 }

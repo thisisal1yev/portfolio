@@ -1,14 +1,16 @@
-import { useEffect } from 'react'
+import { useEffect, type RefObject } from 'react'
 
 /**
- * Updates `--mx` / `--my` CSS vars on <html> to follow the pointer,
- * driving the phosphor cursor-glow. rAF-throttled, skipped for touch.
+ * Moves the phosphor cursor-glow element to follow the pointer by writing
+ * `transform` directly on it — a compositor-only property, so no other
+ * element's styles are invalidated per frame. rAF-throttled, skipped for touch.
  */
-export function useMouseGlow() {
+export function useMouseGlow(ref: RefObject<HTMLElement | null>) {
   useEffect(() => {
     if (window.matchMedia('(pointer: coarse)').matches) return
 
-    const root = document.documentElement
+    const el = ref.current
+    if (!el) return
     let frame = 0
     let x = 0
     let y = 0
@@ -18,8 +20,7 @@ export function useMouseGlow() {
       y = e.clientY
       if (frame) return
       frame = requestAnimationFrame(() => {
-        root.style.setProperty('--mx', `${x}px`)
-        root.style.setProperty('--my', `${y}px`)
+        el.style.transform = `translate3d(${x}px, ${y}px, 0)`
         frame = 0
       })
     }
@@ -29,5 +30,5 @@ export function useMouseGlow() {
       window.removeEventListener('pointermove', onMove)
       if (frame) cancelAnimationFrame(frame)
     }
-  }, [])
+  }, [ref])
 }

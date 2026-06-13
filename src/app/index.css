@@ -192,15 +192,21 @@
 
 .cursor-glow {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 680px;
+  height: 680px;
+  margin: -340px 0 0 -340px;
   z-index: 0;
   pointer-events: none;
   background: radial-gradient(
-    340px circle at var(--mx, 50%) var(--my, 30%),
+    340px circle at center,
     color-mix(in oklab, var(--color-acc) 12%, transparent),
     transparent 70%
   );
-  transition: background 0.15s ease-out;
+  transform: translate(50vw, 30vh);
+  transition: transform 0.15s ease-out;
+  will-change: transform;
 }
 
 /* blinking caret */
