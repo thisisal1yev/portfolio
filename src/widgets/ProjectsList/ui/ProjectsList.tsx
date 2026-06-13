@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 
 import { Tag } from '@shared/components'
 import { cardReveal, staggerContainer } from '@shared/lib'
@@ -38,7 +38,7 @@ function ProjectThumb({ src, slug }: { src: string; slug: string }) {
 
 export function ProjectsList() {
   return (
-    <motion.div
+    <m.div
       variants={staggerContainer}
       initial='hidden'
       whileInView='visible'
@@ -50,7 +50,7 @@ export function ProjectsList() {
 
       <div className='grid grid-cols-2 gap-4 md:grid-cols-1'>
         {PROJECTS.map((project, i) => (
-          <motion.a
+          <m.a
             key={project.slug}
             href={project.link}
             target='_blank'
@@ -84,9 +84,9 @@ export function ProjectsList() {
                 ))}
               </div>
             </div>
-          </motion.a>
+          </m.a>
         ))}
       </div>
-    </motion.div>
+    </m.div>
   )
 }

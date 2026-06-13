@@ -1,4 +1,4 @@
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 
 import { AnimateNumber, Prompt } from '@shared/components'
 import { useGitHubStats } from '@shared/hooks'
@@ -17,7 +17,7 @@ export function StatsSection() {
     <section id='stats' className='scroll-mt-24'>
       <Prompt cmd='gh api /users/aliyev' comment='статистика' index='02' />
 
-      <motion.div
+      <m.div
         variants={staggerContainer}
         initial='hidden'
         whileInView='visible'
@@ -25,7 +25,7 @@ export function StatsSection() {
         className='mt-5 grid grid-cols-3 gap-4 sm:grid-cols-1'
       >
         {STAT_LABELS.map(({ key, cmd, label }) => (
-          <motion.div
+          <m.div
             key={key}
             variants={fadeUp}
             className='panel bracket flex flex-col gap-6 p-7 sm:p-5'
@@ -42,7 +42,7 @@ export function StatsSection() {
 
             {/* decorative load bar */}
             <div className='h-px w-full bg-border'>
-              <motion.div
+              <m.div
                 className='h-px bg-acc'
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
@@ -53,9 +53,9 @@ export function StatsSection() {
             </div>
 
             <p className='text-sm text-text-muted'>{label}</p>
-          </motion.div>
+          </m.div>
         ))}
-      </motion.div>
+      </m.div>
     </section>
   )
 }

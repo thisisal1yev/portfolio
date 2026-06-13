@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import type { PropsWithChildren } from 'react'
-import { motion, useMotionValue, useSpring } from 'motion/react'
+import { m, useMotionValue, useSpring } from 'motion/react'
 
 import { cn } from '@shared/lib'
 
@@ -45,7 +45,7 @@ export function MagneticButton({
   }
 
   return (
-    <motion.a
+    <m.a
       ref={ref}
       href={href}
       download={download}
@@ -60,6 +60,6 @@ export function MagneticButton({
       )}
     >
       {children}
-    </motion.a>
+    </m.a>
   )
 }

@@ -1,4 +1,4 @@
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 
 import { Prompt } from '@shared/components'
 import { fadeUp, staggerContainer } from '@shared/lib'
@@ -14,7 +14,7 @@ const OBJECT = [
 
 export function AboutSection() {
   return (
-    <motion.section
+    <m.section
       id='about'
       variants={staggerContainer}
       initial='hidden'
@@ -31,34 +31,34 @@ export function AboutSection() {
       <div className='panel bracket mt-5 grid grid-cols-[1.2fr_1fr] gap-8 p-8 sm:p-5 md:grid-cols-1'>
         {/* prose */}
         <div className='space-y-5'>
-          <motion.p
+          <m.p
             variants={fadeUp}
             className='text-text text-lg leading-relaxed sm:text-base'
           >
             <span className='text-acc'>## whoami → </span>
             <span className='text-acc text-glow font-medium'>Ахмадилло</span>,
             Software Engineer (UZ).
-          </motion.p>
+          </m.p>
 
-          <motion.p
+          <m.p
             variants={fadeUp}
             className='text-text-muted leading-relaxed'
           >
             Пишу fullstack на TypeScript: React / Vue + Node.js / NestJS. Решаю
             задачи end-to-end.
-          </motion.p>
+          </m.p>
 
-          <motion.p
+          <m.p
             variants={fadeUp}
             className='text-text-dim text-sm leading-relaxed'
           >
             {'// hobby: '}хакатоны (финалист, призёр) + языки{' '}
             <span className='text-text-muted'>UZ · RU · EN · JA</span>
-          </motion.p>
+          </m.p>
         </div>
 
         {/* code object */}
-        <motion.div
+        <m.div
           variants={fadeUp}
           className='border-border bg-bg-deep/60 self-start rounded-sm border p-5 text-sm leading-relaxed'
         >
@@ -80,8 +80,8 @@ export function AboutSection() {
             </p>
           ))}
           <p className='text-text-muted'>{'}'}</p>
-        </motion.div>
+        </m.div>
       </div>
-    </motion.section>
+    </m.section>
   )
 }

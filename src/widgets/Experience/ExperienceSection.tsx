@@ -1,4 +1,4 @@
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 
 import { Prompt } from '@shared/components'
 import { staggerContainer } from '@shared/lib'
@@ -17,7 +17,7 @@ export function ExperienceSection() {
     <section id='experience' className='scroll-mt-24'>
       <Prompt cmd='git log --author=aliyev' comment='опыт работы' index='06' />
 
-      <motion.div
+      <m.div
         variants={staggerContainer}
         initial='hidden'
         whileInView='visible'
@@ -33,7 +33,7 @@ export function ExperienceSection() {
             isLast={i === experienceData.length - 1}
           />
         ))}
-      </motion.div>
+      </m.div>
     </section>
   )
 }

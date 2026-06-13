@@ -1,4 +1,4 @@
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 
 import { useClock } from '@shared/hooks'
 import { EASE } from '@shared/lib'
@@ -7,7 +7,7 @@ export function TopBar() {
   const time = useClock()
 
   return (
-    <motion.header
+    <m.header
       initial={{ y: -48, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
@@ -41,6 +41,6 @@ export function TopBar() {
           </span>
         </div>
       </div>
-    </motion.header>
+    </m.header>
   )
 }

@@ -1,4 +1,4 @@
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 import { ArrowUpRight } from 'lucide-react'
 
 import { bootLine } from '@shared/lib'
@@ -27,7 +27,7 @@ export function ExperienceCard({
   const hasLink = link && link !== '#'
 
   return (
-    <motion.div variants={bootLine} className='group flex gap-4'>
+    <m.div variants={bootLine} className='group flex gap-4'>
       {/* git graph column */}
       <div className='flex flex-col items-center pt-1'>
         <span
@@ -71,6 +71,6 @@ export function ExperienceCard({
           </a>
         )}
       </div>
-    </motion.div>
+    </m.div>
   )
 }

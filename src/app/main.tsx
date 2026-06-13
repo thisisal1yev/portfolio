@@ -1,7 +1,13 @@
 import { useCallback, useRef, useState } from 'react'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { AnimatePresence, motion, useAnimation } from 'motion/react'
+import {
+  AnimatePresence,
+  domAnimation,
+  LazyMotion,
+  m,
+  useAnimation,
+} from 'motion/react'
 
 import { Home } from '@pages'
 import { IntroOverlay } from '@widgets'
@@ -26,7 +32,7 @@ function App() {
   }, [homeControls])
 
   return (
-    <>
+    <LazyMotion features={domAnimation} strict>
       <CRTOverlay />
 
       <AnimatePresence>
@@ -35,10 +41,10 @@ function App() {
         )}
       </AnimatePresence>
 
-      <motion.div initial={{ opacity: 0, y: 24 }} animate={homeControls}>
+      <m.div initial={{ opacity: 0, y: 24 }} animate={homeControls}>
         <Home />
-      </motion.div>
-    </>
+      </m.div>
+    </LazyMotion>
   )
 }
 

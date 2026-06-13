@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 
 import { EASE } from '@shared/lib'
 import { Cursor } from '@shared/components'
@@ -60,7 +60,7 @@ export function IntroOverlay({ onComplete }: Props) {
   }, [onComplete, finish])
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 1 }}
       exit={{ opacity: 0, transition: { duration: 0.5, ease: EASE } }}
       onClick={finish}
@@ -78,7 +78,7 @@ export function IntroOverlay({ onComplete }: Props) {
 
         <div className='space-y-1.5 text-sm sm:text-xs'>
           {LINES.slice(0, visible).map((line, i) => (
-            <motion.div
+            <m.div
               key={i}
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
@@ -100,7 +100,7 @@ export function IntroOverlay({ onComplete }: Props) {
               {line.ok && (
                 <span className='text-acc text-glow shrink-0'>[ ok ]</span>
               )}
-            </motion.div>
+            </m.div>
           ))}
         </div>
 
@@ -108,6 +108,6 @@ export function IntroOverlay({ onComplete }: Props) {
           нажми <span className='text-text-muted'>Enter</span> чтобы пропустить
         </p>
       </div>
-    </motion.div>
+    </m.div>
   )
 }

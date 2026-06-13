@@ -1,4 +1,4 @@
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 
 import { Prompt, Tag } from '@shared/components'
 import { cardReveal, staggerContainer } from '@shared/lib'
@@ -25,7 +25,7 @@ export function ServicesSection() {
     <section id='services' className='scroll-mt-24'>
       <Prompt cmd='ls ~/services' comment='чем помогу' index='04' />
 
-      <motion.div
+      <m.div
         variants={staggerContainer}
         initial='hidden'
         whileInView='visible'
@@ -33,7 +33,7 @@ export function ServicesSection() {
         className='mt-5 grid grid-cols-2 gap-4 sm:grid-cols-1'
       >
         {SERVICES.map((s) => (
-          <motion.article
+          <m.article
             key={s.id}
             variants={cardReveal}
             className='panel bracket group flex flex-col p-8 transition-colors hover:border-acc-dim sm:p-5'
@@ -55,9 +55,9 @@ export function ServicesSection() {
                 <Tag key={t}>{t}</Tag>
               ))}
             </div>
-          </motion.article>
+          </m.article>
         ))}
-      </motion.div>
+      </m.div>
     </section>
   )
 }

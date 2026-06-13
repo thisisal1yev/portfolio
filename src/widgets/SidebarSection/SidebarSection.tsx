@@ -1,4 +1,4 @@
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 import { Download } from 'lucide-react'
 
 import { useActiveSection } from '@shared/hooks'
@@ -22,7 +22,7 @@ export function SidebarSection() {
   const activeId = useActiveSection(SECTION_IDS)
 
   return (
-    <motion.aside
+    <m.aside
       initial={{ opacity: 0, x: -16 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.7, ease: EASE, delay: 0.2 }}
@@ -85,6 +85,6 @@ export function SidebarSection() {
         <Download size={14} className='transition-transform group-hover:translate-y-0.5' />
         <span>wget resume.pdf</span>
       </a>
-    </motion.aside>
+    </m.aside>
   )
 }

@@ -1,4 +1,4 @@
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 import { ArrowUpRight, Trophy } from 'lucide-react'
 
 import { cardReveal } from '@shared/lib'
@@ -16,7 +16,7 @@ export function HackathonCard({ name, year, project, stack, result, link }: Prop
   const hasLink = link && link !== '#'
 
   return (
-    <motion.div
+    <m.div
       variants={cardReveal}
       className='panel bracket group flex flex-col gap-3 p-6 transition-colors hover:border-acc-dim'
     >
@@ -46,6 +46,6 @@ export function HackathonCard({ name, year, project, stack, result, link }: Prop
           </span>
         )}
       </div>
-    </motion.div>
+    </m.div>
   )
 }

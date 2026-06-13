@@ -1,4 +1,4 @@
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 
 import { Prompt } from '@shared/components'
 import { staggerContainer } from '@shared/lib'
@@ -10,7 +10,7 @@ export function EducationSection() {
     <section id='education' className='scroll-mt-24'>
       <Prompt cmd='cat education.log' comment='образование' index='05' />
 
-      <motion.div
+      <m.div
         variants={staggerContainer}
         initial='hidden'
         whileInView='visible'
@@ -20,7 +20,7 @@ export function EducationSection() {
         {educationData.map((item) => (
           <EducationCard key={item.id} {...item} />
         ))}
-      </motion.div>
+      </m.div>
     </section>
   )
 }

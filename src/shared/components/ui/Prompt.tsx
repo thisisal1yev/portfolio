@@ -1,4 +1,4 @@
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 
 import { cn } from '@shared/lib'
 import { fadeIn } from '@shared/lib'
@@ -17,7 +17,7 @@ interface Props {
 /** A shell prompt that types its command into view — used as a section header. */
 export function Prompt({ cmd, comment, index, className }: Props) {
   return (
-    <motion.div
+    <m.div
       variants={fadeIn}
       className={cn('flex flex-wrap items-baseline gap-x-3 gap-y-1', className)}
     >
@@ -38,6 +38,6 @@ export function Prompt({ cmd, comment, index, className }: Props) {
       {comment && (
         <span className='text-text-dim text-xs'>{`// ${comment}`}</span>
       )}
-    </motion.div>
+    </m.div>
   )
 }

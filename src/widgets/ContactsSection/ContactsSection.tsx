@@ -1,4 +1,4 @@
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 import { Send } from 'lucide-react'
 
 import { MagneticButton, Prompt } from '@shared/components'
@@ -52,7 +52,7 @@ export function ContactsSection() {
     <section id='contacts' className='scroll-mt-24'>
       <Prompt cmd='./contact.sh' comment='связаться со мной' index='09' />
 
-      <motion.div
+      <m.div
         variants={staggerContainer}
         initial='hidden'
         whileInView='visible'
@@ -60,7 +60,7 @@ export function ContactsSection() {
         className='panel bracket mt-5 grid grid-cols-2 overflow-hidden md:grid-cols-1'
       >
         {/* left — info */}
-        <motion.div variants={fadeUp} className='flex flex-col p-8 sm:p-5'>
+        <m.div variants={fadeUp} className='flex flex-col p-8 sm:p-5'>
           <p className='text-sm text-text-muted'>
             <span className='text-acc'>$</span> echo{' '}
             <span className='text-amber'>$GREETING</span>
@@ -113,15 +113,16 @@ export function ContactsSection() {
               <span>написать в Telegram</span>
             </MagneticButton>
           </div>
-        </motion.div>
+        </m.div>
 
         {/* right — map */}
-        <motion.div
+        <m.div
           variants={fadeUp}
           className='relative min-h-72 border-l border-border md:min-h-64 md:border-l-0 md:border-t'
         >
           <iframe
             src='https://yandex.ru/map-widget/v1/?ll=71.979372,40.876731&z=14&pt=71.979372,40.876731,pm2rdm'
+            sandbox='allow-scripts allow-popups'
             className='absolute inset-0 h-full w-full border-0 opacity-90'
             style={{
               filter:
@@ -134,8 +135,8 @@ export function ContactsSection() {
           <span className='pointer-events-none absolute left-3 top-3 rounded-sm border border-border bg-bg-deep/80 px-2 py-1 text-xs text-acc'>
             ◉ geo: 40.87, 71.97
           </span>
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
     </section>
   )
 }

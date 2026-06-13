@@ -1,4 +1,4 @@
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 
 import { cardReveal } from '@shared/lib'
 
@@ -11,7 +11,7 @@ interface Props {
 
 export function EducationCard({ institution, degree, period, description }: Props) {
   return (
-    <motion.div
+    <m.div
       variants={cardReveal}
       className='panel bracket group flex flex-col gap-2.5 p-6 transition-colors hover:border-acc-dim'
     >
@@ -28,6 +28,6 @@ export function EducationCard({ institution, degree, period, description }: Prop
         {degree}
       </p>
       <p className='text-sm leading-relaxed text-text-dim'>{description}</p>
-    </motion.div>
+    </m.div>
   )
 }

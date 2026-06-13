@@ -18,7 +18,10 @@ export function useTypewriter(
   const [output, setOutput] = useState('')
   const [done, setDone] = useState(false)
   const onDoneRef = useRef(onDone)
-  onDoneRef.current = onDone
+
+  useEffect(() => {
+    onDoneRef.current = onDone
+  }, [onDone])
 
   useEffect(() => {
     if (!start) return

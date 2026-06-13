@@ -1,4 +1,4 @@
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 
 import { Prompt, Tag } from '@shared/components'
 import { fadeUp, staggerContainer } from '@shared/lib'
@@ -10,7 +10,7 @@ export function SkillsSection() {
     <section id='stack' className='scroll-mt-24'>
       <Prompt cmd='cat stack.json' comment='технический стек' index='03' />
 
-      <motion.div
+      <m.div
         variants={staggerContainer}
         initial='hidden'
         whileInView='visible'
@@ -21,7 +21,7 @@ export function SkillsSection() {
 
         <div className='space-y-5 py-3'>
           {SKILL_GROUPS.map((group) => (
-            <motion.div key={group.key} variants={fadeUp} className='pl-4'>
+            <m.div key={group.key} variants={fadeUp} className='pl-4'>
               <p className='mb-2.5 text-sm'>
                 <span className='text-acc'>"{group.key}"</span>
                 <span className='text-text-muted'>: [</span>
@@ -32,14 +32,14 @@ export function SkillsSection() {
                 ))}
               </div>
               <span className='block pt-1 text-sm text-text-muted'>]</span>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 
         <p className='text-sm text-text-muted'>{'}'}</p>
 
         <MarqueeBlock />
-      </motion.div>
+      </m.div>
     </section>
   )
 }

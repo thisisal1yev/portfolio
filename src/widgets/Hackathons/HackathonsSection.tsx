@@ -1,4 +1,4 @@
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 
 import { Prompt } from '@shared/components'
 import { staggerContainer } from '@shared/lib'
@@ -10,7 +10,7 @@ export function HackathonsSection() {
     <section id='hackathons' className='scroll-mt-24'>
       <Prompt cmd='ls ~/hackathons' comment='хакатоны' index='07' />
 
-      <motion.div
+      <m.div
         variants={staggerContainer}
         initial='hidden'
         whileInView='visible'
@@ -20,7 +20,7 @@ export function HackathonsSection() {
         {hackathonsData.map((item) => (
           <HackathonCard key={item.id} {...item} />
         ))}
-      </motion.div>
+      </m.div>
     </section>
   )
 }
