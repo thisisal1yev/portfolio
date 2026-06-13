@@ -3,8 +3,15 @@ import { ProjectsList } from '../ProjectsList'
 
 export function ProjectsSection() {
   return (
-    <section id='projects' className='scroll-mt-24'>
-      <Prompt cmd='ls -la ~/projects' comment='избранные проекты' index='08' />
+    <section
+      id='projects'
+      className='scroll-mt-24'
+    >
+      <Prompt
+        cmd='ls -la ~/projects'
+        comment='избранные проекты'
+        index='08'
+      />
 
       <div className='mt-5'>
         <ProjectsList />

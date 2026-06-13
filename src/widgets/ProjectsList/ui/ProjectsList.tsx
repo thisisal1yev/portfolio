@@ -11,19 +11,19 @@ function ProjectThumb({ src, slug }: { src: string; slug: string }) {
 
   if (failed) {
     return (
-      <div className='relative grid aspect-video place-items-center overflow-hidden border-b border-border bg-bg-deep grid-bg'>
+      <div className='border-border bg-bg-deep grid-bg relative grid aspect-video place-items-center overflow-hidden border-b'>
         <div className='text-center'>
-          <p className='font-display text-3xl font-bold text-text-dim'>
+          <p className='font-display text-text-dim text-3xl font-bold'>
             {'</>'}
           </p>
-          <p className='mt-1 text-xs text-text-dim'>~/{slug}</p>
+          <p className='text-text-dim mt-1 text-xs'>~/{slug}</p>
         </div>
       </div>
     )
   }
 
   return (
-    <div className='aspect-video overflow-hidden border-b border-border'>
+    <div className='border-border aspect-video overflow-hidden border-b'>
       <img
         src={src}
         alt={slug}
@@ -44,7 +44,7 @@ export function ProjectsList() {
       whileInView='visible'
       viewport={{ once: true, amount: 0.1 }}
     >
-      <p className='mb-4 text-xs text-text-dim'>
+      <p className='text-text-dim mb-4 text-xs'>
         total {PROJECTS.length} — drwxr-xr-x aliyev staff
       </p>
 
@@ -56,13 +56,16 @@ export function ProjectsList() {
             target='_blank'
             rel='noopener noreferrer'
             variants={cardReveal}
-            className='panel bracket group flex flex-col overflow-hidden transition-colors hover:border-acc-dim'
+            className='panel bracket group hover:border-acc-dim flex flex-col transition-colors'
           >
-            <ProjectThumb src={project.imgURL} slug={project.slug} />
+            <ProjectThumb
+              src={project.imgURL}
+              slug={project.slug}
+            />
 
             <div className='flex flex-1 flex-col p-5'>
               <div className='flex items-start justify-between gap-3'>
-                <h4 className='font-display text-xl font-bold text-text transition-[text-shadow] group-hover:text-glow'>
+                <h4 className='font-display text-text group-hover:text-glow text-xl font-bold transition-[text-shadow]'>
                   <span className='text-text-dim text-sm tabular-nums'>
                     {String(i + 1).padStart(2, '0')}_
                   </span>{' '}
@@ -70,11 +73,11 @@ export function ProjectsList() {
                 </h4>
                 <ArrowUpRight
                   size={18}
-                  className='shrink-0 text-text-dim transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-acc'
+                  className='text-text-dim group-hover:text-acc shrink-0 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5'
                 />
               </div>
 
-              <p className='mt-2 text-sm leading-relaxed text-text-muted'>
+              <p className='text-text-muted mt-2 text-sm leading-relaxed'>
                 {project.description}
               </p>
 

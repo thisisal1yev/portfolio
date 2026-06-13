@@ -28,7 +28,7 @@ export function AboutSection() {
         index='01'
       />
 
-      <div className='panel bracket mt-5 grid grid-cols-[1.2fr_1fr] gap-8 p-8 sm:p-5 md:grid-cols-1'>
+      <div className='panel bracket hover:border-acc-dim mt-5 grid grid-cols-[1.2fr_1fr] gap-8 p-8 sm:p-5 md:grid-cols-1'>
         {/* prose */}
         <div className='space-y-5'>
           <m.p

@@ -44,7 +44,7 @@
   }
 
   html {
-    @apply bg-bg text-text font-mono scroll-smooth leading-normal font-normal antialiased;
+    @apply bg-bg text-text scroll-smooth font-mono leading-normal font-normal antialiased;
     color-scheme: dark;
   }
 
@@ -146,7 +146,8 @@
     text-shadow: 0 0 12px color-mix(in oklab, var(--color-acc) 60%, transparent);
   }
   .text-glow-amber {
-    text-shadow: 0 0 12px color-mix(in oklab, var(--color-amber) 55%, transparent);
+    text-shadow: 0 0 12px
+      color-mix(in oklab, var(--color-amber) 55%, transparent);
   }
   .grid-bg {
     background-image:

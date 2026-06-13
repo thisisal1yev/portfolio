@@ -22,8 +22,15 @@ const SERVICES = [
 
 export function ServicesSection() {
   return (
-    <section id='services' className='scroll-mt-24'>
-      <Prompt cmd='ls ~/services' comment='чем помогу' index='04' />
+    <section
+      id='services'
+      className='scroll-mt-24'
+    >
+      <Prompt
+        cmd='ls ~/services'
+        comment='чем помогу'
+        index='04'
+      />
 
       <m.div
         variants={staggerContainer}
@@ -36,7 +43,7 @@ export function ServicesSection() {
           <m.article
             key={s.id}
             variants={cardReveal}
-            className='panel bracket group flex flex-col p-8 transition-colors hover:border-acc-dim sm:p-5'
+            className='panel bracket group hover:border-acc-dim flex flex-col p-8 transition-colors sm:p-5'
           >
             <p className='text-sm'>
               <span className='text-acc'>$</span>{' '}
@@ -44,11 +51,11 @@ export function ServicesSection() {
               <span className='text-text-dim'> --service {s.id}</span>
             </p>
 
-            <h3 className='mt-6 whitespace-pre-line font-display text-2xl font-bold leading-tight text-text transition-[text-shadow] group-hover:text-glow'>
+            <h3 className='font-display text-text group-hover:text-glow mt-6 text-2xl leading-tight font-bold whitespace-pre-line transition-[text-shadow]'>
               {s.title}
             </h3>
 
-            <p className='mt-4 leading-relaxed text-text-muted'>{s.desc}</p>
+            <p className='text-text-muted mt-4 leading-relaxed'>{s.desc}</p>
 
             <div className='mt-6 flex flex-wrap gap-2'>
               {s.tags.map((t) => (
