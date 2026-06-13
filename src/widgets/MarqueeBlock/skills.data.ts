@@ -126,4 +126,13 @@ export const SKILLS = [
     imgURL: '/images/logos/html.svg',
     skillAlias: 'html',
   },
+  { skillName: 'Bun', imgURL: '', skillAlias: 'bun' },
+  { skillName: 'REST API', imgURL: '', skillAlias: 'rest-api' },
+  { skillName: 'Docker', imgURL: '', skillAlias: 'docker' },
+  { skillName: 'GitHub Actions', imgURL: '', skillAlias: 'github-actions' },
+  { skillName: 'CI/CD', imgURL: '', skillAlias: 'ci-cd' },
+  { skillName: 'nginx', imgURL: '', skillAlias: 'nginx' },
+  { skillName: 'Git', imgURL: '', skillAlias: 'git' },
+  { skillName: 'ESLint', imgURL: '', skillAlias: 'eslint' },
+  { skillName: 'Figma', imgURL: '', skillAlias: 'figma' },
 ]

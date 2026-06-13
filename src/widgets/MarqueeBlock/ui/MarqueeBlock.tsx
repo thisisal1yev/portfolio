@@ -6,17 +6,23 @@ const HALF = Math.ceil(SKILLS.length / 2)
 const ROW_A = SKILLS.slice(0, HALF)
 const ROW_B = SKILLS.slice(HALF)
 
-function Chip({ name, img }: { name: string; img: string }) {
+function Chip({ name, img }: { name: string; img?: string }) {
   return (
     <div className='group mx-1.5 flex items-center gap-2.5 rounded-sm border border-border bg-surface/60 px-3.5 py-2 transition-colors hover:border-acc-dim hover:bg-acc/5'>
-      <img
-        width={20}
-        height={20}
-        src={img}
-        alt={name}
-        loading='lazy'
-        className='h-5 w-5 opacity-60 grayscale transition group-hover:opacity-100 group-hover:grayscale-0'
-      />
+      {img ? (
+        <img
+          width={20}
+          height={20}
+          src={img}
+          alt={name}
+          loading='lazy'
+          className='h-5 w-5 opacity-60 grayscale transition group-hover:opacity-100 group-hover:grayscale-0'
+        />
+      ) : (
+        <span className='text-acc-dim transition-colors group-hover:text-acc'>
+          ▹
+        </span>
+      )}
       <span className='text-sm text-text-muted transition-colors group-hover:text-text'>
         {name}
       </span>
