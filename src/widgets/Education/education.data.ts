@@ -11,7 +11,7 @@ export const educationData = [
     id: 2,
     institution: 'Self-study',
     degree: 'Веб-разработка',
-    period: '2024 — настоящее время',
+    period: '2023 — настоящее время',
     description:
       'GitHub, открытая документация, pet-проекты. React, Vue, Node.js, NestJS, Bun, TypeScript.',
   },
