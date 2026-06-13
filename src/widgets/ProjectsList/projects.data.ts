@@ -22,7 +22,7 @@ export const PROJECTS = [
     slug: 'planner-ai',
     link: 'https://planner-ai.uz',
     description:
-      'Маркетплейс для организации мероприятий в Узбекистане — подбор и бронирование услуг для ивентов. Мой стартап.',
+      'Маркетплейс для организации мероприятий в Узбекистане — подбор и бронирование услуг для ивентов.',
     imgURL: '/images/projects/planner-ai.png',
     stack: ['React', 'Nest.js', 'TypeScript', 'Zustand', 'Prisma', 'PostgreSQL'],
   },
