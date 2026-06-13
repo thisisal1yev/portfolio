@@ -1,49 +1,112 @@
-import { useEffect } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { motion } from 'motion/react'
 
 import { EASE } from '@shared/lib'
+import { Cursor } from '@shared/components'
 
 interface Props {
   onComplete: () => void
 }
 
-const LEFT_EXIT = { x: '-110vw', transition: { duration: 0.7, ease: EASE } }
-const RIGHT_EXIT = { x: '110vw', transition: { duration: 0.7, ease: EASE } }
-const ENTER_TRANSITION = { duration: 0.4, ease: EASE }
+interface BootLine {
+  text: string
+  ok?: boolean
+  accent?: boolean
+}
+
+const LINES: BootLine[] = [
+  { text: 'boot: thisisaliyev.dev — kernel v2.0' },
+  { text: 'mount  /about /stack /projects /experience', ok: true },
+  { text: 'fetch  github.api/stats', ok: true },
+  { text: 'init   motion + crt-shader', ok: true },
+  { text: '$ whoami', accent: true },
+  { text: '> axmadillo_aliyev :: software_engineer' },
+  { text: '$ ./start --portfolio' },
+]
+
+const STEP_MS = 230
 
 export function IntroOverlay({ onComplete }: Props) {
+  const [visible, setVisible] = useState(0)
+
+  const finish = useCallback(() => {
+    setVisible(LINES.length)
+    onComplete()
+  }, [onComplete])
+
   useEffect(() => {
     document.body.style.overflow = 'hidden'
-    const timer = setTimeout(onComplete, 500)
+
+    let i = 0
+    const id = setInterval(() => {
+      i += 1
+      setVisible(i)
+      if (i >= LINES.length) {
+        clearInterval(id)
+        setTimeout(onComplete, 520)
+      }
+    }, STEP_MS)
+
+    const skip = (e: KeyboardEvent) => {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') finish()
+    }
+    window.addEventListener('keydown', skip)
+
     return () => {
       document.body.style.overflow = ''
-      clearTimeout(timer)
+      clearInterval(id)
+      window.removeEventListener('keydown', skip)
     }
-  }, [onComplete])
+  }, [onComplete, finish])
 
   return (
     <motion.div
       initial={{ opacity: 1 }}
-      exit={{ opacity: 0, transition: { delay: 0.75, duration: 0 } }}
-      className='fixed inset-0 z-50 flex items-center justify-center bg-bg'
+      exit={{ opacity: 0, transition: { duration: 0.5, ease: EASE } }}
+      onClick={finish}
+      className='fixed inset-0 z-50 flex items-center justify-center bg-bg-deep px-6'
     >
-      <div className='flex items-center'>
-        <motion.span
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, transition: ENTER_TRANSITION }}
-          exit={LEFT_EXIT}
-          className='font-black italic uppercase leading-none tracking-[-0.05em] text-text text-[clamp(60px,10vw,140px)]'
-        >
-          THISIS
-        </motion.span>
-        <motion.span
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, transition: ENTER_TRANSITION }}
-          exit={RIGHT_EXIT}
-          className='font-black italic uppercase leading-none tracking-[-0.05em] text-text text-[clamp(60px,10vw,140px)]'
-        >
-          ALIYEV
-        </motion.span>
+      <div className='cursor-glow' aria-hidden />
+
+      <div className='relative w-full max-w-xl'>
+        <div className='mb-6 flex items-center gap-2'>
+          <span className='h-3 w-3 rounded-full bg-dot-red' />
+          <span className='h-3 w-3 rounded-full bg-dot-amber' />
+          <span className='h-3 w-3 rounded-full bg-dot-green' />
+          <span className='text-text-dim ml-3 text-xs'>— init.sh</span>
+        </div>
+
+        <div className='space-y-1.5 text-sm sm:text-xs'>
+          {LINES.slice(0, visible).map((line, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.25, ease: EASE }}
+              className='flex items-center justify-between gap-4'
+            >
+              <span
+                className={
+                  line.accent
+                    ? 'text-acc text-glow'
+                    : line.text.startsWith('>')
+                      ? 'text-text'
+                      : 'text-text-muted'
+                }
+              >
+                {line.text}
+                {i === visible - 1 && <Cursor small />}
+              </span>
+              {line.ok && (
+                <span className='text-acc text-glow shrink-0'>[ ok ]</span>
+              )}
+            </motion.div>
+          ))}
+        </div>
+
+        <p className='text-text-dim mt-8 text-xs'>
+          нажми <span className='text-text-muted'>Enter</span> чтобы пропустить
+        </p>
       </div>
     </motion.div>
   )

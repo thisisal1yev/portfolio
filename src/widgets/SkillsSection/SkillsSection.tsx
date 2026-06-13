@@ -1,47 +1,45 @@
 import { motion } from 'motion/react'
 
-import { SectionLabel } from '@shared/components'
+import { Prompt, Tag } from '@shared/components'
 import { fadeUp, staggerContainer } from '@shared/lib'
 import { MarqueeBlock } from '../MarqueeBlock'
+import { SKILL_GROUPS } from '../MarqueeBlock/skills.data'
 
 export function SkillsSection() {
   return (
-    <motion.section
-      id='skills'
-      variants={staggerContainer}
-      initial='hidden'
-      whileInView='visible'
-      viewport={{ once: true, amount: 0.15 }}
-      className='bg-surface rounded-2xl p-8 sm:p-5'
-    >
-      <SectionLabel
-        index='2'
-        label='Навыки'
-      />
+    <section id='stack' className='scroll-mt-24'>
+      <Prompt cmd='cat stack.json' comment='технический стек' index='03' />
 
-      <div className='mt-4 flex items-center justify-between gap-16 md:flex-col md:items-start'>
-        <div className='space-y-4'>
-          <motion.h2
-            variants={fadeUp}
-            className='text-text text-5xl leading-tight font-bold md:text-4xl'
-          >
-            Технические
-            <br />
-            навыки
-          </motion.h2>
+      <motion.div
+        variants={staggerContainer}
+        initial='hidden'
+        whileInView='visible'
+        viewport={{ once: true, amount: 0.15 }}
+        className='panel bracket mt-5 overflow-hidden p-8 sm:p-5'
+      >
+        <p className='text-sm text-text-muted'>{'{'}</p>
 
-          <motion.p
-            variants={fadeUp}
-            className='text-text-muted text-lg'
-          >
-            В арсенале все современные
-            <br />
-            стеки технологий
-          </motion.p>
+        <div className='space-y-5 py-3'>
+          {SKILL_GROUPS.map((group) => (
+            <motion.div key={group.key} variants={fadeUp} className='pl-4'>
+              <p className='mb-2.5 text-sm'>
+                <span className='text-acc'>"{group.key}"</span>
+                <span className='text-text-muted'>: [</span>
+              </p>
+              <div className='flex flex-wrap gap-2 pl-4'>
+                {group.items.map((item) => (
+                  <Tag key={item}>{item}</Tag>
+                ))}
+              </div>
+              <span className='block pt-1 text-sm text-text-muted'>]</span>
+            </motion.div>
+          ))}
         </div>
 
+        <p className='text-sm text-text-muted'>{'}'}</p>
+
         <MarqueeBlock />
-      </div>
-    </motion.section>
+      </motion.div>
+    </section>
   )
 }

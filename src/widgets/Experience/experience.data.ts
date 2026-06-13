@@ -1,5 +1,15 @@
 export const experienceData = [
   {
+    id: 2,
+    company: 'Planner AI',
+    position: 'Co-founder · CTO',
+    duration: 'Март 2026 — настоящее время',
+    description:
+      'Со-основатель и CTO стартапа planner-ai.uz — маркетплейс для организации мероприятий. Отвечаю за архитектуру, разработку продукта и техническую команду.',
+    image: '',
+    link: 'https://planner-ai.uz',
+  },
+  {
     id: 1,
     company: 'Kwork',
     position: 'Frontend разработчик',
@@ -8,35 +18,5 @@ export const experienceData = [
       'Активно участвовал в создании адаптивных и интуитивно понятных интерфейсов на фриланс-платформе. Разрабатывал современные решения в соответствии с требованиями клиентов.',
     image: '/images/xp/kwork.png',
     link: 'https://kwork.ru/user/thisisaliyev',
-  },
-  {
-    id: 2,
-    company: 'BuildUp',
-    position: 'Frontend разработчик',
-    duration: 'Декабрь 2023 — Август 2024',
-    description:
-      'Участвовал в разработке и поддержке веб-приложений для платформы BuildUp. Работал над улучшением пользовательского интерфейса и оптимизацией производительности.',
-    image: '/images/xp/buildup.png',
-    link: '#',
-  },
-  {
-    id: 3,
-    company: 'OnlineShop',
-    position: 'Frontend разработчик',
-    duration: 'Апрель 2023 — Ноябрь 2023',
-    description:
-      'Разрабатывал и поддерживал веб-приложения для онлайн-магазина. Работал над созданием адаптивных интерфейсов и улучшением пользовательского опыта.',
-    image: '/images/xp/onlineshop.png',
-    link: '#',
-  },
-  {
-    id: 4,
-    company: 'APIhive',
-    position: 'Бэкенд разработчик',
-    duration: 'Март 2024 — Сентябрь 2024',
-    description:
-      'Участвовал в разработке и поддержке API для различных приложений. Работал над оптимизацией производительности и обеспечением безопасности данных.',
-    image: '/images/xp/apihive.png',
-    link: '#',
   },
 ]

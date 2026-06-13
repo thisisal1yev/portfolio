@@ -1,33 +1,39 @@
 import { motion } from 'motion/react'
 
-import { SectionLabel } from '@shared/components'
+import { Prompt } from '@shared/components'
 import { staggerContainer } from '@shared/lib'
 import { experienceData } from './experience.data'
 import { ExperienceCard } from './ui/ExperienceCard'
 
+/** deterministic 7-char "commit hash" from a string */
+function shortHash(seed: string) {
+  let h = 0
+  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0
+  return h.toString(16).padStart(7, '0').slice(0, 7)
+}
+
 export function ExperienceSection() {
   return (
-    <motion.section
-      id='experience'
-      variants={staggerContainer}
-      initial='hidden'
-      whileInView='visible'
-      viewport={{ once: true, amount: 0.1 }}
-      className='rounded-2xl bg-surface p-8 sm:p-5'
-    >
-      <SectionLabel
-        index='4'
-        label='Опыт работы'
-      />
+    <section id='experience' className='scroll-mt-24'>
+      <Prompt cmd='git log --author=aliyev' comment='опыт работы' index='06' />
 
-      <div className='mt-8 grid grid-cols-2 gap-5 md:grid-cols-1'>
-        {experienceData.map((item) => (
+      <motion.div
+        variants={staggerContainer}
+        initial='hidden'
+        whileInView='visible'
+        viewport={{ once: true, amount: 0.1 }}
+        className='panel mt-5 p-8 sm:p-5'
+      >
+        {experienceData.map((item, i) => (
           <ExperienceCard
             key={item.id}
             {...item}
+            hash={shortHash(item.company + item.duration)}
+            isFirst={i === 0}
+            isLast={i === experienceData.length - 1}
           />
         ))}
-      </div>
-    </motion.section>
+      </motion.div>
+    </section>
   )
 }

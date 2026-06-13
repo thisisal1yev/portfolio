@@ -13,12 +13,21 @@ export function EducationCard({ institution, degree, period, description }: Prop
   return (
     <motion.div
       variants={cardReveal}
-      className='flex flex-col gap-3 rounded-xl bg-bg p-6'
+      className='panel bracket group flex flex-col gap-2.5 p-6 transition-colors hover:border-acc-dim'
     >
-      <p className='text-sm tracking-wide text-text-muted'>{period}</p>
-      <h3 className='text-2xl font-bold text-text'>{institution}</h3>
-      <p className='text-base text-text-muted'>{degree}</p>
-      <p className='text-sm leading-relaxed text-text-muted'>{description}</p>
+      <p className='text-xs text-acc'>
+        <span className='text-text-dim'>[</span>
+        {period}
+        <span className='text-text-dim'>]</span>
+      </p>
+      <h3 className='font-display text-xl font-bold leading-snug text-text'>
+        {institution}
+      </h3>
+      <p className='text-sm text-text-muted'>
+        {'> '}
+        {degree}
+      </p>
+      <p className='text-sm leading-relaxed text-text-dim'>{description}</p>
     </motion.div>
   )
 }

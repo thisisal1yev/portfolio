@@ -1,121 +1,141 @@
 import { motion } from 'motion/react'
-
-import { fadeUp, staggerContainer } from '@shared/lib'
 import { Send } from 'lucide-react'
 
+import { MagneticButton, Prompt } from '@shared/components'
+import { fadeUp, staggerContainer } from '@shared/lib'
+
 const SOCIALS = [
-  { href: 'https://www.linkedin.com/in/thisisaliyev/', label: 'LinkedIn' },
-  { href: 'https://t.me/thisisaliyev', label: 'Telegram' },
-  { href: 'https://www.instagram.com/thisisaliyev.a', label: 'Instagram' },
-  { href: 'https://github.com/thisisal1yev', label: 'GitHub' },
+  { href: 'https://www.linkedin.com/in/thisisaliyev/', label: 'linkedin' },
+  { href: 'https://t.me/thisisaliyev', label: 'telegram' },
+  { href: 'https://www.instagram.com/thisisaliyev.a', label: 'instagram' },
+  { href: 'https://github.com/thisisal1yev', label: 'github' },
+  { href: 'https://gitlab.com/thisisaliyev', label: 'gitlab' },
+]
+
+const ENV = [
+  {
+    k: 'ADDR',
+    node: (
+      <a
+        href='https://yandex.uz/maps/-/CPHUqMlB'
+        target='_blank'
+        rel='noopener noreferrer'
+        className='text-text-muted underline-offset-4 hover:text-acc hover:underline'
+      >
+        "Андижанская обл., Чинобод, UZ"
+      </a>
+    ),
+  },
+  {
+    k: 'PHONE',
+    node: (
+      <a href='tel:+998880112511' className='text-text-muted hover:text-acc'>
+        "+998 (88) 011 25 11"
+      </a>
+    ),
+  },
+  {
+    k: 'EMAIL',
+    node: (
+      <a
+        href='mailto:aaalievvv1@gmail.com'
+        className='text-text-muted hover:text-acc'
+      >
+        "aaalievvv1@gmail.com"
+      </a>
+    ),
+  },
 ]
 
 export function ContactsSection() {
   return (
-    <motion.section
-      id='contacts'
-      variants={staggerContainer}
-      initial='hidden'
-      whileInView='visible'
-      viewport={{ once: true, amount: 0.1 }}
-      className='bg-surface grid grid-cols-2 gap-5 rounded-2xl p-8 sm:grid-cols-1 sm:p-5'
-    >
-      {/* Left — info */}
+    <section id='contacts' className='scroll-mt-24'>
+      <Prompt cmd='./contact.sh' comment='связаться со мной' index='09' />
+
       <motion.div
-        variants={fadeUp}
-        className='flex flex-col justify-between'
+        variants={staggerContainer}
+        initial='hidden'
+        whileInView='visible'
+        viewport={{ once: true, amount: 0.1 }}
+        className='panel bracket mt-5 grid grid-cols-2 overflow-hidden md:grid-cols-1'
       >
-        <h2 className='text-text text-4xl font-bold md:text-3xl'>Контакты</h2>
+        {/* left — info */}
+        <motion.div variants={fadeUp} className='flex flex-col p-8 sm:p-5'>
+          <p className='text-sm text-text-muted'>
+            <span className='text-acc'>$</span> echo{' '}
+            <span className='text-amber'>$GREETING</span>
+          </p>
+          <h2 className='mt-3 font-display text-3xl font-bold leading-tight text-text text-glow md:text-2xl'>
+            Давай построим
+            <br />
+            что-нибудь вместе
+          </h2>
 
-        <div className='mt-auto space-y-6 pt-10'>
-          <div className='grid grid-cols-[100px_1fr] gap-x-4'>
-            <span className='text-text-muted'>адрес</span>
-            <div>
-              <p className='text-text'>
-                Рес. Узбекистан,
-                <br />
-                Андижанская обл., Чинобод
-              </p>
+          <dl className='mt-8 space-y-2.5 text-sm'>
+            {ENV.map(({ k, node }) => (
+              <div key={k} className='flex flex-wrap gap-x-2'>
+                <dt className='text-acc'>
+                  <span className='text-magenta'>export</span> {k}
+                </dt>
+                <dd className='text-text-dim'>=</dd>
+                <dd>{node}</dd>
+              </div>
+            ))}
+          </dl>
 
-              <a
-                href='https://yandex.uz/maps/-/CPHUqMlB'
-                target='_blank'
-                rel='noopener noreferrer'
-                className='text-text underline underline-offset-4 hover:no-underline'
-              >
-                на карте
-              </a>
-            </div>
-          </div>
-
-          <div className='grid grid-cols-[100px_1fr] gap-x-4 gap-y-1'>
-            <span className='text-text-muted'>тел.</span>
-            <a
-              href='tel:+998880112511'
-              className='text-text hover:underline'
-            >
-              +998 (88) 011 25 11
-            </a>
-
-            <span className='text-text-muted'>email</span>
-            <a
-              href='mailto:aaalievvv1@gmail.com'
-              className='text-text hover:underline'
-            >
-              aaalievvv1@gmail.com
-            </a>
-          </div>
-
-          <div className='grid grid-cols-[100px_1fr] gap-x-4'>
-            <span className='text-text-muted'>соцсети</span>
-            <div className='space-y-0.5'>
+          <div className='mt-6'>
+            <p className='mb-2 text-sm text-acc'>SOCIALS=(</p>
+            <div className='flex flex-wrap gap-2 pl-4'>
               {SOCIALS.map(({ href, label }) => (
                 <a
                   key={href}
                   href={href}
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='text-text block underline-offset-4 hover:underline'
+                  className='tag font-medium'
                 >
+                  <span className='text-acc-dim'>[</span>
                   {label}
+                  <span className='text-acc-dim'>]</span>
                 </a>
               ))}
             </div>
-          </div>
-        </div>
-
-        <div className='mt-8 flex h-10 items-center gap-0.5'>
-          <div className='bg-surface-dark flex h-10 w-10 items-center rounded-full'>
-            <Send
-              className='mx-auto text-white'
-              size={18}
-            />
+            <p className='mt-2 text-sm text-acc'>)</p>
           </div>
 
-          <a
-            href='https://t.me/thisisaliyev'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='bg-surface-dark inline-flex h-10 flex-1 items-center justify-center gap-3 overflow-hidden rounded-full px-5 py-2 text-white transition-opacity hover:opacity-80'
-          >
-            <span className='pr-6 text-sm'>Написать мне</span>
-          </a>
-        </div>
-      </motion.div>
+          <div className='mt-auto pt-8'>
+            <MagneticButton
+              href='https://t.me/thisisaliyev'
+              external
+              className='border-acc-dim bg-acc/10 text-acc hover:bg-acc/20'
+            >
+              <Send size={15} />
+              <span>написать в Telegram</span>
+            </MagneticButton>
+          </div>
+        </motion.div>
 
-      {/* Right — map */}
-      <motion.div
-        variants={fadeUp}
-        className='overflow-hidden rounded-xl'
-      >
-        <iframe
-          src='https://yandex.ru/map-widget/v1/?ll=71.979372,40.876731&z=14&pt=71.979372,40.876731,pm2rdm'
-          className='h-full min-h-100 w-full border-0'
-          allowFullScreen
-          loading='lazy'
-          title='Карта'
-        />
+        {/* right — map */}
+        <motion.div
+          variants={fadeUp}
+          className='relative min-h-72 border-l border-border md:min-h-64 md:border-l-0 md:border-t'
+        >
+          <iframe
+            src='https://yandex.ru/map-widget/v1/?ll=71.979372,40.876731&z=14&pt=71.979372,40.876731,pm2rdm'
+            className='absolute inset-0 h-full w-full border-0 opacity-90'
+            style={{
+              filter:
+                'invert(0.92) hue-rotate(180deg) brightness(0.85) contrast(0.95) sepia(0.18)',
+            }}
+            allowFullScreen
+            loading='lazy'
+            title='Карта — Чинобод'
+          />
+          <span className='pointer-events-none absolute left-3 top-3 rounded-sm border border-border bg-bg-deep/80 px-2 py-1 text-xs text-acc'>
+            ◉ geo: 40.87, 71.97
+          </span>
+        </motion.div>
       </motion.div>
-    </motion.section>
+    </section>
   )
 }

@@ -1,12 +1,18 @@
 import { motion } from 'motion/react'
 
-import { AnimateNumber, SectionLabel, StatsBlock } from '@shared/components'
-import { useGitHubStats } from '@shared/hooks'
+import { Prompt } from '@shared/components'
 import { fadeUp, staggerContainer } from '@shared/lib'
 
-export function AboutSection() {
-  const { stats, loading } = useGitHubStats()
+const OBJECT = [
+  { k: 'name', v: '"Ахмадилло Алиев"' },
+  { k: 'from', v: '"Узбекистан 🇺🇿"' },
+  { k: 'role', v: '"Software Engineer"' },
+  { k: 'langs', v: '["UZ", "RU", "EN", "JA"]' },
+  { k: 'firstLove', v: '["HTML", "CSS", "Python"]' },
+  { k: 'learning', v: 'always === true' },
+]
 
+export function AboutSection() {
   return (
     <motion.section
       id='about'
@@ -14,65 +20,66 @@ export function AboutSection() {
       initial='hidden'
       whileInView='visible'
       viewport={{ once: true, amount: 0.15 }}
-      className='bg-surface rounded-2xl p-8 sm:p-5'
+      className='scroll-mt-24'
     >
-      <SectionLabel
-        index='1'
-        label='О себе'
+      <Prompt
+        cmd='cat about.md'
+        comment='о себе'
+        index='01'
       />
 
-      <div className='mt-4 grid grid-cols-2 gap-16 sm:grid-cols-1 sm:gap-10'>
+      <div className='panel bracket mt-5 grid grid-cols-[1.2fr_1fr] gap-8 p-8 sm:p-5 md:grid-cols-1'>
+        {/* prose */}
         <div className='space-y-5'>
           <motion.p
             variants={fadeUp}
-            className='text-text/80 text-lg leading-relaxed'
+            className='text-text text-lg leading-relaxed sm:text-base'
           >
-            Доброго времени суток! Меня зовут{' '}
-            <span className='text-text font-semibold'>Алиев Ахмадилло.</span>
+            <span className='text-acc'>## whoami → </span>
+            <span className='text-acc text-glow font-medium'>Ахмадилло</span>,
+            Software Engineer (UZ).
           </motion.p>
 
           <motion.p
             variants={fadeUp}
-            className='text-text/80 text-lg leading-relaxed'
+            className='text-text-muted leading-relaxed'
           >
-            Я{' '}
-            <span className='text-text font-semibold'>Software Developer</span>{' '}
-            родом из солнечного Узбекистана. С детства увлекался информатикой —
-            именно тогда впервые познакомился с HTML, CSS и Python.
+            Пишу fullstack на TypeScript: React / Vue + Node.js / NestJS. Решаю
+            задачи end-to-end.
           </motion.p>
 
           <motion.p
             variants={fadeUp}
-            className='text-text/80 text-lg leading-relaxed'
+            className='text-text-dim text-sm leading-relaxed'
           >
-            После окончания курса по фронтенду в WebKing LC начал самостоятельно
-            углублять знания, изучая Vue, TypeScript, Node.js и современные
-            подходы к разработке.
+            {'// hobby: '}хакатоны (финалист, призёр) + языки{' '}
+            <span className='text-text-muted'>UZ · RU · EN · JA</span>
           </motion.p>
         </div>
 
+        {/* code object */}
         <motion.div
-          variants={staggerContainer}
-          className='flex flex-col justify-center gap-10'
+          variants={fadeUp}
+          className='border-border bg-bg-deep/60 self-start rounded-sm border p-5 text-sm leading-relaxed'
         >
-          <motion.div variants={fadeUp}>
-            <StatsBlock
-              title='Репозитории'
-              text={loading ? '—' : <AnimateNumber value={stats.repos} />}
-            />
-          </motion.div>
-          <motion.div variants={fadeUp}>
-            <StatsBlock
-              title='Подписчики GitHub'
-              text={loading ? '—' : <AnimateNumber value={stats.followers} />}
-            />
-          </motion.div>
-          <motion.div variants={fadeUp}>
-            <StatsBlock
-              title='Заработанные звёзды'
-              text={loading ? '—' : <AnimateNumber value={stats.stars} />}
-            />
-          </motion.div>
+          <p className='text-text-dim'>{'// developer.ts'}</p>
+          <p className='mt-2'>
+            <span className='text-magenta'>const</span>{' '}
+            <span className='text-cyan'>dev</span>{' '}
+            <span className='text-text-muted'>= {'{'}</span>
+          </p>
+          {OBJECT.map(({ k, v }) => (
+            <p
+              key={k}
+              className='pl-4'
+            >
+              <span className='text-acc'>{k}</span>
+              <span className='text-text-muted'>: </span>
+              <span className='text-amber'>{v}</span>
+              <span className='text-text-dim'>,</span>
+            </p>
+          ))}
+          <p className='text-text-muted'>{'}'}</p>
         </motion.div>
       </div>
     </motion.section>

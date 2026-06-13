@@ -1,3 +1,35 @@
+export const SKILL_GROUPS = [
+  {
+    key: 'frontend',
+    items: [
+      'React',
+      'Vue',
+      'Nuxt',
+      'Next.js',
+      'TypeScript',
+      'JavaScript',
+      'Redux Toolkit',
+      'Pinia',
+      'Tailwind',
+      'Sass',
+      'HTML',
+      'CSS',
+    ],
+  },
+  {
+    key: 'backend',
+    items: ['Node.js', 'Nest.js', 'Bun', 'PostgreSQL', 'Prisma', 'REST API'],
+  },
+  {
+    key: 'devops',
+    items: ['Docker', 'GitHub Actions', 'CI/CD', 'nginx'],
+  },
+  {
+    key: 'tools',
+    items: ['Vite', 'Git', 'Prettier', 'ESLint', 'Figma'],
+  },
+]
+
 export const SKILLS = [
   {
     skillName: 'PostgreSQL',

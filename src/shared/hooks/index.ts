@@ -1,3 +1,6 @@
 export { useActiveSection } from './useActiveSection'
 export { useGitHubStats } from './useGitHubStats'
 export { useParallax } from './useParallax'
+export { useTypewriter } from './useTypewriter'
+export { useClock } from './useClock'
+export { useMouseGlow } from './useMouseGlow'
