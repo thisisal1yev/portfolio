@@ -56,6 +56,13 @@ export function AboutSection() {
             {'// hobby: '}хакатоны (финалист, призёр) + языки{' '}
             <span className='text-text-muted'>UZ · RU · EN · JA</span>
           </m.p>
+
+          <m.p
+            variants={fadeUp}
+            className='text-acc text-glow leading-relaxed font-medium'
+          >
+            ## t-shaped → широкий охват по стеку, глубина во frontend
+          </m.p>
         </div>
 
         {/* code object */}
