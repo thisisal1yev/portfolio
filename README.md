@@ -1,54 +1,73 @@
-# React + TypeScript + Vite
+# Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio of **Aliyev Axmadillo** — Software Engineer (Frontend · Backend).
+A terminal / IDE-themed single-page site: sections are framed as files in a
+`src/` tree (`about.md`, `stats.json`, `stack.ts`, `hackathons.md`, …) and a
+`./contact.sh` prompt.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+~/aliyev $ whoami
+Software Engineer · UZ · RU · EN · JA
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Tech stack
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Area    | Choice                                                     |
+| ------- | ---------------------------------------------------------- |
+| UI      | React 19, TypeScript 6                                     |
+| Build   | Vite 8 (Rolldown) + `@vitejs/plugin-react` (Oxc transform) |
+| Styling | Tailwind CSS v4 (`@tailwindcss/vite`)                      |
+| Motion  | `motion`                                                   |
+| Icons   | `lucide-react`                                             |
+| Misc    | `react-fast-marquee`, `clsx` + `tailwind-merge`            |
+| Tooling | ESLint 10, typescript-eslint, Prettier (+ tailwind plugin) |
+| Deploy  | Vercel (push to `master` → auto-deploy)                    |
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+## Architecture
+
+[Feature-Sliced Design](https://feature-sliced.design/) — layers, top to bottom:
+
 ```
+src/
+├── app/        # entry, global styles (main.tsx, index.css)
+├── pages/      # route compositions (Home)
+├── widgets/    # self-contained sections (Hero, Stats, Hackathons, Contacts, …)
+└── shared/     # cross-cutting: components/ui, hooks, lib
+```
+
+Path aliases: `@`, `@app`, `@pages`, `@widgets`, `@shared` (see `vite.config.ts`).
+
+### Notable bits
+
+- **Live GitHub stats** — `shared/hooks/useGitHubStats.ts` pulls repos, forks,
+  account age, top language and last push from the GitHub API (one-shot fetch,
+  `AbortController`-guarded).
+- **Hackathons** — data-driven cards in `widgets/Hackathons/hackathons.data.ts`;
+  each renders track, venue, result badge, role/team and resource links.
+- **Custom hooks** — `useTypewriter`, `useActiveSection`, `useClock`,
+  `useMouseGlow`, `useParallax`.
+
+## Getting started
+
+```bash
+npm install
+npm run dev        # start dev server (Vite)
+```
+
+## Scripts
+
+| Script            | Description                         |
+| ----------------- | ----------------------------------- |
+| `npm run dev`     | Dev server with HMR                 |
+| `npm run build`   | Type-check (`tsc -b`) + Vite build  |
+| `npm run preview` | Serve the production build locally  |
+| `npm run lint`    | ESLint over the project             |
+
+## Deployment
+
+Hosted on **Vercel**. The `master` branch is the production branch — every push
+triggers an automatic deploy.
+
+---
+
+Built by [@thisisal1yev](https://github.com/thisisal1yev).
