@@ -25,7 +25,6 @@ export function HackathonCard({
   links,
 }: Props) {
   const hasLink = link && link !== '#'
-  const meta = [role, team].filter(Boolean).join(' · ')
   const hasResources = links && (links.repo || links.demo || links.slides)
 
   return (
@@ -42,11 +41,18 @@ export function HackathonCard({
       </h3>
       {project && <p className='text-text-muted text-sm'>{project}</p>}
       {stack && <p className='text-text-dim text-xs'># {stack}</p>}
-      {meta && (
+      {role && (
         <p className='text-xs'>
           <span className='text-acc'>role</span>
           <span className='text-text-dim'> :: </span>
-          <span className='text-text-muted'>{meta}</span>
+          <span className='text-text-muted'>{role}</span>
+        </p>
+      )}
+      {team && (
+        <p className='text-xs'>
+          <span className='text-acc'>team</span>
+          <span className='text-text-dim'> :: </span>
+          <span className='text-text-muted'>{team}</span>
         </p>
       )}
 
