@@ -122,7 +122,7 @@ export function ContactsSection() {
         >
           <iframe
             src='https://yandex.ru/map-widget/v1/?ll=71.979372,40.876731&z=14&pt=71.979372,40.876731,pm2rdm'
-            sandbox='allow-scripts allow-popups'
+            sandbox='allow-scripts allow-same-origin allow-popups'
             className='absolute inset-0 h-full w-full border-0 opacity-90'
             style={{
               filter:
