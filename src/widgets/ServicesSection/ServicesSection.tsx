@@ -29,6 +29,7 @@ export function ServicesSection() {
       <Prompt
         cmd='ls ~/services'
         comment='чем помогу'
+        title='Услуги'
         index='04'
       />
 

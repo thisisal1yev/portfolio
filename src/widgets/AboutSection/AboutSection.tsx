@@ -25,6 +25,7 @@ export function AboutSection() {
       <Prompt
         cmd='cat about.md'
         comment='о себе'
+        title='О себе'
         index='01'
       />
 

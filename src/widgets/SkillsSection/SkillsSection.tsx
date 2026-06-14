@@ -8,7 +8,12 @@ import { SKILL_GROUPS } from '../MarqueeBlock/skills.data'
 export function SkillsSection() {
   return (
     <section id='stack' className='scroll-mt-24'>
-      <Prompt cmd='cat stack.json' comment='технический стек' index='03' />
+      <Prompt
+        cmd='cat stack.json'
+        comment='технический стек'
+        title='Технический стек'
+        index='03'
+      />
 
       <m.div
         variants={staggerContainer}

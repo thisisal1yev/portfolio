@@ -6,7 +6,17 @@ import { Tag } from '@shared/components'
 import { cardReveal, staggerContainer } from '@shared/lib'
 import { PROJECTS } from '../projects.data'
 
-function ProjectThumb({ src, slug }: { src: string; slug: string }) {
+function ProjectThumb({
+  src,
+  slug,
+  title,
+  stack,
+}: {
+  src: string
+  slug: string
+  title: string
+  stack: string[]
+}) {
   const [failed, setFailed] = useState(false)
 
   if (failed) {
@@ -26,7 +36,7 @@ function ProjectThumb({ src, slug }: { src: string; slug: string }) {
     <div className='border-border aspect-video overflow-hidden border-b'>
       <img
         src={src}
-        alt={slug}
+        alt={`Скриншот проекта ${title} — ${stack.join(' · ')}`}
         loading='lazy'
         decoding='async'
         onError={() => setFailed(true)}
@@ -61,16 +71,18 @@ export function ProjectsList() {
             <ProjectThumb
               src={project.imgURL}
               slug={project.slug}
+              title={project.title}
+              stack={project.stack}
             />
 
             <div className='flex flex-1 flex-col p-5'>
               <div className='flex items-start justify-between gap-3'>
-                <h4 className='font-display text-text group-hover:text-glow text-xl font-bold transition-[text-shadow]'>
+                <h3 className='font-display text-text group-hover:text-glow text-xl font-bold transition-[text-shadow]'>
                   <span className='text-text-dim text-sm tabular-nums'>
                     {String(i + 1).padStart(2, '0')}_
                   </span>{' '}
                   {project.title}
-                </h4>
+                </h3>
                 <ArrowUpRight
                   size={18}
                   className='text-text-dim group-hover:text-acc shrink-0 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5'

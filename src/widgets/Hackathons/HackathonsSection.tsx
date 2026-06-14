@@ -8,7 +8,12 @@ import { HackathonCard } from './ui/HackathonCard'
 export function HackathonsSection() {
   return (
     <section id='hackathons' className='scroll-mt-24'>
-      <Prompt cmd='ls ~/hackathons' comment='хакатоны' index='07' />
+      <Prompt
+        cmd='ls ~/hackathons'
+        comment='хакатоны'
+        title='Хакатоны'
+        index='07'
+      />
 
       <m.div
         variants={staggerContainer}

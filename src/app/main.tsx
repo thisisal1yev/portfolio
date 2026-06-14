@@ -1,6 +1,7 @@
+/* eslint-disable react-refresh/only-export-components -- entry file exports a non-component `createRoot` for vite-react-ssg */
 import { useCallback, useRef, useState } from 'react'
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { ViteReactSSG } from 'vite-react-ssg/single-page'
 import {
   AnimatePresence,
   domAnimation,
@@ -48,7 +49,7 @@ function App() {
   )
 }
 
-createRoot(document.getElementById('root')!).render(
+export const createRoot = ViteReactSSG(
   <StrictMode>
     <App />
   </StrictMode>,

@@ -38,6 +38,7 @@ export function StatsSection() {
       <Prompt
         cmd='gh api /users/aliyev'
         comment='статистика'
+        title='Статистика GitHub'
         index='02'
       />
 

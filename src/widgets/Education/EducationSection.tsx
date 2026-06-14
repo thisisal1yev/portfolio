@@ -8,7 +8,12 @@ import { EducationCard } from './ui/EducationCard'
 export function EducationSection() {
   return (
     <section id='education' className='scroll-mt-24'>
-      <Prompt cmd='cat education.log' comment='образование' index='05' />
+      <Prompt
+        cmd='cat education.log'
+        comment='образование'
+        title='Образование'
+        index='05'
+      />
 
       <m.div
         variants={staggerContainer}

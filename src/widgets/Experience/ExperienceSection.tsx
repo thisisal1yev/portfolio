@@ -15,7 +15,12 @@ function shortHash(seed: string) {
 export function ExperienceSection() {
   return (
     <section id='experience' className='scroll-mt-24'>
-      <Prompt cmd='git log --author=aliyev' comment='опыт работы' index='06' />
+      <Prompt
+        cmd='git log --author=aliyev'
+        comment='опыт работы'
+        title='Опыт работы'
+        index='06'
+      />
 
       <m.div
         variants={staggerContainer}
