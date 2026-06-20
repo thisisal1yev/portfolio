@@ -7,15 +7,15 @@ const SERVICES = [
   {
     id: '01',
     bin: 'frontend.dev',
-    title: 'Создаю современные\nвеб-интерфейсы',
-    desc: 'Интерфейсы на React, Vue, Nuxt с TypeScript. Фокус на производительность, анимации и отличный UX.',
+    title: 'I build modern\nweb interfaces',
+    desc: 'Interfaces with React, Vue, Nuxt and TypeScript. Focus on performance, animation and great UX.',
     tags: ['React', 'Vue', 'Nuxt', 'TypeScript', 'Tailwind'],
   },
   {
     id: '02',
     bin: 'backend.dev',
-    title: 'Строю надёжный\nсерверный слой',
-    desc: 'REST API на Node.js, NestJS и Bun. Работаю с PostgreSQL и Prisma, проектирую схемы данных.',
+    title: 'I build a reliable\nserver layer',
+    desc: 'REST APIs with Node.js, NestJS and Bun. I work with PostgreSQL and Prisma and design data schemas.',
     tags: ['Node.js', 'Nest.js', 'Bun', 'PostgreSQL', 'Prisma'],
   },
 ]
@@ -28,8 +28,8 @@ export function ServicesSection() {
     >
       <Prompt
         cmd='ls ~/services'
-        comment='чем помогу'
-        title='Услуги'
+        comment='how I can help'
+        title='Services'
         index='04'
       />
 

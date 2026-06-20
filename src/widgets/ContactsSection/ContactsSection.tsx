@@ -22,7 +22,7 @@ const ENV = [
         rel='noopener noreferrer'
         className='text-text-muted underline-offset-4 hover:text-acc hover:underline'
       >
-        "Андижанская обл., Чинобод, UZ"
+        "Andijan region, Chinobod, UZ"
       </a>
     ),
   },
@@ -50,7 +50,7 @@ const ENV = [
 export function ContactsSection() {
   return (
     <section id='contacts' className='scroll-mt-24'>
-      <Prompt cmd='./contact.sh' comment='связаться со мной' index='09' />
+      <Prompt cmd='./contact.sh' comment='get in touch' index='09' />
 
       <m.div
         variants={staggerContainer}
@@ -66,9 +66,9 @@ export function ContactsSection() {
             <span className='text-amber'>$GREETING</span>
           </p>
           <h2 className='mt-3 font-display text-3xl font-bold leading-tight text-text text-glow md:text-2xl'>
-            Давай построим
+            Let's build
             <br />
-            что-нибудь вместе
+            something together
           </h2>
 
           <dl className='mt-8 space-y-2.5 text-sm'>
@@ -110,7 +110,7 @@ export function ContactsSection() {
               className='border-acc-dim bg-acc/10 text-acc hover:bg-acc/20'
             >
               <Send size={15} />
-              <span>написать в Telegram</span>
+              <span>message on Telegram</span>
             </MagneticButton>
           </div>
         </m.div>
@@ -130,7 +130,7 @@ export function ContactsSection() {
             }}
             allowFullScreen
             loading='lazy'
-            title='Карта — Чинобод'
+            title='Map — Chinobod'
           />
           <span className='pointer-events-none absolute left-3 top-3 rounded-sm border border-border bg-bg-deep/80 px-2 py-1 text-xs text-acc'>
             ◉ geo: 40.87, 71.97

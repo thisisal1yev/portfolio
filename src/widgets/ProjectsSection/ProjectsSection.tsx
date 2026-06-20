@@ -9,8 +9,8 @@ export function ProjectsSection() {
     >
       <Prompt
         cmd='ls -la ~/projects'
-        comment='избранные проекты'
-        title='Проекты'
+        comment='selected projects'
+        title='Projects'
         index='08'
       />
 

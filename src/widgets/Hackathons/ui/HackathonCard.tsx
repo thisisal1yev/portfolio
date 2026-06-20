@@ -79,7 +79,7 @@ export function HackathonCard({
                 href={links.repo}
                 target='_blank'
                 rel='noopener noreferrer'
-                title='Репозиторий'
+                title='Repository'
                 className={ICON_BTN}
               >
                 <GithubMark size={14} />
@@ -91,7 +91,7 @@ export function HackathonCard({
                 href={links.demo}
                 target='_blank'
                 rel='noopener noreferrer'
-                title='Демо'
+                title='Demo'
                 className={ICON_BTN}
               >
                 <ExternalLink size={14} />
@@ -102,7 +102,7 @@ export function HackathonCard({
                 href={links.slides}
                 target='_blank'
                 rel='noopener noreferrer'
-                title='Презентация'
+                title='Slides'
                 className={ICON_BTN}
               >
                 <FileText size={14} />

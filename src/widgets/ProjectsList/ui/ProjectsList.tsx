@@ -36,7 +36,7 @@ function ProjectThumb({
     <div className='border-border aspect-video overflow-hidden border-b'>
       <img
         src={src}
-        alt={`Скриншот проекта ${title} — ${stack.join(' · ')}`}
+        alt={`Screenshot of project ${title} — ${stack.join(' · ')}`}
         loading='lazy'
         decoding='async'
         onError={() => setFailed(true)}

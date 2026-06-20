@@ -4,11 +4,10 @@ import { Prompt } from '@shared/components'
 import { fadeUp, staggerContainer } from '@shared/lib'
 
 const OBJECT = [
-  { k: 'name', v: '"Ахмадилло Алиев"' },
-  { k: 'from', v: '"Узбекистан 🇺🇿"' },
+  { k: 'name', v: '"Akhmadillo Aliyev"' },
+  { k: 'from', v: '"Uzbekistan 🇺🇿"' },
   { k: 'role', v: '"Software Engineer"' },
   { k: 'langs', v: '["UZ", "RU", "EN", "JA"]' },
-  { k: 'firstLove', v: '["HTML", "CSS", "Python"]' },
   { k: 'learning', v: 'always === true' },
 ]
 
@@ -24,8 +23,8 @@ export function AboutSection() {
     >
       <Prompt
         cmd='cat about.md'
-        comment='о себе'
-        title='О себе'
+        comment='about me'
+        title='About'
         index='01'
       />
 
@@ -37,7 +36,7 @@ export function AboutSection() {
             className='text-text text-lg leading-relaxed sm:text-base'
           >
             <span className='text-acc'>## whoami → </span>
-            <span className='text-acc text-glow font-medium'>Ахмадилло</span>,
+            <span className='text-acc text-glow font-medium'>Akhmadillo</span>,
             Software Engineer (UZ).
           </m.p>
 
@@ -45,15 +44,15 @@ export function AboutSection() {
             variants={fadeUp}
             className='text-text-muted leading-relaxed'
           >
-            Пишу fullstack на TypeScript: React / Vue + Node.js / NestJS. Решаю
-            задачи end-to-end.
+            I write fullstack in TypeScript: React / Vue + Node.js / NestJS. I
+            solve problems end-to-end.
           </m.p>
 
           <m.p
             variants={fadeUp}
             className='text-text-dim text-sm leading-relaxed'
           >
-            {'// hobby: '}хакатоны (финалист, призёр) + языки{' '}
+            {'// hobby: '}hackathons (finalist, winner) + languages{' '}
             <span className='text-text-muted'>UZ · RU · EN · JA</span>
           </m.p>
 
@@ -61,7 +60,7 @@ export function AboutSection() {
             variants={fadeUp}
             className='text-acc text-glow leading-relaxed font-medium'
           >
-            ## t-shaped → широкий охват по стеку, глубина во frontend
+            ## t-shaped → broad coverage across the stack, depth in frontend
           </m.p>
         </div>
 

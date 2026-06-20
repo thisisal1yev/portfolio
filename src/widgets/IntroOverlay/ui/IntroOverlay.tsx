@@ -108,7 +108,7 @@ export function IntroOverlay({ onComplete }: Props) {
         </div>
 
         <p className='text-text-dim mt-8 text-xs'>
-          нажми <span className='text-text-muted'>Enter</span> чтобы пропустить
+          press <span className='text-text-muted'>Enter</span> to skip
         </p>
       </div>
     </m.div>

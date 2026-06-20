@@ -10,8 +10,8 @@ export function EducationSection() {
     <section id='education' className='scroll-mt-24'>
       <Prompt
         cmd='cat education.log'
-        comment='образование'
-        title='Образование'
+        comment='education'
+        title='Education'
         index='05'
       />
 

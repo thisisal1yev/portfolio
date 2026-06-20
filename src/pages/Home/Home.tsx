@@ -37,7 +37,7 @@ export function Home() {
             <p>
               <span className='text-acc'>$</span> exit 0 —{' '}
               <span className='text-text-muted'>thisisaliyev.dev</span> ·
-              собрано на React + Vite + Tailwind + Motion
+              built with React + Vite + Tailwind + Motion
             </p>
           </footer>
         </main>

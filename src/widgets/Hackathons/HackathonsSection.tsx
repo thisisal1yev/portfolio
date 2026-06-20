@@ -10,8 +10,8 @@ export function HackathonsSection() {
     <section id='hackathons' className='scroll-mt-24'>
       <Prompt
         cmd='ls ~/hackathons'
-        comment='хакатоны'
-        title='Хакатоны'
+        comment='hackathons'
+        title='Hackathons'
         index='07'
       />
 

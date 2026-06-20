@@ -5,15 +5,15 @@ import { useActiveSection } from '@shared/hooks'
 import { EASE } from '@shared/lib'
 
 const NAV_ITEMS = [
-  { id: 'about', file: 'about.md', label: 'О себе', index: '01' },
-  { id: 'stats', file: 'stats.json', label: 'Статистика', index: '02' },
-  { id: 'stack', file: 'stack.ts', label: 'Стек', index: '03' },
-  { id: 'services', file: 'services.sh', label: 'Услуги', index: '04' },
-  { id: 'education', file: 'education.log', label: 'Образование', index: '05' },
-  { id: 'experience', file: 'experience.git', label: 'Опыт', index: '06' },
-  { id: 'hackathons', file: 'hackathons.md', label: 'Хакатоны', index: '07' },
-  { id: 'projects', file: 'projects/', label: 'Проекты', index: '08' },
-  { id: 'contacts', file: 'contact.sh', label: 'Контакты', index: '09' },
+  { id: 'about', file: 'about.md', label: 'About', index: '01' },
+  { id: 'stats', file: 'stats.json', label: 'Stats', index: '02' },
+  { id: 'stack', file: 'stack.ts', label: 'Stack', index: '03' },
+  { id: 'services', file: 'services.sh', label: 'Services', index: '04' },
+  { id: 'education', file: 'education.log', label: 'Education', index: '05' },
+  { id: 'experience', file: 'experience.git', label: 'Experience', index: '06' },
+  { id: 'hackathons', file: 'hackathons.md', label: 'Hackathons', index: '07' },
+  { id: 'projects', file: 'projects/', label: 'Projects', index: '08' },
+  { id: 'contacts', file: 'contact.sh', label: 'Contacts', index: '09' },
 ]
 
 const SECTION_IDS = NAV_ITEMS.map((item) => item.id)
@@ -31,7 +31,7 @@ export function SidebarSection() {
       {/* brand */}
       <div className='space-y-1'>
         <p className='text-acc text-glow text-lg font-bold'>~/aliyev</p>
-        <p className='text-text-muted text-sm'>Ахмадилло Алиев</p>
+        <p className='text-text-muted text-sm'>Akhmadillo Aliyev</p>
         <p className='text-text-dim text-xs'>Software Engineer</p>
         <p className='text-text-dim text-xs'>
           lang: <span className='text-text-muted'>UZ · RU · EN · JA</span>

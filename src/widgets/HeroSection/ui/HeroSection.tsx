@@ -10,12 +10,12 @@ const PARALLAX_IN: [number, number] = [0, 1]
 const PARALLAX_OUT: [number, number] = [0, -60]
 
 const INFO = [
-  { k: 'host', v: 'Андижан, Узбекистан' },
+  { k: 'host', v: 'Andijan, Uzbekistan' },
   { k: 'role', v: 'Software Engineer' },
   { k: 'focus', v: 'Frontend · Backend · DevOps' },
   { k: 'stack', v: 'React · Vue · Node · Nest' },
   { k: 'langs', v: 'UZ · RU · EN · JA' },
-  { k: 'status', v: 'открыт для офферов', acc: true },
+  { k: 'status', v: 'open to offers', acc: true },
 ]
 
 export function HeroSection() {
@@ -89,7 +89,7 @@ export function HeroSection() {
           >
             <span className='text-acc'># </span>
             <TypeWriter
-              text='создаю быстрые веб-интерфейсы и надёжные API'
+              text='I build fast web interfaces and reliable APIs'
               speed={28}
               className='text-text-muted'
             />
@@ -164,7 +164,7 @@ export function HeroSection() {
             className='text-acc'
           />
         </m.span>
-        scroll — или cd в раздел слева
+        scroll — or cd into a section on the left
       </m.div>
     </section>
   )

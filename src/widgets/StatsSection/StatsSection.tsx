@@ -9,15 +9,15 @@ const NUM_STATS = [
   {
     key: 'repos' as const,
     cmd: 'public_repos',
-    label: 'публичных репозиториев',
+    label: 'public repositories',
   },
   {
     key: 'followers' as const,
     cmd: 'followers',
-    label: 'подписчиков на GitHub',
+    label: 'GitHub followers',
   },
-  { key: 'stars' as const, cmd: 'stars_earned', label: 'заработанных звёзд' },
-  { key: 'forks' as const, cmd: 'forks_earned', label: 'форков проектов' },
+  { key: 'stars' as const, cmd: 'stars_earned', label: 'stars earned' },
+  { key: 'forks' as const, cmd: 'forks_earned', label: 'project forks' },
 ]
 
 // terminal-palette accents for the language bar
@@ -37,8 +37,8 @@ export function StatsSection() {
     >
       <Prompt
         cmd='gh api /users/aliyev'
-        comment='статистика'
-        title='Статистика GitHub'
+        comment='statistics'
+        title='GitHub statistics'
         index='02'
       />
 
@@ -93,19 +93,19 @@ export function StatsSection() {
       >
         <MetaCard
           cmd='account_age'
-          label='лет на GitHub'
+          label='years on GitHub'
         >
           {loading ? '--' : <AnimateNumber value={stats.years} />}
         </MetaCard>
         <MetaCard
           cmd='top_language'
-          label='основной язык'
+          label='primary language'
         >
           {loading ? '--' : stats.topLanguage}
         </MetaCard>
         <MetaCard
           cmd='last_push'
-          label='последняя активность'
+          label='last activity'
         >
           {loading ? '--' : formatRelative(stats.lastPush)}
         </MetaCard>

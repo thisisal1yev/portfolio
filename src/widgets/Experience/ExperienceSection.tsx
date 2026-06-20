@@ -17,8 +17,8 @@ export function ExperienceSection() {
     <section id='experience' className='scroll-mt-24'>
       <Prompt
         cmd='git log --author=aliyev'
-        comment='опыт работы'
-        title='Опыт работы'
+        comment='work experience'
+        title='Work experience'
         index='06'
       />
 

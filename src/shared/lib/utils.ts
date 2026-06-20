@@ -14,20 +14,20 @@ const RELATIVE_UNITS: [Intl.RelativeTimeFormatUnit, number][] = [
 ]
 
 // hoisted: building an Intl formatter is expensive, so reuse one instance
-const RELATIVE_FORMATTER = new Intl.RelativeTimeFormat('ru', {
+const RELATIVE_FORMATTER = new Intl.RelativeTimeFormat('en', {
   numeric: 'auto',
 })
 
-/** "2 дня назад" / "вчера" from an ISO timestamp. */
+/** "2 days ago" / "yesterday" from an ISO timestamp. */
 export function formatRelative(iso: string | null) {
   if (!iso) return '—'
   const seconds = Math.round((Date.now() - new Date(iso).getTime()) / 1000)
-  if (seconds < 60) return 'только что'
+  if (seconds < 60) return 'just now'
 
   for (const [unit, secs] of RELATIVE_UNITS) {
     if (Math.abs(seconds) >= secs) {
       return RELATIVE_FORMATTER.format(-Math.round(seconds / secs), unit)
     }
   }
-  return 'только что'
+  return 'just now'
 }

@@ -8,9 +8,9 @@ export interface Hackathon {
   project?: string
   stack?: string
   role?: string // "fullstack" | "frontend" | ...
-  team?: string // "solo" | "команда · 4 чел"
-  link?: string // ссылка бейджа результата (опц.)
-  links?: HackLinks // ресурс-иконки (repo / demo / slides) — рендерятся только если заданы
+  team?: string // "solo" | "team · 4 people"
+  link?: string // result badge link (optional)
+  links?: HackLinks // resource icons (repo / demo / slides) — rendered only if set
 }
 
 export const hackathonsData: Hackathon[] = [
@@ -18,33 +18,33 @@ export const hackathonsData: Hackathon[] = [
     id: 1,
     name: 'Oliygoh Kubogi',
     year: '2026',
-    project: 'Трек «Sun’iy intellekt» · направление No Code',
+    project: '«Sun’iy intellekt» track · No Code',
     stack: 'No Code · AI',
-    result: '1 место',
+    result: '1st place',
     role: 'AI Specialist',
-    team: '3 чел.',
+    team: '3 people',
     links: { demo: 'https://evenola-ai-eventcraft.lovable.app' },
   },
   {
     id: 2,
     name: 'National AI Hackathon',
     year: '2026',
-    project: 'Трек «Kosmik texnologiyalar» · Фергана, IT Park · 20–23 мая',
+    project: '«Kosmik texnologiyalar» track · Fergana, IT Park · May 20–23',
     stack: 'AI · Space Tech',
-    result: 'Финалист',
+    result: 'Finalist',
     role: 'Frontend',
-    team: '4 чел.',
+    team: '4 people',
     links: { repo: 'https://github.com/thisisal1yev/national-ai-hackathon' },
   },
   {
     id: 3,
     name: 'Tech4Region',
     year: '2025',
-    project: 'Трек «Shaharsozlik» · Андижан, Digital City · 28–29 ноября',
+    project: '«Shaharsozlik» track · Andijan, Digital City · November 28–29',
     stack: 'AI · Urban Tech',
-    result: 'Финалист',
+    result: 'Finalist',
     role: 'Fullstack',
-    team: '4 чел.',
+    team: '4 people',
     links: {
       demo: 'https://smart-parking-pro-frontend-ai-agent-ai--polonchihonkok.replit.app',
       repo: 'https://github.com/thisisal1yev/NovaPark',

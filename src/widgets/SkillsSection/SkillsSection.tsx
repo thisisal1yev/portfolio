@@ -10,8 +10,8 @@ export function SkillsSection() {
     <section id='stack' className='scroll-mt-24'>
       <Prompt
         cmd='cat stack.json'
-        comment='технический стек'
-        title='Технический стек'
+        comment='tech stack'
+        title='Tech stack'
         index='03'
       />
 

@@ -1,33 +1,33 @@
 export const educationData = [
   {
     id: 1,
-    institution: 'Ферганский Государственный Технический Университет',
-    degree: 'Бакалавриат · Программный инжиниринг',
+    institution: 'Fergana State Technical University',
+    degree: "Bachelor's · Software Engineering",
     period: '2025 — 2029',
     description:
-      'Факультет информационных технологий и телекоммуникаций. Специальность «Программный инжиниринг».',
+      'Faculty of Information Technologies and Telecommunications. Major in Software Engineering.',
   },
   {
     id: 2,
     institution: 'Self-study',
-    degree: 'Веб-разработка',
-    period: '2023 — настоящее время',
+    degree: 'Web development',
+    period: '2023 — present',
     description:
-      'GitHub, открытая документация, pet-проекты. React, Vue, Node.js, NestJS, Bun, TypeScript.',
+      'GitHub, open documentation, pet projects. React, Vue, Node.js, NestJS, Bun, TypeScript.',
   },
   {
     id: 3,
     institution: 'StartUp Booster',
-    degree: 'Акселерация · United Ventures',
-    period: 'Март 2026 · 6 недель',
-    description: 'Акселерационная программа для стартапов от United Ventures.',
+    degree: 'Acceleration · United Ventures',
+    period: 'March 2026 · 6 weeks',
+    description: 'A startup acceleration program by United Ventures.',
   },
   {
     id: 4,
     institution: 'StartUp Init',
-    degree: 'Акселерация · UNDP × Pizza Pitch × IT Park Uzbekistan',
-    period: 'Апрель — Май 2026 · 1 месяц',
+    degree: 'Acceleration · UNDP × Pizza Pitch × IT Park Uzbekistan',
+    period: 'April — May 2026 · 1 month',
     description:
-      'Программа от UNDP совместно с Pizza Pitch и IT Park Uzbekistan.',
+      'A program by UNDP together with Pizza Pitch and IT Park Uzbekistan.',
   },
 ]
