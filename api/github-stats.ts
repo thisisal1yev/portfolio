@@ -22,7 +22,9 @@ export default async function handler(): Promise<Response> {
     ])
     if (!userRes.ok || !reposRes.ok) {
       return new Response(
-        JSON.stringify({ error: `github ${userRes.status}/${reposRes.status}` }),
+        JSON.stringify({
+          error: `github ${userRes.status}/${reposRes.status}`,
+        }),
         { status: 502, headers: { 'content-type': 'application/json' } },
       )
     }

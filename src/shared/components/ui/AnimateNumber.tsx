@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { animate } from 'motion/react'
+import { useEffect, useRef, useState } from 'react'
+import { animate, useInView } from 'motion/react'
 
 interface Props {
   value: number
@@ -7,18 +7,25 @@ interface Props {
 }
 
 export function AnimateNumber({ value, duration = 1.5 }: Props) {
-  // SSR / first paint renders the real value (good for no-JS & SEO);
-  // the effect below replays the 0 → value count-up on the client.
+  const ref = useRef<HTMLSpanElement>(null)
+  // count up only once the number scrolls into view (matches the section's
+  // whileInView reveals); on mount the stats live far below the fold, so a
+  // mount-time animation would finish off-screen and look static.
+  const inView = useInView(ref, { once: true, amount: 0.6 })
+
+  // SSR / first paint + pre-view render the real value (good for no-JS & SEO);
+  // the count-up replays 0 → value when the number enters the viewport.
   const [display, setDisplay] = useState(value)
 
   useEffect(() => {
+    if (!inView) return
     const controls = animate(0, value, {
       duration,
       ease: 'easeOut',
       onUpdate: (v) => setDisplay(Math.round(v)),
     })
     return () => controls.stop()
-  }, [value, duration])
+  }, [inView, value, duration])
 
-  return <>{display}</>
+  return <span ref={ref}>{display}</span>
 }
