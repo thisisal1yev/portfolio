@@ -1,0 +1,41 @@
+{
+  "repos": 40,
+  "followers": 5,
+  "stars": 82,
+  "forks": 1,
+  "years": 2,
+  "topLanguage": "TypeScript",
+  "lastPush": "2026-06-20T09:33:10Z",
+  "languages": [
+    {
+      "name": "TypeScript",
+      "count": 10,
+      "pct": 29
+    },
+    {
+      "name": "Vue",
+      "count": 8,
+      "pct": 23
+    },
+    {
+      "name": "JavaScript",
+      "count": 8,
+      "pct": 23
+    },
+    {
+      "name": "Python",
+      "count": 4,
+      "pct": 11
+    },
+    {
+      "name": "CSS",
+      "count": 2,
+      "pct": 6
+    },
+    {
+      "name": "Others",
+      "count": 3,
+      "pct": 8
+    }
+  ]
+}

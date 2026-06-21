@@ -7,7 +7,9 @@ interface Props {
 }
 
 export function AnimateNumber({ value, duration = 1.5 }: Props) {
-  const [display, setDisplay] = useState(0)
+  // SSR / first paint renders the real value (good for no-JS & SEO);
+  // the effect below replays the 0 → value count-up on the client.
+  const [display, setDisplay] = useState(value)
 
   useEffect(() => {
     const controls = animate(0, value, {
