@@ -1,7 +1,7 @@
 // Vercel Node serverless function (Web handler signature). Fetches GitHub
 // server-side with a token, returns precomputed stats, and lets Vercel's Edge
 // network cache the response ~1h so GitHub is hit ~once/hour.
-import { computeStats } from '../src/shared/lib/githubStats'
+import { computeStats, type GitHubUser } from '../src/shared/lib/githubStats.js'
 
 const USERNAME = 'thisisal1yev'
 
@@ -29,7 +29,7 @@ export default async function handler(): Promise<Response> {
       )
     }
     const [user, repos] = await Promise.all([userRes.json(), reposRes.json()])
-    const stats = computeStats(user, repos)
+    const stats = computeStats(user as GitHubUser, repos)
     return new Response(JSON.stringify(stats), {
       status: 200,
       headers: {
