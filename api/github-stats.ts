@@ -5,7 +5,7 @@ import { computeStats, type GitHubUser } from '../src/shared/lib/githubStats.js'
 
 const USERNAME = 'thisisal1yev'
 
-export default async function handler(): Promise<Response> {
+export async function GET(): Promise<Response> {
   const headers: Record<string, string> = {
     Accept: 'application/vnd.github+json',
   }
