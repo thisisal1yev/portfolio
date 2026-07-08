@@ -22,6 +22,7 @@ Software Engineer · UZ · RU · EN · JA
 | Icons   | `lucide-react`                                               |
 | Misc    | `react-fast-marquee`, `clsx` + `tailwind-merge`              |
 | Tooling | ESLint 10, typescript-eslint, Prettier (+ tailwind plugin)  |
+| Data    | GitHub stats — build snapshot (`prebuild` via `tsx`) + Vercel serverless fn (`api/`), Edge-cached ~1h |
 | Package | Bun (`bun.lock`)                                             |
 | Deploy  | Vercel (push to `master` → auto-deploy)                      |
 
@@ -34,16 +35,24 @@ src/
 ├── app/        # entry, global styles (main.tsx, index.css)
 ├── pages/      # route compositions (Home)
 ├── widgets/    # self-contained sections (Hero, Stats, Hackathons, Contacts, …)
-└── shared/     # cross-cutting: components/ui, hooks, lib
+└── shared/     # cross-cutting: components/ui, hooks, lib, data
 ```
+
+Alongside `src/`: `api/` (Vercel serverless functions) and `scripts/`
+(build-time tasks run via `tsx`, e.g. the GitHub-stats snapshot).
 
 Path aliases: `@`, `@app`, `@pages`, `@widgets`, `@shared` (see `vite.config.ts`).
 
 ### Notable bits
 
-- **Live GitHub stats** — `shared/hooks/useGitHubStats.ts` pulls repos, forks,
-  account age, top language and last push from the GitHub API (one-shot fetch,
-  `AbortController`-guarded).
+- **GitHub stats** — computed once in `shared/lib/githubStats.ts` (repos, stars,
+  forks, account age, top language, last-push, language mix) and surfaced three
+  ways: a **build-time snapshot** (`scripts/fetch-github-stats.ts` →
+  `shared/data/github-stats.json`, rendered instantly incl. in the SSG prerender),
+  a **Vercel serverless function** (`api/github-stats.ts`) that refreshes it
+  server-side with a token and is Edge-cached ~1h, and `useGitHubStats.ts` which
+  shows the snapshot then swaps in the live response — the snapshot stays the
+  fallback on any failure (local dev, deploy, outage).
 - **Hackathons** — data-driven cards in `widgets/Hackathons/hackathons.data.ts`;
   each renders track, venue, result badge, role/team and resource links.
 - **Custom hooks** — `useTypewriter`, `useActiveSection`, `useClock`,
