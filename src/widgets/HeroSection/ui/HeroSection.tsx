@@ -13,7 +13,6 @@ const INFO = [
   { k: 'host', v: 'Andijan, Uzbekistan' },
   { k: 'role', v: 'Software Engineer' },
   { k: 'focus', v: 'Frontend · Backend · DevOps' },
-  { k: 'stack', v: 'React · Vue · Node · Nest' },
   { k: 'langs', v: 'UZ · RU · EN · JA' },
   { k: 'status', v: 'open to offers', acc: true },
 ]
