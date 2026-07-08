@@ -6,9 +6,11 @@ export const SKILL_GROUPS = [
       'Vue',
       'Nuxt',
       'Next.js',
+      'Svelte',
       'TypeScript',
       'JavaScript',
       'Redux Toolkit',
+      'Zustand',
       'Pinia',
       'Tailwind',
       'Sass',
@@ -18,7 +20,7 @@ export const SKILL_GROUPS = [
   },
   {
     key: 'backend',
-    items: ['Node.js', 'Nest.js', 'Bun', 'PostgreSQL', 'Prisma', 'REST API'],
+    items: ['Node.js', 'Nest.js', 'Express', 'Bun', 'Python', 'PostgreSQL', 'Prisma', 'REST API'],
   },
   {
     key: 'devops',
@@ -52,6 +54,11 @@ export const SKILLS = [
     skillAlias: 'nodejs',
   },
   {
+    skillName: 'Python',
+    imgURL: '/images/logos/python.svg',
+    skillAlias: 'python',
+  },
+  {
     skillName: 'Next.js',
     imgURL: '/images/logos/nextjs.svg',
     skillAlias: 'nextjs',
@@ -60,6 +67,16 @@ export const SKILLS = [
     skillName: 'Redux toolkit',
     imgURL: '/images/logos/redux_toolkit.svg',
     skillAlias: 'redux_toolkit',
+  },
+  {
+    skillName: 'Zustand',
+    imgURL: '/images/logos/zustand.svg',
+    skillAlias: 'zustand',
+  },
+  {
+    skillName: 'Express',
+    imgURL: '/images/logos/express.svg',
+    skillAlias: 'express',
   },
   {
     skillName: 'React Router',
@@ -85,6 +102,11 @@ export const SKILLS = [
     skillName: 'Vue',
     imgURL: '/images/logos/vue.svg',
     skillAlias: 'vue',
+  },
+  {
+    skillName: 'Svelte',
+    imgURL: '/images/logos/svelte.svg',
+    skillAlias: 'svelte',
   },
   {
     skillName: 'TypeScript',
