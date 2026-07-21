@@ -24,6 +24,7 @@ Software Engineer · UZ · RU · EN · JA
 | Misc    | `react-fast-marquee`, `clsx` + `tailwind-merge`              |
 | Tooling | ESLint 10, typescript-eslint, Prettier (+ tailwind plugin)  |
 | Data    | GitHub stats — build snapshot (`prebuild` via `tsx`) + Vercel serverless fn (`api/`), Edge-cached ~1h |
+| Contact | Contact form → Telegram Bot API via a host-agnostic core + serverless fn (`api/contact.ts`) |
 | Package | Bun (`bun.lock`)                                             |
 | Deploy  | Vercel (push to `master` → auto-deploy)                      |
 
@@ -55,6 +56,12 @@ Path aliases: `@`, `@app`, `@pages`, `@widgets`, `@shared` (see `vite.config.ts`
   server-side with a token and is Edge-cached ~1h, and `useGitHubStats.ts` which
   shows the snapshot then swaps in the live response — the snapshot stays the
   fallback on any failure (local dev, deploy, outage).
+- **Contact form** — the Contacts section toggles the map for a form that posts
+  to `/api/contact`. A host-agnostic core (`shared/lib/contact.ts`) validates
+  input, drops honeypot hits, and delivers the message via the Telegram Bot API.
+  A thin Vercel function (`api/contact.ts`) and a Vite dev middleware both call
+  that core, so the form works under `bun run dev` without `vercel dev`. Covered
+  by `bun test` (core + wrapper).
 - **Hackathons** — data-driven cards in `widgets/Hackathons/hackathons.data.ts`;
   each renders track, venue, result badge, role/team and resource links.
 - **Custom hooks** — `useTypewriter`, `useActiveSection`, `useClock`,
@@ -67,8 +74,22 @@ Path aliases: `@`, `@app`, `@pages`, `@widgets`, `@shared` (see `vite.config.ts`
 
 ```bash
 bun install
-bun run dev        # start dev server (Vite)
+cp .env.example .env   # then fill in the tokens (see Environment)
+bun run dev            # start dev server (Vite)
 ```
+
+## Environment
+
+Secrets are server-side only — never shipped to the client. Copy `.env.example`
+to `.env` and fill in what you need:
+
+| Var                  | Used by                        | Notes                                       |
+| -------------------- | ------------------------------ | ------------------------------------------- |
+| `GITHUB_TOKEN`       | GitHub stats snapshot + `api/` | Optional; raises the GitHub API rate limit  |
+| `TELEGRAM_BOT_TOKEN` | Contact form (`api/contact`)   | From @BotFather                             |
+| `TELEGRAM_CHAT_ID`   | Contact form (`api/contact`)   | Your chat id — message the bot once first   |
+
+On Vercel, set the same vars under Project → Settings → Environment Variables.
 
 ## Scripts
 
@@ -78,6 +99,7 @@ bun run dev        # start dev server (Vite)
 | `bun run build`   | Type-check (`tsc -b`) + `vite-react-ssg` prerender |
 | `bun run preview` | Serve the production build locally               |
 | `bun run lint`    | ESLint over the project                          |
+| `bun test`        | Unit tests (contact-form core + API wrapper)     |
 
 ## Deployment
 
