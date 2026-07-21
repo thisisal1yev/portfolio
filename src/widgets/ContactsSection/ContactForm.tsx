@@ -103,9 +103,14 @@ export function ContactForm({ onClose }: Props) {
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(form),
       })
-      const data = (await res.json()) as { ok: boolean; error?: string }
-      const ok = res.ok && data.ok
-      reveal({ code: res.status, ok, message: ok ? OK_MESSAGE : FAIL_MESSAGE })
+      // The API mirrors success in the HTTP status (2xx ⟺ ok), so the status is
+      // the source of truth — no need to read the body (which may not be JSON on
+      // an infra-level error).
+      reveal({
+        code: res.status,
+        ok: res.ok,
+        message: res.ok ? OK_MESSAGE : FAIL_MESSAGE,
+      })
     } catch {
       reveal({ code: 0, ok: false, message: NET_MESSAGE })
     }
@@ -194,13 +199,18 @@ export function ContactForm({ onClose }: Props) {
           </m.label>
         ))}
 
-        <m.label {...row(5)} className='flex flex-1 flex-col gap-1.5 text-xs'>
+        <m.label
+          {...row(5)}
+          htmlFor='cf-message'
+          className='flex flex-1 flex-col gap-1.5 text-xs'
+        >
           <span className='flex items-center gap-2'>
             <span className='text-text-dim'>~</span>
             <span className='text-text-muted'>message</span>
             <span className='text-acc'>▸</span>
           </span>
           <textarea
+            id='cf-message'
             value={form.message}
             onChange={set('message')}
             placeholder='Tell me about your project…'
@@ -216,8 +226,8 @@ export function ContactForm({ onClose }: Props) {
           aria-live='polite'
           className='min-h-8 space-y-0.5 text-xs'
         >
-          {log.slice(0, typed).map((l, i) => (
-            <div key={i} className={TONE[l.tone]}>
+          {log.slice(0, typed).map(l => (
+            <div key={l.text} className={TONE[l.tone]}>
               {l.text}
             </div>
           ))}

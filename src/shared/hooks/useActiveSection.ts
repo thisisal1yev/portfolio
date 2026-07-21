@@ -6,24 +6,23 @@ export function useActiveSection(ids: string[]): string {
   const idsKey = ids.join(',')
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = []
+    // One observer for all sections (fewer allocations than one-per-id), with a
+    // single canonical teardown.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActiveId(entry.target.id)
+        }
+      },
+      { threshold: 0.3 },
+    )
 
-    idsKey.split(',').forEach((id) => {
+    for (const id of idsKey.split(',')) {
       const el = document.getElementById(id)
-      if (!el) return
+      if (el) observer.observe(el)
+    }
 
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActiveId(id)
-        },
-        { threshold: 0.3 },
-      )
-
-      observer.observe(el)
-      observers.push(observer)
-    })
-
-    return () => observers.forEach((o) => o.disconnect())
+    return () => observer.disconnect()
   }, [idsKey])
 
   return activeId
