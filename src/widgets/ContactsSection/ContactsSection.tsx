@@ -1,8 +1,11 @@
+import { useEffect, useState } from 'react'
 import { m } from 'motion/react'
 import { Send } from 'lucide-react'
 
-import { MagneticButton, Prompt } from '@shared/components'
+import { Prompt } from '@shared/components'
 import { fadeUp, staggerContainer } from '@shared/lib'
+
+import { ContactForm } from './ContactForm'
 
 const SOCIALS = [
   {
@@ -81,7 +84,58 @@ const ENV = [
   },
 ]
 
+function MapPanel() {
+  return (
+    <>
+      <iframe
+        src='https://yandex.ru/map-widget/v1/?ll=71.979372,40.876731&z=14&pt=71.979372,40.876731,pm2rdm'
+        sandbox='allow-scripts allow-same-origin allow-popups'
+        className='absolute inset-0 h-full w-full border-0 opacity-90'
+        style={{
+          filter:
+            'invert(0.92) hue-rotate(180deg) brightness(0.85) contrast(0.95) sepia(0.18)',
+        }}
+        allowFullScreen
+        loading='lazy'
+        title='Map — Chinobod'
+      />
+      <span className='pointer-events-none absolute left-3 top-3 rounded-sm border border-border bg-bg-deep/80 px-2 py-1 text-xs text-acc'>
+        ◉ geo: 40.87, 71.97
+      </span>
+    </>
+  )
+}
+
+function SentPanel({ onBack }: { onBack: () => void }) {
+  return (
+    <div className='flex h-full flex-col items-center justify-center gap-4 p-6 text-center'>
+      <p className='font-mono text-sm text-acc text-glow'>✓ message sent — exit 0</p>
+      <p className='max-w-xs text-xs text-text-muted'>
+        Thanks — I'll get back to you soon.
+      </p>
+      <button
+        type='button'
+        onClick={onBack}
+        className='rounded-sm border border-border px-4 py-2 text-xs text-text-dim transition-colors hover:border-acc-dim hover:text-acc'
+      >
+        ← back to map
+      </button>
+    </div>
+  )
+}
+
 export function ContactsSection() {
+  const [view, setView] = useState<'map' | 'form' | 'sent'>('map')
+
+  useEffect(() => {
+    if (view !== 'form') return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setView('map')
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [view])
+
   return (
     <section id='contacts' className='scroll-mt-24'>
       <Prompt cmd='./contact.sh' comment='get in touch' index='09' />
@@ -153,38 +207,54 @@ export function ContactsSection() {
           </div>
 
           <div className='mt-auto pt-8'>
-            <MagneticButton
-              href='https://t.me/thisisaliyev'
-              external
-              className='border-acc-dim bg-acc/10 text-acc hover:bg-acc/20'
+            <button
+              type='button'
+              onClick={() => setView('form')}
+              className='bracket group inline-flex items-center gap-2 border border-acc-dim bg-acc/10 px-5 py-2.5 text-sm text-acc transition-colors hover:bg-acc/20'
             >
               <Send size={15} />
-              <span>message on Telegram</span>
-            </MagneticButton>
+              <span>Send message</span>
+            </button>
           </div>
         </m.div>
 
-        {/* right — map */}
-        <m.div
-          variants={fadeUp}
-          className='relative min-h-72 border-l border-border md:min-h-64 md:border-l-0 md:border-t'
-        >
-          <iframe
-            src='https://yandex.ru/map-widget/v1/?ll=71.979372,40.876731&z=14&pt=71.979372,40.876731,pm2rdm'
-            sandbox='allow-scripts allow-same-origin allow-popups'
-            className='absolute inset-0 h-full w-full border-0 opacity-90'
-            style={{
-              filter:
-                'invert(0.92) hue-rotate(180deg) brightness(0.85) contrast(0.95) sepia(0.18)',
-            }}
-            allowFullScreen
-            loading='lazy'
-            title='Map — Chinobod'
-          />
-          <span className='pointer-events-none absolute left-3 top-3 rounded-sm border border-border bg-bg-deep/80 px-2 py-1 text-xs text-acc'>
-            ◉ geo: 40.87, 71.97
-          </span>
-        </m.div>
+        {/* right — map / form / sent */}
+        <div className='relative min-h-72 border-l border-border md:min-h-64 md:border-l-0 md:border-t'>
+          {view === 'form' ? (
+            <m.div
+              key='form'
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.25 }}
+              className='absolute inset-0'
+            >
+              <ContactForm
+                onSuccess={() => setView('sent')}
+                onClose={() => setView('map')}
+              />
+            </m.div>
+          ) : view === 'sent' ? (
+            <m.div
+              key='sent'
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.25 }}
+              className='absolute inset-0'
+            >
+              <SentPanel onBack={() => setView('map')} />
+            </m.div>
+          ) : (
+            <m.div
+              key='map'
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.25 }}
+              className='absolute inset-0'
+            >
+              <MapPanel />
+            </m.div>
+          )}
+        </div>
       </m.div>
     </section>
   )

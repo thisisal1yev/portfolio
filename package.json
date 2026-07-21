@@ -8,6 +8,7 @@
     "prebuild": "tsx scripts/fetch-github-stats.ts",
     "build": "tsc -b && vite-react-ssg build",
     "lint": "eslint .",
+    "test": "bun test",
     "preview": "vite preview"
   },
   "dependencies": {
