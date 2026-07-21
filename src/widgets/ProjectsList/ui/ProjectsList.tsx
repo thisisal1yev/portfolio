@@ -85,7 +85,7 @@ export function ProjectsList() {
                 </h3>
                 <ArrowUpRight
                   size={18}
-                  className='text-text-dim group-hover:text-acc shrink-0 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5'
+                  className='text-text-dim group-hover:text-acc shrink-0 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5'
                 />
               </div>
 

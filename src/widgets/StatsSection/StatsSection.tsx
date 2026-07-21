@@ -73,7 +73,7 @@ export function StatsSection() {
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1.1, ease: EASE, delay: 0.2 }}
+                transition={{ duration: 0.7, ease: EASE, delay: 0.2 }}
                 style={{ transformOrigin: 'left' }}
               />
             </div>
@@ -127,9 +127,16 @@ export function StatsSection() {
               <m.div
                 key={lang.name}
                 className='h-full shrink-0'
-                style={{ backgroundColor: langColor(lang.name, i) }}
-                initial={{ width: 0 }}
-                whileInView={{ width: `${lang.pct}%` }}
+                // Static width keeps layout stable; animate scaleX on the GPU
+                // (no per-frame layout) instead of animating width. Safe here —
+                // the segment has no text to squash.
+                style={{
+                  backgroundColor: langColor(lang.name, i),
+                  width: `${lang.pct}%`,
+                  transformOrigin: 'left',
+                }}
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
                 transition={{
                   duration: 0.9,
