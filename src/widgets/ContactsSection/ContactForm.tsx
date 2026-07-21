@@ -5,9 +5,15 @@ import { X } from 'lucide-react'
 import { EASE, validateContact } from '@shared/lib'
 import { TypeWriter } from '@shared/components'
 
+import { StatusOverlay, type StatusResult } from './StatusOverlay'
+
 interface Props {
   onClose: () => void
 }
+
+const OK_MESSAGE = "Message sent — I'll get back to you soon."
+const FAIL_MESSAGE = 'Message didn’t go through. Give it another shot.'
+const NET_MESSAGE = 'Couldn’t reach the server. Check your connection.'
 
 const FIELDS = [
   { name: 'name', label: 'name', type: 'text', placeholder: 'Ada Lovelace' },
@@ -49,6 +55,7 @@ export function ContactForm({ onClose }: Props) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'sent' | 'error'>('idle')
   const [log, setLog] = useState<LogLine[]>([])
   const [typed, setTyped] = useState(0)
+  const [result, setResult] = useState<StatusResult | null>(null)
   const firstRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -83,6 +90,13 @@ export function ContactForm({ onClose }: Props) {
       { text: '> POST /api/contact …', tone: 'dim' },
     ])
 
+    // The status code lands as a pixel overlay 300ms after the response.
+    const reveal = (r: StatusResult) =>
+      setTimeout(() => {
+        setResult(r)
+        setStatus(r.ok ? 'sent' : 'error')
+      }, 300)
+
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
@@ -90,20 +104,18 @@ export function ContactForm({ onClose }: Props) {
         body: JSON.stringify(form),
       })
       const data = (await res.json()) as { ok: boolean; error?: string }
-      if (!res.ok || !data.ok) {
-        setStatus('error')
-        setLog(prev => [
-          ...prev,
-          { text: `✗ error: ${data.error ?? 'delivery failed'} — exit 1`, tone: 'err' },
-        ])
-        return
-      }
-      setStatus('sent')
-      setLog(prev => [...prev, { text: '✓ delivered — exit 0', tone: 'ok' }])
+      const ok = res.ok && data.ok
+      reveal({ code: res.status, ok, message: ok ? OK_MESSAGE : FAIL_MESSAGE })
     } catch {
-      setStatus('error')
-      setLog(prev => [...prev, { text: '✗ error: network error — exit 1', tone: 'err' }])
+      reveal({ code: 0, ok: false, message: NET_MESSAGE })
     }
+  }
+
+  const retry = () => {
+    setResult(null)
+    setStatus('idle')
+    setLog([])
+    setTyped(0)
   }
 
   const busy = status === 'loading' || status === 'sent'
@@ -114,7 +126,7 @@ export function ContactForm({ onClose }: Props) {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.2, ease: EASE }}
       onSubmit={onSubmit}
-      className='flex h-full flex-col font-mono'
+      className='relative flex h-full flex-col font-mono'
     >
       {/* window titlebar */}
       <m.div
@@ -236,6 +248,15 @@ export function ContactForm({ onClose }: Props) {
               : 'run ./send.sh'}
         </m.button>
       </div>
+
+      {result && (
+        <StatusOverlay
+          code={result.code}
+          ok={result.ok}
+          message={result.message}
+          onRetry={retry}
+        />
+      )}
     </m.form>
   )
 }
