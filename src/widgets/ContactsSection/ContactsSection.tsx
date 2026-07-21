@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { m } from 'motion/react'
-import { Send } from 'lucide-react'
+import { Map, Send } from 'lucide-react'
 
 import { Prompt } from '@shared/components'
 import { fadeUp, staggerContainer } from '@shared/lib'
@@ -106,26 +106,8 @@ function MapPanel() {
   )
 }
 
-function SentPanel({ onBack }: { onBack: () => void }) {
-  return (
-    <div className='flex h-full flex-col items-center justify-center gap-4 p-6 text-center'>
-      <p className='font-mono text-sm text-acc text-glow'>✓ message sent — exit 0</p>
-      <p className='max-w-xs text-xs text-text-muted'>
-        Thanks — I'll get back to you soon.
-      </p>
-      <button
-        type='button'
-        onClick={onBack}
-        className='rounded-sm border border-border px-4 py-2 text-xs text-text-dim transition-colors hover:border-acc-dim hover:text-acc'
-      >
-        ← back to map
-      </button>
-    </div>
-  )
-}
-
 export function ContactsSection() {
-  const [view, setView] = useState<'map' | 'form' | 'sent'>('map')
+  const [view, setView] = useState<'map' | 'form'>('map')
 
   useEffect(() => {
     if (view !== 'form') return
@@ -209,11 +191,29 @@ export function ContactsSection() {
           <div className='mt-auto pt-8'>
             <button
               type='button'
-              onClick={() => setView('form')}
-              className='bracket group inline-flex items-center gap-2 border border-acc-dim bg-acc/10 px-5 py-2.5 text-sm text-acc transition-colors hover:bg-acc/20'
+              onClick={() => setView(view === 'map' ? 'form' : 'map')}
+              aria-pressed={view !== 'map'}
+              className='bracket group inline-flex items-center gap-2 overflow-hidden border border-acc-dim bg-acc/10 px-5 py-2.5 text-sm text-acc transition-colors hover:bg-acc/20'
             >
-              <Send size={15} />
-              <span>Send message</span>
+              <m.span
+                key={view === 'map' ? 'send' : 'map'}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className='inline-flex items-center gap-2'
+              >
+                {view === 'map' ? (
+                  <>
+                    <Send size={15} />
+                    <span>Send message</span>
+                  </>
+                ) : (
+                  <>
+                    <Map size={15} />
+                    <span>Show map</span>
+                  </>
+                )}
+              </m.span>
             </button>
           </div>
         </m.div>
@@ -221,34 +221,16 @@ export function ContactsSection() {
         {/* right — map / form / sent */}
         <div className='relative min-h-72 border-l border-border md:min-h-64 md:border-l-0 md:border-t'>
           {view === 'form' ? (
-            <m.div
-              key='form'
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.25 }}
-              className='absolute inset-0'
-            >
-              <ContactForm
-                onSuccess={() => setView('sent')}
-                onClose={() => setView('map')}
-              />
-            </m.div>
-          ) : view === 'sent' ? (
-            <m.div
-              key='sent'
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.25 }}
-              className='absolute inset-0'
-            >
-              <SentPanel onBack={() => setView('map')} />
-            </m.div>
+            // ContactForm animates its own entrance (fade + row-by-row boot)
+            <div key='form' className='absolute inset-0'>
+              <ContactForm onClose={() => setView('map')} />
+            </div>
           ) : (
             <m.div
               key='map'
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.25 }}
+              initial={{ opacity: 0, scale: 1.03 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               className='absolute inset-0'
             >
               <MapPanel />
