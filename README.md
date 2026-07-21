@@ -2,7 +2,8 @@
 
 Personal portfolio of **Aliyev Axmadillo** — Software Engineer (Frontend · Backend).
 A terminal / IDE-themed single-page site (English): sections are framed as files
-in a `src/` tree (`about.md`, `stats.json`, `stack.ts`, `hackathons.md`, …) and a
+in a `src/` tree (`about.md`, `stats.json`, `stack.ts`, `services.sh`,
+`education.log`, `experience.git`, `hackathons.md`, `projects/`) and a
 `./contact.sh` prompt. Prerendered to static HTML for SEO.
 
 ```
@@ -34,7 +35,8 @@ Software Engineer · UZ · RU · EN · JA
 src/
 ├── app/        # entry, global styles (main.tsx, index.css)
 ├── pages/      # route compositions (Home)
-├── widgets/    # self-contained sections (Hero, Stats, Hackathons, Contacts, …)
+├── widgets/    # self-contained sections (Hero, Stats, Skills, Services,
+│               #   Education, Experience, Hackathons, Projects, Contacts, …)
 └── shared/     # cross-cutting: components/ui, hooks, lib, data
 ```
 
