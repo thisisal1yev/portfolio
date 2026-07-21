@@ -1,5 +1,7 @@
 # Portfolio
 
+[![CI](https://github.com/thisisal1yev/portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/thisisal1yev/portfolio/actions/workflows/ci.yml)
+
 Personal portfolio of **Aliyev Axmadillo** — Software Engineer (Frontend · Backend).
 A terminal / IDE-themed single-page site (English): sections are framed as files
 in a `src/` tree (`about.md`, `stats.json`, `stack.ts`, `services.sh`,
@@ -26,6 +28,7 @@ Software Engineer · UZ · RU · EN · JA
 | Data    | GitHub stats — build snapshot (`prebuild` via `tsx`) + Vercel serverless fn (`api/`), Edge-cached ~1h |
 | Contact | Contact form → Telegram Bot API via a host-agnostic core + serverless fn (`api/contact.ts`) |
 | Package | Bun (`bun.lock`)                                             |
+| CI      | GitHub Actions — lint · typecheck · test · build on push/PR |
 | Deploy  | Vercel (push to `master` → auto-deploy)                      |
 
 ## Architecture
@@ -56,12 +59,13 @@ Path aliases: `@`, `@app`, `@pages`, `@widgets`, `@shared` (see `vite.config.ts`
   server-side with a token and is Edge-cached ~1h, and `useGitHubStats.ts` which
   shows the snapshot then swaps in the live response — the snapshot stays the
   fallback on any failure (local dev, deploy, outage).
-- **Contact form** — the Contacts section toggles the map for a form that posts
-  to `/api/contact`. A host-agnostic core (`shared/lib/contact.ts`) validates
-  input, drops honeypot hits, and delivers the message via the Telegram Bot API.
-  A thin Vercel function (`api/contact.ts`) and a Vite dev middleware both call
-  that core, so the form works under `bun run dev` without `vercel dev`. Covered
-  by `bun test` (core + wrapper).
+- **Contact form** — the Contacts section toggles the map for a terminal-styled
+  form (window chrome, shell-prompt fields, a typed submit log, and a pixel
+  HTTP-status overlay) that posts to `/api/contact`. A host-agnostic core
+  (`shared/lib/contact.ts`) validates input, drops honeypot hits, and delivers
+  the message via the Telegram Bot API. A thin Vercel function (`api/contact.ts`)
+  and a Vite dev middleware both call that core, so the form works under
+  `bun run dev` without `vercel dev`. Covered by `bun test` (core + wrapper).
 - **Hackathons** — data-driven cards in `widgets/Hackathons/hackathons.data.ts`;
   each renders track, venue, result badge, role/team and resource links.
 - **Custom hooks** — `useTypewriter`, `useActiveSection`, `useClock`,
@@ -100,6 +104,12 @@ On Vercel, set the same vars under Project → Settings → Environment Variable
 | `bun run preview` | Serve the production build locally               |
 | `bun run lint`    | ESLint over the project                          |
 | `bun test`        | Unit tests (contact-form core + API wrapper)     |
+
+## Continuous integration
+
+[GitHub Actions](.github/workflows/ci.yml) runs on every push and pull request to
+`master`: `bun install --frozen-lockfile`, then lint, `tsc -b`, `bun test`, and
+the SSG build. Verification only — deploys are handled by Vercel.
 
 ## Deployment
 
