@@ -163,7 +163,7 @@ export function ContactsSection() {
                   target='_blank'
                   rel='noopener noreferrer'
                   aria-label={`${label} — ${handle}`}
-                  className='group -mx-2 flex items-center gap-2.5 rounded-sm px-2 py-1.5 text-text-dim transition-colors hover:bg-acc/[0.06] hover:text-acc'
+                  className='group -mx-2 flex items-center gap-2.5 rounded-sm px-2 py-1.5 text-text-dim transition-colors hover:bg-acc/6 hover:text-acc'
                 >
                   <span
                     aria-hidden='true'
@@ -173,7 +173,7 @@ export function ContactsSection() {
                   </span>
                   <span
                     aria-hidden='true'
-                    className='size-[18px] shrink-0 bg-current'
+                    className='size-4.5 shrink-0 bg-current'
                     style={{ ...ICON_MASK, maskImage: `url(${icon})`, WebkitMaskImage: `url(${icon})` }}
                   />
                   <span className='text-sm text-text-muted transition-colors group-hover:text-text'>
@@ -222,7 +222,7 @@ export function ContactsSection() {
         <div className='relative min-h-72 border-l border-border md:min-h-64 md:border-l-0 md:border-t'>
           {view === 'form' ? (
             // ContactForm animates its own entrance (fade + row-by-row boot)
-            <div key='form' className='absolute inset-0'>
+            <div key='form' className='absolute inset-0 md:relative'>
               <ContactForm onClose={() => setView('map')} />
             </div>
           ) : (

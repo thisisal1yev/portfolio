@@ -189,7 +189,7 @@ export function ContactForm({ onClose }: Props) {
               onChange={set(f.name)}
               placeholder={f.placeholder}
               disabled={busy}
-              className='flex-1 border-0 border-b border-border bg-transparent pb-0.5 text-sm text-text caret-acc outline-none transition-colors placeholder:text-text-dim focus:border-acc-dim disabled:opacity-60'
+              className='min-w-0 flex-1 border-0 border-b border-border bg-transparent pb-0.5 text-sm text-text caret-acc outline-none transition-colors placeholder:text-text-dim focus:border-acc-dim disabled:opacity-60'
             />
           </m.label>
         ))}
