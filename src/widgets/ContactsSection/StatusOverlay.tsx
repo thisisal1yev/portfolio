@@ -34,7 +34,7 @@ const COLS = [0, 1, 2]
 function PixelDigit({ char, color, glow }: { char: string; color: string; glow: string }) {
   const rows = GLYPHS[char] ?? GLYPHS['0']
   return (
-    <div className='grid grid-cols-3 gap-[3px]'>
+    <div className='grid grid-cols-3 gap-0.75'>
       {ROWS.flatMap(r =>
         COLS.map(c => {
           const lit = (rows[r] >> (2 - c)) & 1
@@ -90,7 +90,7 @@ export function StatusOverlay({ code, ok, message, onRetry }: Props) {
         >
           {ok ? 'OK' : 'FAILED'}
         </p>
-        <p className='mx-auto mt-2 max-w-[16rem] text-xs text-text-muted'>
+        <p className='mx-auto mt-2 max-w-64 text-xs text-text-muted'>
           <span className='sr-only'>{`HTTP ${code}: `}</span>
           {message}
         </p>

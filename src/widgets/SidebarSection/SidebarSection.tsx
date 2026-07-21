@@ -26,7 +26,7 @@ export function SidebarSection() {
       initial={{ opacity: 0, x: -16 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.7, ease: EASE, delay: 0.2 }}
-      className='sticky top-[72px] flex h-[calc(100vh-88px)] flex-col justify-between py-2 md:hidden'
+      className='sticky top-18 flex h-[calc(100vh-88px)] flex-col justify-between py-2 md:hidden'
     >
       {/* brand */}
       <div className='space-y-1'>
