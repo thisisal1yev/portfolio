@@ -193,7 +193,7 @@ export function ContactsSection() {
               type='button'
               onClick={() => setView(view === 'map' ? 'form' : 'map')}
               aria-pressed={view !== 'map'}
-              className='bracket group inline-flex items-center gap-2 overflow-hidden border border-acc-dim bg-acc/10 px-5 py-2.5 text-sm text-acc transition-colors hover:bg-acc/20'
+              className='bracket group inline-flex items-center gap-2 border border-acc-dim bg-acc/10 px-5 py-2.5 text-sm text-acc transition-colors hover:bg-acc/20'
             >
               <m.span
                 key={view === 'map' ? 'send' : 'map'}
