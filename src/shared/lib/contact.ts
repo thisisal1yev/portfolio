@@ -82,9 +82,14 @@ export async function handleContact(
         disable_web_page_preview: true,
       }),
     })
-    if (!res.ok) return { status: 502, body: { ok: false, error: 'delivery failed' } }
+    if (!res.ok) {
+      const detail = await res.text().catch(() => '')
+      console.error('[contact] telegram sendMessage failed:', res.status, detail)
+      return { status: 502, body: { ok: false, error: 'delivery failed' } }
+    }
     return { status: 200, body: { ok: true } }
-  } catch {
+  } catch (err) {
+    console.error('[contact] telegram request threw:', err)
     return { status: 502, body: { ok: false, error: 'delivery failed' } }
   }
 }
