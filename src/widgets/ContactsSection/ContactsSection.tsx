@@ -5,12 +5,46 @@ import { MagneticButton, Prompt } from '@shared/components'
 import { fadeUp, staggerContainer } from '@shared/lib'
 
 const SOCIALS = [
-  { href: 'https://www.linkedin.com/in/thisisaliyev/', label: 'linkedin' },
-  { href: 'https://t.me/thisisaliyev', label: 'telegram' },
-  { href: 'https://www.instagram.com/thisisaliyev.a', label: 'instagram' },
-  { href: 'https://github.com/thisisal1yev', label: 'github' },
-  { href: 'https://gitlab.com/thisisaliyev', label: 'gitlab' },
+  {
+    href: 'https://www.linkedin.com/in/thisisaliyev/',
+    label: 'linkedin',
+    handle: 'in/thisisaliyev',
+    icon: '/images/logos/linkedin.svg',
+  },
+  {
+    href: 'https://t.me/thisisaliyev',
+    label: 'telegram',
+    handle: 't.me/thisisaliyev',
+    icon: '/images/logos/telegram.svg',
+  },
+  {
+    href: 'https://www.instagram.com/thisisaliyev.a',
+    label: 'instagram',
+    handle: '@thisisaliyev.a',
+    icon: '/images/logos/instagram.svg',
+  },
+  {
+    href: 'https://github.com/thisisal1yev',
+    label: 'github',
+    handle: 'thisisal1yev',
+    icon: '/images/logos/github.svg',
+  },
+  {
+    href: 'https://gitlab.com/thisisaliyev',
+    label: 'gitlab',
+    handle: 'thisisaliyev',
+    icon: '/images/logos/gitlab.svg',
+  },
 ]
+
+const ICON_MASK = {
+  maskSize: 'contain',
+  WebkitMaskSize: 'contain',
+  maskRepeat: 'no-repeat',
+  WebkitMaskRepeat: 'no-repeat',
+  maskPosition: 'center',
+  WebkitMaskPosition: 'center',
+} as const
 
 const ENV = [
   {
@@ -85,18 +119,33 @@ export function ContactsSection() {
 
           <div className='mt-6'>
             <p className='mb-2 text-sm text-acc'>SOCIALS=(</p>
-            <div className='flex flex-wrap gap-2 pl-4'>
-              {SOCIALS.map(({ href, label }) => (
+            <div className='mt-1 flex flex-col pl-4'>
+              {SOCIALS.map(({ href, label, handle, icon }) => (
                 <a
                   key={href}
                   href={href}
                   target='_blank'
                   rel='noopener noreferrer'
-                  className='tag font-medium'
+                  aria-label={`${label} — ${handle}`}
+                  className='group -mx-2 flex items-center gap-2.5 rounded-sm px-2 py-1.5 text-text-dim transition-colors hover:bg-acc/[0.06] hover:text-acc'
                 >
-                  <span className='text-acc-dim'>[</span>
-                  {label}
-                  <span className='text-acc-dim'>]</span>
+                  <span
+                    aria-hidden='true'
+                    className='w-2 shrink-0 text-acc opacity-0 transition-opacity group-hover:opacity-100'
+                  >
+                    ▸
+                  </span>
+                  <span
+                    aria-hidden='true'
+                    className='size-[18px] shrink-0 bg-current'
+                    style={{ ...ICON_MASK, maskImage: `url(${icon})`, WebkitMaskImage: `url(${icon})` }}
+                  />
+                  <span className='text-sm text-text-muted transition-colors group-hover:text-text'>
+                    {label}
+                  </span>
+                  <span className='ml-auto font-mono text-xs text-text-dim transition-colors group-hover:text-acc-dim'>
+                    {handle}
+                  </span>
                 </a>
               ))}
             </div>
