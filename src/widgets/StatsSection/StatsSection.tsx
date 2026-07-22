@@ -3,7 +3,7 @@ import { m } from 'motion/react'
 
 import { AnimateNumber, Prompt } from '@shared/components'
 import { useGitHubStats } from '@shared/hooks'
-import { EASE, fadeUp, formatRelative, revealOnView } from '@shared/lib'
+import { CARD, EASE, cn, fadeUp, formatRelative, revealOnView } from '@shared/lib'
 
 const NUM_STATS = [
   {
@@ -51,7 +51,7 @@ export function StatsSection() {
           <m.div
             key={key}
             variants={fadeUp}
-            className='panel bracket hover:border-acc-dim flex flex-col gap-6 p-7 sm:p-5'
+            className={cn(CARD, 'flex flex-col gap-6 p-7 sm:p-5')}
           >
             <p className='text-acc text-xs'>{`> ${cmd}`}</p>
 
@@ -109,7 +109,7 @@ export function StatsSection() {
       {!loading && stats.languages.length > 0 && (
         <m.div
           {...revealOnView(0.3, fadeUp)}
-          className='panel bracket hover:border-acc-dim mt-4 flex flex-col gap-4 p-7 sm:p-5'
+          className={cn(CARD, 'mt-4 flex flex-col gap-4 p-7 sm:p-5')}
         >
           <p className='text-acc text-xs'>{'> languages --top 5'}</p>
 
@@ -171,7 +171,7 @@ function MetaCard({
   return (
     <m.div
       variants={fadeUp}
-      className='panel bracket hover:border-acc-dim flex flex-col gap-3 p-6 sm:p-5'
+      className={cn(CARD, 'flex flex-col gap-3 p-6 sm:p-5')}
     >
       <p className='text-acc text-xs'>{`> ${cmd}`}</p>
       <span className='font-display text-text text-glow text-3xl leading-none font-bold tracking-tight sm:text-2xl'>

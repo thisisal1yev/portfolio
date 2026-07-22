@@ -1,7 +1,7 @@
 import { m } from 'motion/react'
 
 import { Prompt } from '@shared/components'
-import { fadeUp, revealOnView } from '@shared/lib'
+import { CARD, cn, fadeUp, revealOnView } from '@shared/lib'
 
 const OBJECT = [
   { k: 'name', v: '"Akhmadillo Aliyev"' },
@@ -25,7 +25,7 @@ export function AboutSection() {
         index='01'
       />
 
-      <div className='panel bracket hover:border-acc-dim mt-5 grid grid-cols-[1.2fr_1fr] gap-8 p-8 sm:p-5 md:grid-cols-1'>
+      <div className={cn(CARD, 'mt-5 grid grid-cols-[1.2fr_1fr] gap-8 p-8 sm:p-5 md:grid-cols-1')}>
         {/* prose */}
         <div className='space-y-5'>
           <m.p

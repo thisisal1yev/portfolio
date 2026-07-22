@@ -5,6 +5,9 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+/** Shared card surface — panel + hover-bracket framing. Compose with `cn()`. */
+export const CARD = 'panel bracket transition-colors hover:border-acc-dim'
+
 const RELATIVE_UNITS: [Intl.RelativeTimeFormatUnit, number][] = [
   ['year', 31536000],
   ['month', 2592000],

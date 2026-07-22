@@ -1,6 +1,6 @@
 import { m } from 'motion/react'
 
-import { cardReveal } from '@shared/lib'
+import { CARD, cardReveal, cn } from '@shared/lib'
 
 interface Props {
   institution: string
@@ -13,7 +13,7 @@ export function EducationCard({ institution, degree, period, description }: Prop
   return (
     <m.div
       variants={cardReveal}
-      className='panel bracket group flex flex-col gap-2.5 p-6 transition-colors hover:border-acc-dim'
+      className={cn(CARD, 'group flex flex-col gap-2.5 p-6')}
     >
       <p className='text-xs text-acc'>
         <span className='text-text-dim'>[</span>

@@ -1,7 +1,7 @@
 import { m } from 'motion/react'
 
 import { Prompt, Tag } from '@shared/components'
-import { cardReveal, revealOnView } from '@shared/lib'
+import { CARD, cardReveal, cn, revealOnView } from '@shared/lib'
 
 const SERVICES = [
   {
@@ -41,7 +41,7 @@ export function ServicesSection() {
           <m.article
             key={s.id}
             variants={cardReveal}
-            className='panel bracket group hover:border-acc-dim flex flex-col p-8 transition-colors sm:p-5'
+            className={cn(CARD, 'group flex flex-col p-8 sm:p-5')}
           >
             <p className='text-sm'>
               <span className='text-acc'>$</span>{' '}

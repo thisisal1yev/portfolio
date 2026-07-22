@@ -2,7 +2,7 @@ import { ArrowUpRight, ExternalLink, FileText, Trophy } from 'lucide-react'
 import { m } from 'motion/react'
 
 import { GithubMark } from '@shared/components'
-import { cardReveal } from '@shared/lib'
+import { CARD, cardReveal, cn } from '@shared/lib'
 import type { Hackathon } from '../hackathons.data'
 
 type Props = Omit<Hackathon, 'id'>
@@ -30,7 +30,7 @@ export function HackathonCard({
   return (
     <m.div
       variants={cardReveal}
-      className='panel bracket group hover:border-acc-dim flex flex-col gap-3 p-6 transition-colors'
+      className={cn(CARD, 'group flex flex-col gap-3 p-6')}
     >
       <p className='text-acc text-xs'>
         <span className='text-text-dim'>~/</span>

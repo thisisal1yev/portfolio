@@ -3,7 +3,7 @@ import { ArrowUpRight } from 'lucide-react'
 import { m } from 'motion/react'
 
 import { Tag } from '@shared/components'
-import { cardReveal, revealOnView } from '@shared/lib'
+import { CARD, cardReveal, cn, revealOnView } from '@shared/lib'
 import { PROJECTS } from '../projects.data'
 
 function ProjectThumb({
@@ -61,7 +61,7 @@ export function ProjectsList() {
             target='_blank'
             rel='noopener noreferrer'
             variants={cardReveal}
-            className='panel bracket group hover:border-acc-dim flex flex-col transition-colors'
+            className={cn(CARD, 'group flex flex-col')}
           >
             <ProjectThumb
               src={project.imgURL}
