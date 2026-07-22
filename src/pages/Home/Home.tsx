@@ -15,7 +15,7 @@ import {
 
 export function Home() {
   return (
-    <div className='relative z-10 mx-auto min-h-dvh max-w-[1500px] px-6 sm:px-4'>
+    <div className='relative z-10 mx-auto min-h-dvh max-w-375 px-6 sm:px-4'>
       <TopBar />
 
       <div className='grid grid-cols-[240px_1fr] gap-12 lg:grid-cols-[200px_1fr] lg:gap-8 md:grid-cols-1 md:gap-0'>

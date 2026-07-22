@@ -52,6 +52,7 @@ export function HeroSection() {
           >
             <span className='text-acc'>$</span> whoami
           </m.p>
+
           <m.p
             variants={fadeUp}
             className='text-text-dim mt-1 text-sm'
@@ -71,7 +72,9 @@ export function HeroSection() {
             >
               AXMADILLO
             </span>
+
             <br />
+
             <span
               className='glitch'
               data-text='ALIYEV'
@@ -126,6 +129,7 @@ export function HeroSection() {
               >
                 <span>./contact.sh</span>
               </MagneticButton>
+
               <MagneticButton
                 href='/resume_en.pdf'
                 download
@@ -134,6 +138,7 @@ export function HeroSection() {
                 <FileText size={15} />
                 <span>cat resume.pdf</span>
               </MagneticButton>
+
               <MagneticButton
                 href='https://github.com/thisisal1yev'
                 external
