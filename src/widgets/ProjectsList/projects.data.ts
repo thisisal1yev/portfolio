@@ -7,12 +7,9 @@ export const PROJECTS = [
       'A marketplace for organizing events in Uzbekistan — finding and booking services for events.',
     imgURL: '/images/projects/planner-ai.png',
     stack: [
-      'React',
+      'Next.js',
       'Nest.js',
       'TypeScript',
-      'Zustand',
-      'Prisma',
-      'PostgreSQL',
     ],
   },
   {
