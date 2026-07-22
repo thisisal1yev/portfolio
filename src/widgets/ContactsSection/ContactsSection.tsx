@@ -3,7 +3,7 @@ import { m } from 'motion/react'
 import { Map, Send } from 'lucide-react'
 
 import { Prompt } from '@shared/components'
-import { fadeUp, staggerContainer } from '@shared/lib'
+import { fadeUp, revealOnView } from '@shared/lib'
 
 import { ContactForm } from './ContactForm'
 
@@ -123,10 +123,7 @@ export function ContactsSection() {
       <Prompt cmd='./contact.sh' comment='get in touch' index='09' />
 
       <m.div
-        variants={staggerContainer}
-        initial='hidden'
-        whileInView='visible'
-        viewport={{ once: true, amount: 0.1 }}
+        {...revealOnView(0.1)}
         className='panel bracket mt-5 grid grid-cols-2 overflow-hidden md:grid-cols-1'
       >
         {/* left — info */}

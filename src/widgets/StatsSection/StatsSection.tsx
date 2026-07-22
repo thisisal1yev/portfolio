@@ -3,7 +3,7 @@ import { m } from 'motion/react'
 
 import { AnimateNumber, Prompt } from '@shared/components'
 import { useGitHubStats } from '@shared/hooks'
-import { EASE, fadeUp, formatRelative, staggerContainer } from '@shared/lib'
+import { EASE, fadeUp, formatRelative, revealOnView } from '@shared/lib'
 
 const NUM_STATS = [
   {
@@ -44,10 +44,7 @@ export function StatsSection() {
 
       {/* numeric stats */}
       <m.div
-        variants={staggerContainer}
-        initial='hidden'
-        whileInView='visible'
-        viewport={{ once: true, amount: 0.2 }}
+        {...revealOnView(0.2)}
         className='mt-5 grid grid-cols-4 gap-4 sm:grid-cols-1 md:grid-cols-2'
       >
         {NUM_STATS.map(({ key, cmd, label }) => (
@@ -85,10 +82,7 @@ export function StatsSection() {
 
       {/* meta: account age / top language / last push */}
       <m.div
-        variants={staggerContainer}
-        initial='hidden'
-        whileInView='visible'
-        viewport={{ once: true, amount: 0.2 }}
+        {...revealOnView(0.2)}
         className='mt-4 grid grid-cols-3 gap-4 sm:grid-cols-1'
       >
         <MetaCard
@@ -114,10 +108,7 @@ export function StatsSection() {
       {/* language breakdown bar */}
       {!loading && stats.languages.length > 0 && (
         <m.div
-          variants={fadeUp}
-          initial='hidden'
-          whileInView='visible'
-          viewport={{ once: true, amount: 0.3 }}
+          {...revealOnView(0.3, fadeUp)}
           className='panel bracket hover:border-acc-dim mt-4 flex flex-col gap-4 p-7 sm:p-5'
         >
           <p className='text-acc text-xs'>{'> languages --top 5'}</p>

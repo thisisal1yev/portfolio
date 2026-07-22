@@ -49,3 +49,17 @@ export const cardReveal: Variants = {
     transition: { duration: 0.55, ease: EASE },
   },
 }
+
+/**
+ * Shared "reveal on scroll into view" props for a section wrapper — spread onto
+ * an `m.*` element: `<m.div {...revealOnView(0.2)} className="…">`.
+ */
+export const revealOnView = (
+  amount = 0.15,
+  variants: Variants = staggerContainer,
+) => ({
+  variants,
+  initial: 'hidden',
+  whileInView: 'visible',
+  viewport: { once: true, amount },
+})

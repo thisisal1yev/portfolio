@@ -3,7 +3,7 @@ import { ArrowUpRight } from 'lucide-react'
 import { m } from 'motion/react'
 
 import { Tag } from '@shared/components'
-import { cardReveal, staggerContainer } from '@shared/lib'
+import { cardReveal, revealOnView } from '@shared/lib'
 import { PROJECTS } from '../projects.data'
 
 function ProjectThumb({
@@ -48,12 +48,7 @@ function ProjectThumb({
 
 export function ProjectsList() {
   return (
-    <m.div
-      variants={staggerContainer}
-      initial='hidden'
-      whileInView='visible'
-      viewport={{ once: true, amount: 0.1 }}
-    >
+    <m.div {...revealOnView(0.1)}>
       <p className='text-text-dim mb-4 text-xs'>
         total {PROJECTS.length} — drwxr-xr-x aliyev staff
       </p>

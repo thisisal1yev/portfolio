@@ -1,7 +1,7 @@
 import { m } from 'motion/react'
 
 import { Prompt } from '@shared/components'
-import { staggerContainer } from '@shared/lib'
+import { revealOnView } from '@shared/lib'
 import { experienceData } from './experience.data'
 import { ExperienceCard } from './ui/ExperienceCard'
 
@@ -23,10 +23,7 @@ export function ExperienceSection() {
       />
 
       <m.div
-        variants={staggerContainer}
-        initial='hidden'
-        whileInView='visible'
-        viewport={{ once: true, amount: 0.1 }}
+        {...revealOnView(0.1)}
         className='panel mt-5 p-8 sm:p-5'
       >
         {experienceData.map((item, i) => (

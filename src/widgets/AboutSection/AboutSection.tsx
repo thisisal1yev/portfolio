@@ -1,7 +1,7 @@
 import { m } from 'motion/react'
 
 import { Prompt } from '@shared/components'
-import { fadeUp, staggerContainer } from '@shared/lib'
+import { fadeUp, revealOnView } from '@shared/lib'
 
 const OBJECT = [
   { k: 'name', v: '"Akhmadillo Aliyev"' },
@@ -15,10 +15,7 @@ export function AboutSection() {
   return (
     <m.section
       id='about'
-      variants={staggerContainer}
-      initial='hidden'
-      whileInView='visible'
-      viewport={{ once: true, amount: 0.15 }}
+      {...revealOnView()}
       className='scroll-mt-24'
     >
       <Prompt

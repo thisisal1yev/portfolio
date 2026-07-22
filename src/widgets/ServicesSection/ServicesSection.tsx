@@ -1,7 +1,7 @@
 import { m } from 'motion/react'
 
 import { Prompt, Tag } from '@shared/components'
-import { cardReveal, staggerContainer } from '@shared/lib'
+import { cardReveal, revealOnView } from '@shared/lib'
 
 const SERVICES = [
   {
@@ -34,10 +34,7 @@ export function ServicesSection() {
       />
 
       <m.div
-        variants={staggerContainer}
-        initial='hidden'
-        whileInView='visible'
-        viewport={{ once: true, amount: 0.15 }}
+        {...revealOnView()}
         className='mt-5 grid grid-cols-2 gap-4 sm:grid-cols-1'
       >
         {SERVICES.map((s) => (

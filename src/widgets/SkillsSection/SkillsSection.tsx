@@ -1,7 +1,7 @@
 import { m } from 'motion/react'
 
 import { Prompt, Tag } from '@shared/components'
-import { fadeUp, staggerContainer } from '@shared/lib'
+import { fadeUp, revealOnView } from '@shared/lib'
 import { MarqueeBlock } from '../MarqueeBlock'
 import { SKILL_GROUPS } from '../MarqueeBlock/skills.data'
 
@@ -16,10 +16,7 @@ export function SkillsSection() {
       />
 
       <m.div
-        variants={staggerContainer}
-        initial='hidden'
-        whileInView='visible'
-        viewport={{ once: true, amount: 0.15 }}
+        {...revealOnView()}
         className='panel bracket mt-5 overflow-hidden p-8 sm:p-5'
       >
         <p className='text-sm text-text-muted'>{'{'}</p>
