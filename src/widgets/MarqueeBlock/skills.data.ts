@@ -20,7 +20,7 @@ export const SKILL_GROUPS = [
   },
   {
     key: 'backend',
-    items: ['Node.js', 'Nest.js', 'Express', 'Bun', 'Python', 'PostgreSQL', 'Prisma', 'REST API'],
+    items: ['Node.js', 'Nest.js', 'Express', 'Bun', 'Python', 'SQL', 'PostgreSQL', 'Prisma', 'REST API'],
   },
   {
     key: 'devops',
@@ -33,6 +33,7 @@ export const SKILL_GROUPS = [
 ]
 
 export const SKILLS = [
+  { skillName: 'SQL', imgURL: '/images/logos/sql.svg', skillAlias: 'sql' },
   {
     skillName: 'PostgreSQL',
     imgURL: '/images/logos/postgresql.svg',
